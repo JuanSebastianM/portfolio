@@ -240,3 +240,51 @@ p {
         padding: 10px;
     }
 }
+/* projects section ends here */
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.contact-header {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+.contact-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 2em;
+}
+.contact-link {
+    color: rgb(138, 211, 55);
+    margin: 20px;
+    text-decoration: none;
+    transition: transform 0.5s;
+}
+.contact-link:hover {
+    color: black;
+}
+.contact-link i{
+    color: black;
+    margin-right: 5px;
+}
+.contact-link:hover i {
+    color: rgb(138, 211, 55)
+}
+.contact-link:hover {
+    transform: translateY(10px);
+    transition: transform 0.5s;
+  }
+ @media screen and (min-width: 767px) {
+     .contact-header {
+         font-size: 6em;
+     }
+     .contact-options {
+         font-size: 3em;
+     }
+ }
