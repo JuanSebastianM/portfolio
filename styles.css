@@ -8,7 +8,7 @@
 body {
     font-size: 10px;
     font-family: 'Montserrat', sans-serif;
-    background-color: rgb(216, 210, 210);
+    background-color: rgba(216, 210, 210, 0.397);
 }
 nav {
     display: flex;
@@ -19,8 +19,8 @@ nav {
     position: fixed;
     padding: 0 20px;
     width: 100%;
-    height: 70px;
-    font-size: 0.8rem;
+    height: 50px;
+    font-size: 1.2em;
 }
 nav ul {
     display: flex;
@@ -31,10 +31,15 @@ nav ul {
 nav a {
     display: flex;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 10px;
     height: 100%;
     text-decoration: none;
     color: rgb(216, 210, 210);
+}
+nav a:hover {
+    background-color: rgba(238, 238, 238, 0.144);
+    color: var(--greenish-color);
+    transition: background-color 0.8s;
 }
 @media screen and (min-width: 374px) {
     nav {
@@ -54,56 +59,65 @@ nav a {
 }
 @media screen and (min-width: 768px) {
     nav {
-        font-size: 2.6em;
-        padding: 0 40px;
+        font-size: 2em;
+        padding: 0 50px;
+        height: 80px;
     }
     nav a {
-        padding: 0 25px;
+        padding: 0 30px;
     }    
+    nav span {
+        font-size: 1.3em;
+    }
+
 }
-nav a:hover {
-    background-color: rgba(238, 238, 238, 0.144);
-    color: var(--greenish-color);
-    transition: background-color 0.8s;
+@media screen and (min-width: 1023px) {
+    nav span {
+        font-size: 1.5em;
+    }
 }
+
 /* nav bar ends here */
+main {
+    padding: 10px 20px 20px;
+}
 .top-section {
-    padding-top: 70px;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.top-section header {
-    font-size: 3em;
     text-align: center;
-    padding: 0 50px;
+}
+.top-section-header {
+    font-size: 2.5em;
 }
 .colored-span {
     color: rgb(142, 233, 38);
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.575);
 }
-.top-section p {
+p {
     margin-top: 15px;
-}
-@media screen and (min-width: 320px) {
-    .top-section header {
-        font-size: 1.5em;
-    }
-}
-@media screen and (min-width: 374px) {
-    .top-section header {
-        font-size: 1.7em;
-    }
-}
-@media screen and (min-width: 424px) {
-    .top-section header {
-        font-size: 2em;
-    }
+    font-size: 1.4em;
 }
 @media screen and (min-width: 767px) {
-    .top-section header {
-        font-size: 4em;
+    main {
+        padding: 10px 60px 0;
+    }
+    .top-section-header {
+        font-size: 5em;
+    }
+    .top-section p {
+        font-size: 3em;
     }
 }
 /* top section ends here */
+.about-header {
+    font-size: 2em;
+    border-bottom: 4px solid rgb(138, 211, 55);
+    width: 105px;
+    color: rgb(138, 211, 55);
+}
+.about-info {
+    font-size: 1.4em;
+    line-height: 1.8;
+}
