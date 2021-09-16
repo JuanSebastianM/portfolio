@@ -113,7 +113,8 @@ p {
 }
 /* top section ends here */
 .content-section {
-    padding: 80px 0;
+    padding: 110px 0;
+    min-height: 100vh;
 }
 .about-header, .work-header {
     font-size: 2em;
@@ -128,6 +129,7 @@ p {
 .about-info {
     font-size: 1.4em;
     line-height: 1.8;
+    margin-bottom: 25px;
 }
 .picture {
     margin: 30px auto 0;
@@ -137,7 +139,28 @@ p {
     width: 100%;
     border-radius: 50%;
     transition: border-radius 0.5s;
-
+}
+.skills {
+    display: flex;
+    justify-content: center;
+}
+.skills div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+.skills-box:hover {
+    transform: scale(1.15);
+}
+.skills img {
+    width: 60px;
+}
+.skills span {
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
 }
 @media screen and (min-width: 767px) {
     .about-header {
@@ -169,7 +192,7 @@ p {
         width: 25%;
     }
     .about-header {
-        margin: 0 auto 60px;
+        margin: 0 auto 30px;
     }
     .content:hover .picture img {
         border-radius: 30%;
@@ -185,7 +208,7 @@ p {
     grid-gap: 40px;
 }
 .project-box {
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.616);
     border-style: solid;
     border-radius: 5em;
     display: grid;
@@ -197,38 +220,37 @@ p {
     transition: transform 0.5s ease-in-out;
 }
 .project-box:hover {
-    transition: transform 0.5s ease-in-out;
     transform: scale(1.05);
-  }
+}
 .project-preview {
     grid-area: image;
     max-width: 100%;
     height: 100%;
     margin: auto;
-  }
-  .project-title {
+}
+.project-title {
     grid-area: title;
     margin: auto;
     font-size: 2em;
-  }
-  .buttons {
+}
+.buttons {
     grid-area: links;
     display: flex;
     margin: auto;
     font-size: 2em;
-  }
-  .options {
+}
+.options {
     text-decoration: none;
     padding: 5px;
     color: black;
     border-style: solid;
     margin: 0 20px;
     border-radius: 10px;
-  }
-  .options:hover {
+}
+.options:hover {
     border-color: rgb(138, 211, 55);
     transition: 0.5s;
-  }
+}
 @media screen and (min-width: 767px) {
     .projects-grid {
         grid-template-columns: repeat(auto-fill, 400px);
@@ -280,11 +302,11 @@ p {
     transform: translateY(10px);
     transition: transform 0.5s;
   }
- @media screen and (min-width: 767px) {
-     .contact-header {
-         font-size: 6em;
-     }
-     .contact-options {
-         font-size: 3em;
-     }
- }
+@media screen and (min-width: 767px) {
+    .contact-header {
+        font-size: 6em;
+    }
+    .contact-options {
+        font-size: 3em;
+    }
+}
