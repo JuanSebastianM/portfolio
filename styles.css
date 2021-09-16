@@ -158,8 +158,6 @@ p {
     width: 60px;
 }
 .skills span {
-    display: block;
-    text-align: center;
     font-size: 1.5em;
 }
 @media screen and (min-width: 767px) {
