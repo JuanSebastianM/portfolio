@@ -132,7 +132,7 @@ p {
     margin-bottom: 25px;
 }
 .picture {
-    margin: 30px auto 0;
+    margin: 15px auto 0;
     width: 200px;
 }
 .picture img {
@@ -143,22 +143,23 @@ p {
 .skills {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .skills div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 20px;
+    margin: 0 20px 10px 0;
     transition: transform 0.3s ease-in-out;
 }
 .skills-box:hover {
     transform: scale(1.15);
 }
 .skills img {
-    width: 60px;
+    width: 40px;
 }
 .skills span {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 @media screen and (min-width: 767px) {
     .about-header {
@@ -171,6 +172,12 @@ p {
     }
     .about-info {
         font-size: 2em;
+    }
+    .skills img {
+        width: 60px;
+    }
+    .skills span {
+        font-size: 1.5em;
     }
 }
 @media screen and (min-width: 1023px) {
@@ -240,7 +247,7 @@ p {
 .options {
     text-decoration: none;
     padding: 5px;
-    color: black;
+    color: #000;
     border-style: solid;
     margin: 0 20px;
     border-radius: 10px;
@@ -267,7 +274,7 @@ p {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 .contact-header {
     text-align: center;
@@ -287,10 +294,10 @@ p {
     transition: transform 0.5s;
 }
 .contact-link:hover {
-    color: black;
+    color: #000;
 }
 .contact-link i{
-    color: black;
+    color: #000;
     margin-right: 5px;
 }
 .contact-link:hover i {
