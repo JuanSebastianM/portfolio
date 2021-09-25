@@ -68,7 +68,7 @@ nav a:hover {
   }
 }
 @media screen and (min-width: 1023px) {
-  nav span {
+  nav h1 {
     font-size: 1.5em;
   }
 }
@@ -207,10 +207,6 @@ main {
   }
   .text {
     width: 50%;
-  }
-  figure {
-    display: flex;
-    align-content: center;
   }
   .skills {
     padding-left: 400px;
