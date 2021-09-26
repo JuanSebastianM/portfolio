@@ -3,10 +3,10 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
 }
 body {
   font-size: 10px;
-  font-family: 'Montserrat', sans-serif;
   background-color: rgba(216, 210, 210, 0.397);
 }
 nav {
@@ -18,9 +18,9 @@ nav {
   color: rgba(155, 221, 80, 0.871);
   position: fixed;
   padding: 0 20px;
-  width: 100%;
   height: 50px;
   font-size: 1.3em;
+  width: 100%;
 }
 nav ul {
   display: flex;
@@ -282,19 +282,64 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   min-height: 100vh;
+  padding-top: 70px;
 }
 .contact-header {
   text-align: center;
   font-size: 3em;
   margin-bottom: 15px;
 }
-.contact-options {
+.contact-links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   font-size: 2em;
+}
+.contact-form {
+  margin: 0 auto;
+  font-size: 2em;
+  max-width: 300px;
+}
+.contact-form {
+  padding: 20px 0;
+  border-radius: 20%;
+  text-align: center;
+}
+form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+form button {
+  padding: 5px 20px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+form button:hover {
+  transition: background-color 300ms ease;
+  background-color: rgb(138, 211, 55);
+}
+form input,
+form textarea {
+  padding: 5px 10px;
+  font-size: 0.75em;
+  color: rgb(138, 211, 55);
+  outline: none;
+  border: 2px solid #000;
+  border-radius: 5px;
+  transition: all 300ms ease;
+}
+form textarea {
+  height: 120px;
+}
+form input:focus,
+form textarea:focus {
+  color: #000;
+  border: 2px solid rgb(138, 211, 55);
 }
 .contact-link {
   color: rgb(138, 211, 55);
@@ -331,12 +376,35 @@ footer h3 span {
   .contact-header {
     font-size: 6em;
   }
-  .contact-options {
+  .contact-links {
     font-size: 3em;
+  }
+  .contact-form {
+    font-size: 2.8em;
+    max-width: 500px;
+  }
+  form textarea {
+    height: 200px;
   }
   footer {
     padding: 30px 0;
     border-top: 4px solid #000;
     font-size: 2.8em;
+  }
+}
+@media screen and (min-width: 1023px) {
+  .contact-options {
+    display: flex;
+  }
+  .contact-links {
+    flex-direction: column;
+    margin-left: 80px;
+  }
+  .contact-form {
+    font-size: 3em;
+    width: 1000px;
+  }
+  form textarea {
+    height: 250px;
   }
 }
