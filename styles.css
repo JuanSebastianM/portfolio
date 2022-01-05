@@ -28,7 +28,7 @@ nav ul {
   list-style-type: none;
   height: 100%;
 }
-nav a {
+nav .nav-link {
   display: flex;
   align-items: center;
   padding: 0 14px;
@@ -36,16 +36,18 @@ nav a {
   text-decoration: none;
   color: rgb(216, 210, 210);
 }
-nav h1 {
+nav .nav-header {
   font-size: 1.3em;
+  text-decoration: none;
+  color: inherit;
 }
-nav a:hover {
+nav .nav-link:hover {
   background-color: rgba(238, 238, 238, 0.144);
   color: rgba(155, 221, 80, 0.871);
   transition: background-color 0.8s;
 }
 @media screen and (min-width: 374px) {
-  nav a {
+  nav .nav-link {
     padding: 0 14px;
   }
 }
@@ -53,7 +55,7 @@ nav a:hover {
   nav {
     font-size: 1.6em;
   }
-  nav a {
+  nav .nav-link {
     padding: 0 15px;
   }
 }
@@ -63,12 +65,12 @@ nav a:hover {
     padding: 0 50px;
     height: 80px;
   }
-  nav a {
+  nav .nav-link {
     padding: 0 30px;
   }
 }
 @media screen and (min-width: 1023px) {
-  nav h1 {
+  nav .nav-header {
     font-size: 1.5em;
   }
 }
