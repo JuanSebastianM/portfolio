@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about Juan Mendoza, a Frontend developer based in Colombia. You can find his projects, tech stack and more here">
+    <meta name="keywords" content="Software Engineer, Software Developer, FrontEnd developer, Desarrollador frontend">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/profile.jpg">
+    <link rel="apple-touch-icon" href="images/profile.jpg">
+    <!-- Facebook Open Graph -->
+    <meta property="og:url" content="http://juanmendoza.me/portfolio/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Juan Mendoza - Web Developer">
+    <meta property="og:image" content="http://juanmendoza.me/portfolio/images/profile.jpg">
+    <meta property="og:image:alt" content="Juan Mendoza">
+    <meta property="og:description" content="Web developer specialized in frontend development. Skilled in problem solving and likes team working, and helping others.">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@JuanMendozaDev">
+    <meta name="twitter:url" content="http://juanmendoza.me/portfolio/">
+    <meta name="twitter:title" content="Juan Mendoza - Web Developer">
+    <meta name="twitter:description" content="Web developer specialized in frontend development. Skilled in problem solving and likes team working, and helping others.">
+    <meta name="twitter:image" content="http://juanmendoza.me/portfolio/images/profile.jpg">
+    <meta name="twitter:image:alt" content="Juan Mendoza">
     <title>Juan Mendoza - Web Developer</title>
 </head>
 <body>
@@ -17,6 +36,7 @@
         </header>
         <ul>
             <li><a href="#work">Work</a></li>
+            <li><a href="#articles">Articles</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -91,7 +111,7 @@
             <div class="projects-container">
                 <!--1st project-->
                 <div class="project-box">
-                    <p class="project-title">LynStore</p>
+                    <h3 class="project-title">LynStore</h3>
                     <img class="project-preview" src="https://res.cloudinary.com/dmhhz7iam/image/upload/v1641400112/LynStore_and_6_more_pages_-_Personal_-_Microsoft_Edge_5_01_2022_11_15_35_a._m._fjmrcm.png" loading="lazy" alt="Preview of the project">
                     <div class="buttons">
                         <a class="options" href="https://lynstore.netlify.app/" target="_blank" rel="noreferrer">Live</a>
@@ -100,7 +120,7 @@
                 </div>
                 <!--2nd project-->
                 <div class="project-box">
-                    <p class="project-title">Help a Family (Contributor)</p>
+                    <h3 class="project-title">Help a Family (Contributor)</h3>
                     <img class="project-preview" src="https://res.cloudinary.com/dmhhz7iam/image/upload/v1641400519/Help_a_Family_in_Need_and_7_more_pages_-_Personal_-_Microsoft_Edge_5_01_2022_11_32_55_a._m._ufq5ov.png" loading="lazy" alt="Preview of the project">
                     <div class="buttons">
                         <a class="options" href="https://helpafamily.margaritahumanitarian.org/" target="_blank" rel="noreferrer">Live</a>
@@ -109,7 +129,7 @@
                 </div>
                 <!-- 3rd project -->
                 <div class="project-box">
-                    <p class="project-title">Rock, Paper, Scissors</p>
+                    <h3 class="project-title">Rock, Paper, Scissors</h3>
                     <img class="project-preview" src="images/rock.png" loading="lazy" alt="Preview of the project">
                     <div class="buttons">
                         <a class="options" href="https://juansebastianm.github.io/rock-paper-scissors/" target="_blank" rel="noreferrer">Live</a>
@@ -118,11 +138,11 @@
                 </div>
             </div>
         </section>
-        <!-- <section id="articles" class="content-section articles-section">
+        <section id="articles" class="content-section articles-section">
             <header>
                 <h2 class='articles-header'>Articles</h2>
             </header>
-        </section> -->
+        </section>
         <section id="contact" class="contact-section">
             <header>
                 <h2 class="contact-header">Let's work together...</h1>
@@ -168,7 +188,7 @@
         </section>
     </main>
     <footer>
-        <h3>Juan Mendoza <span>©</span> 2021</h3>
+        <h3>Juan Mendoza <span class='copyright-sign'>©</span> <span id="currentYear"></span></h3>
     </footer>
     <script src="main.js"></script>
 </body>
