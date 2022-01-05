@@ -31,13 +31,13 @@ const GET_ARTICLES = `
 const fetchData = async () => {
   try {
     const result = await fetchArticles(GET_ARTICLES, { page: 0 });
-    console.log('result', result);
     const articles = result.data.user.publication.posts;
     let container = document.createElement('div');
     container.classList.add('articles-container');
     articles.forEach((article) => {
       let articleBox = document.createElement('div');
       articleBox.classList.add('article-box');
+
       let header = document.createElement('header');
       let title = document.createElement('h3');
       title.classList.add('article-title');
@@ -68,6 +68,7 @@ const fetchData = async () => {
       link.textContent = 'Read article';
       linkWrapper.appendChild(link);
       articleBox.appendChild(linkWrapper);
+
       //   Append every .article-box div to the .articles-container div
       container.appendChild(articleBox);
       //   Append everything to the #articles section
