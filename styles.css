@@ -100,7 +100,8 @@ main {
   padding-top: 70px;
 }
 .skills .tech-stack,
-.work-header {
+.work-header,
+.articles-header {
   font-size: 2em;
   border-bottom: 4px solid rgb(138, 211, 55);
   background: -webkit-linear-gradient(#8ad337, #000);
@@ -110,7 +111,6 @@ main {
 }
 .work-header {
   margin: 0 auto;
-  width: 85px;
 }
 .about-info {
   font-size: 1.4em;
@@ -166,12 +166,9 @@ main {
     padding: 0;
   }
   .skills .tech-stack,
-  .work-header {
+  .work-header,
+  .articles-header {
     font-size: 3em;
-    width: 130px;
-  }
-  .skills .tech-stack {
-    width: 170px;
   }
   .about-info {
     font-size: 2em;
@@ -219,7 +216,8 @@ main {
   }
 }
 /* about me section ends here */
-.projects-section {
+.projects-section,
+.articles-section {
   display: flex;
   flex-direction: column;
   align-items: center;
