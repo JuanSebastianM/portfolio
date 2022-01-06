@@ -242,8 +242,8 @@ main {
   border-style: solid;
   border-radius: 5em;
   display: flex;
-  width: 280px;
-  height: 300px;
+  width: 300px;
+  height: 320px;
   flex-direction: column;
   transition: transform 0.5s ease-in-out;
 }
@@ -254,6 +254,7 @@ main {
 .project-preview,
 .cover-image {
   max-width: 100%;
+  width: 100%;
   height: 100%;
   margin: auto;
   border-top: 1px solid #000;
@@ -262,7 +263,7 @@ main {
 }
 .project-title,
 .article-title {
-  padding: 15px 0;
+  padding: 15px 10px;
   font-size: 2em;
 }
 .buttons {
@@ -317,11 +318,7 @@ main {
 }
 /* projects section ends here */
 .previews-wrapper {
-  height: 260px;
   overflow: hidden;
-}
-.previews-wrapper img {
-  height: auto;
 }
 /* article section ends here */
 .contact-section {
