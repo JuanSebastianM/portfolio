@@ -28,7 +28,7 @@ const GET_ARTICLES = `
         }
     }
 `;
-const fetchData = async () => {
+(async function () {
   try {
     const result = await fetchArticles(GET_ARTICLES, { page: 0 });
     const articles = result.data.user.publication.posts;
@@ -77,5 +77,4 @@ const fetchData = async () => {
   } catch (error) {
     console.error('er', error);
   }
-};
-fetchData();
+})();
