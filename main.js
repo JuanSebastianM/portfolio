@@ -32,9 +32,14 @@ const GET_ARTICLES = `
   try {
     const result = await fetchArticles(GET_ARTICLES, { page: 0 });
     const articles = result.data.user.publication.posts;
+    // remove duplicate objects from array
+    const titles = articles.map((item) => item.title);
+    const uniqueItems = articles.filter(
+      (item, index) => !titles.includes(item.title, index + 1)
+    );
     let container = document.createElement('div');
     container.classList.add('articles-container');
-    articles.forEach((article) => {
+    uniqueItems.forEach((article) => {
       let articleBox = document.createElement('div');
       articleBox.classList.add('article-box');
 
