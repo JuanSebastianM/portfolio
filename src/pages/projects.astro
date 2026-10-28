@@ -1,0 +1,61 @@
+---
+import { githubSnapshot, otherRepos, projects } from '../data/projects';
+import ProjectGrid from '../islands/ProjectGrid';
+import { formatDate } from '../lib/posts';
+import Base from '../layouts/Base.astro';
+
+const cards = projects.map((project) => ({
+  slug: project.slug,
+  name: project.name,
+  summary: project.summary,
+  role: project.role,
+  language: project.language,
+  links: project.links,
+  image: project.image,
+  imageAlt: project.imageAlt,
+  meta: [
+    typeof project.stars === 'number' ? `${project.stars} ${project.stars === 1 ? 'star' : 'stars'}` : '',
+    project.pushed ? formatDate(new Date(`${project.pushed}T00:00:00Z`)) : '',
+  ]
+    .filter(Boolean)
+    .join(' · '),
+}));
+---
+
+<Base
+  title="Projects"
+  description="Selected repositories and open-source work by Juan Sebastián Mendoza: commentful, a TypeScript to-do app, and contributions around Help a Family, Documenso, and cal.com."
+>
+  <section class="shell section">
+    <header class="section-head">
+      <p class="kicker">Fixtures</p>
+      <h2 class="h-display" style="font-size: clamp(2.6rem, 6vw, 4.5rem);">Projects</h2>
+      <p class="lede">
+        Real public repositories, plus two projects that were linked on the previous portfolio.
+        Star counts and push dates are from a GitHub snapshot on {formatDate(new Date(`${githubSnapshot}T00:00:00Z`))}.
+      </p>
+    </header>
+    <div style="margin-top: 1.5rem;">
+      <ProjectGrid client:visible projects={cards} />
+    </div>
+  </section>
+  <section class="shell section" style="padding-top: 0;">
+    <header class="section-head">
+      <p class="kicker">Also public</p>
+      <h2>Other repositories</h2>
+      <p class="lede">
+        Training copies, the profile README, and this portfolio’s own repository are left off this list.
+      </p>
+    </header>
+    <ul class="other-repos">
+      {
+        otherRepos.map((repo) => (
+          <li class="card card-pad">
+            <a href={repo.href} target="_blank" rel="noreferrer">{repo.name}</a>
+            <p style="margin: 0.3rem 0 0; color: var(--muted);">{repo.note}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

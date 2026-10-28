@@ -1,0 +1,29 @@
+---
+import { bench, startingXi } from '../data/profile';
+---
+
+<div class="pitch-board">
+  <ol class="xi">
+    {
+      startingXi.map((skill) => (
+        <li class="player" style={`--x:${skill.x};--y:${skill.y}`}>
+          <span class="pos">{skill.pos}</span>
+          <span class="skill">{skill.short}</span>
+          <span class="src">{skill.name !== skill.short ? `${skill.name}. ` : ''}{skill.source}</span>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+<ul class="bench">
+  {
+    bench.map((skill, index) => (
+      <li class="player placeholder">
+        <span class="flag">Placeholder</span>
+        <span class="pos">SUB {index + 1}</span>
+        <span class="skill">{skill.short}</span>
+        <span class="src">{skill.name}. {skill.source}.</span>
+      </li>
+    ))
+  }
+</ul>

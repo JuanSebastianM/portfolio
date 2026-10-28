@@ -1,0 +1,79 @@
+---
+import { education, experience, onTheRecord } from '../data/profile';
+---
+
+<div class="split">
+  <div>
+    <h3 class="h-display" style="font-size: 1.8rem;">Experience</h3>
+    <p class="lede">Empty slots on purpose. Nothing below is a job Juan held.</p>
+    <ol class="season-list">
+      {
+        experience.map((item) => (
+          <li class="season-item">
+            <span class="minute">{item.slot}</span>
+            <article class="card card-pad placeholder-card">
+              <span class="flag">Placeholder</span>
+              <h3 style="margin: 0.45rem 0 0; font-family: var(--font-display); font-weight: 560; letter-spacing: -0.03em;">
+                {item.title}
+              </h3>
+              <p style="margin: 0.35rem 0 0; color: var(--muted);">{item.note}</p>
+              <dl class="stat-grid">
+                <div>
+                  <dt>Club</dt>
+                  <dd>{item.place}</dd>
+                </div>
+                <div>
+                  <dt>Season</dt>
+                  <dd>{item.season}</dd>
+                </div>
+                <div>
+                  <dt>Competition</dt>
+                  <dd>{item.detail}</dd>
+                </div>
+              </dl>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <div>
+    <h3 class="h-display" style="font-size: 1.8rem;">Education</h3>
+    <p class="lede">Same rule. An essay is not a diploma.</p>
+    {
+      education.map((item) => (
+        <article class="card card-pad placeholder-card" style="margin-top: 1rem;">
+          <span class="flag">Placeholder</span>
+          <h3 style="margin: 0.45rem 0 0; font-family: var(--font-display); font-weight: 560;">
+            {item.title}
+          </h3>
+          <p style="margin: 0.35rem 0 0; color: var(--muted);">{item.note}</p>
+          <dl class="stat-grid">
+            <div>
+              <dt>School</dt>
+              <dd>{item.place}</dd>
+            </div>
+            <div>
+              <dt>Season</dt>
+              <dd>{item.season}</dd>
+            </div>
+          </dl>
+        </article>
+      ))
+    }
+    <article class="card card-pad" style="margin-top: 1rem;">
+      <p class="kicker">On the record</p>
+      <p class="lede" style="margin-top: 0.4rem;">Published essays. Not employment.</p>
+      <ul class="record-list">
+        {
+          onTheRecord.map((item) => (
+            <li>
+              <a href={item.href}>{item.title}</a>
+              <div style="color: var(--muted); font-size: 0.9rem;">{item.meta}</div>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+---
+import Contact from '../components/Contact.astro';
+import Formation from '../components/Formation.astro';
+import PostCard from '../components/PostCard.astro';
+import SeasonLog from '../components/SeasonLog.astro';
+import { about } from '../data/profile';
+import { githubSnapshot, projects } from '../data/projects';
+import { identity } from '../data/site';
+import PitchBall from '../islands/PitchBall';
+import ProjectGrid from '../islands/ProjectGrid';
+import Reveal from '../islands/Reveal';
+import { formatDate, getPosts } from '../lib/posts';
+import Base from '../layouts/Base.astro';
+
+const posts = (await getPosts()).slice(0, 3);
+const featured = projects
+  .filter((project) => project.featured)
+  .map((project) => ({
+    slug: project.slug,
+    name: project.name,
+    summary: project.summary,
+    role: project.role,
+    language: project.language,
+    links: project.links,
+    image: project.image,
+    imageAlt: project.imageAlt,
+    meta:
+      typeof project.stars === 'number'
+        ? `${project.stars} ${project.stars === 1 ? 'star' : 'stars'}`
+        : undefined,
+  }));
+---
+
+<Base title={`${identity.name} · ${identity.role}`} description={identity.description}>
+  <section class="shell hero">
+    <div>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Front-end developer · Colombia</p>
+      <h1>
+        {identity.givenName}
+        <span>{identity.familyName}</span>
+      </h1>
+      <p class="lede" style="margin-top: 1rem;">{identity.githubBio}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/projects">See the work</a>
+        <a class="btn btn-ghost" href="/blog">Read the blog</a>
+      </div>
+      <dl class="facts">
+        <div>
+          <dt>Focus</dt>
+          <dd>TypeScript, React, AWS</dd>
+        </div>
+        <div>
+          <dt>Repos</dt>
+          <dd>21 public</dd>
+        </div>
+        <div>
+          <dt>Essays</dt>
+          <dd>9 on this site</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-portrait">
+      <figure>
+        <img
+          src="/images/profile.jpg"
+          width="340"
+          height="340"
+          alt="Juan Sebastián Mendoza, smiling with his arms crossed"
+          fetchpriority="high"
+        />
+      </figure>
+      <PitchBall client:idle />
+    </div>
+  </section>
+
+  <Reveal client:visible>
+    <section class="shell section" id="about">
+      <header class="section-head">
+        <p class="kicker"><span>01</span> Kickoff</p>
+        <h2>A front-end developer who still likes a match.</h2>
+      </header>
+      <div class="about-grid" style="margin-top: 1.5rem;">
+        <div class="prose-about">
+          {about.map((paragraph) => <p class="lede">{paragraph}</p>)}
+        </div>
+        <blockquote class="card quote-card">
+          <p>Coding has become my biggest passion besides gaming and soccer.</p>
+          <span>From the previous portfolio</span>
+        </blockquote>
+      </div>
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="lineup">
+      <header class="section-head">
+        <p class="kicker"><span>02</span> Starting XI</p>
+        <h2>Skills, set the way a lineup is.</h2>
+        <p class="lede">
+          Attack at the top, goalkeeper at the bottom. Each name is sourced. The bench is empty until LinkedIn can be added.
+        </p>
+      </header>
+      <Formation />
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="season">
+      <header class="section-head">
+        <p class="kicker"><span>03</span> Season log</p>
+        <h2>Experience, once the fixtures are real.</h2>
+        <p class="lede">
+          LinkedIn was not available for this build. The log is laid out like a match sheet and every row is marked as a placeholder.
+        </p>
+      </header>
+      <SeasonLog />
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="projects">
+      <header class="section-head">
+        <p class="kicker"><span>04</span> Fixtures</p>
+        <h2>Selected work.</h2>
+        <p class="lede">
+          Original repositories and open-source forks. Stars are from the GitHub snapshot on {formatDate(new Date(githubSnapshot))}, not a live count.
+        </p>
+      </header>
+      <div style="margin-top: 1.4rem;">
+        <ProjectGrid client:visible projects={featured} className="project-grid home-grid" />
+      </div>
+      <p style="margin-top: 1.2rem;"><a class="btn btn-ghost" href="/projects">All projects</a></p>
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="writing">
+      <header class="section-head">
+        <p class="kicker"><span>05</span> Notebook</p>
+        <h2>Recent essays.</h2>
+        <p class="lede">Imported from Hashnode. Covers and inline images now live in this repo.</p>
+      </header>
+      <ul class="post-grid" style="margin-top: 1.4rem;">
+        {posts.map((post) => (
+          <li><PostCard post={post} /></li>
+        ))}
+      </ul>
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="contact">
+      <header class="section-head">
+        <p class="kicker"><span>06</span> Full time</p>
+        <h2>Say hello.</h2>
+      </header>
+      <div style="margin-top: 1.4rem;">
+        <Contact />
+      </div>
+    </section>
+  </Reveal>
+</Base>

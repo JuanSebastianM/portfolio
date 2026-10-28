@@ -1,0 +1,44 @@
+---
+import { identity } from '../data/site';
+---
+
+<div class="contact-grid">
+  <form class="card card-pad" action={identity.formAction} method="POST">
+    <p class="kicker">Message</p>
+    <h3 class="h-display" style="font-size: 2rem; margin-top: 0.4rem;">Let’s work together</h3>
+    <p class="lede">This form is the one from the previous site. It posts to Formspree.</p>
+    <div class="hp" aria-hidden="true">
+      <label>
+        Leave this field empty
+        <input name="_gotcha" tabindex="-1" autocomplete="off" />
+      </label>
+    </div>
+    <div style="display: grid; gap: 0.8rem; margin-top: 1rem;">
+      <label class="field">
+        Name
+        <input type="text" name="name" autocomplete="name" required />
+      </label>
+      <label class="field">
+        Email
+        <input type="email" name="_replyto" autocomplete="email" required />
+      </label>
+      <label class="field">
+        Message
+        <textarea name="message" required></textarea>
+      </label>
+      <button class="btn btn-primary" type="submit">Send</button>
+    </div>
+  </form>
+  <aside class="card card-pad">
+    <p class="kicker">Direct</p>
+    <p style="margin: 0.6rem 0 0;">
+      <a href={`mailto:${identity.email}`}>{identity.email}</a>
+    </p>
+    <p class="lede">{identity.emailNote}</p>
+    <div class="socials" style="margin-top: 1rem;">
+      <a href={identity.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href={identity.twitter} target="_blank" rel="noreferrer">X</a>
+      <a href={identity.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </aside>
+</div>

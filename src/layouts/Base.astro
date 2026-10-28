@@ -1,0 +1,87 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PitchField from '../components/PitchField.astro';
+import Seo from '../components/Seo.astro';
+import { identity, siteUrl } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  published?: Date;
+  tags?: string[];
+  showProgress?: boolean;
+  jsonLd?: Record<string, unknown>;
+}
+
+const props = Astro.props;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: identity.name,
+  jobTitle: identity.role,
+  url: siteUrl,
+  email: identity.email,
+  image: new URL('/images/profile.jpg', siteUrl).toString(),
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'Colombia',
+  },
+  sameAs: [identity.github, identity.twitter, identity.linkedin, identity.hashnode],
+};
+const jsonLd = props.jsonLd ?? person;
+---
+
+<!doctype html>
+<html lang="en" data-club="nacional" data-mode="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7f2" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/images/profile.jpg" />
+    <script is:inline>
+      (function () {
+        try {
+          var club = localStorage.getItem('club');
+          var mode = localStorage.getItem('mode');
+          if (club !== 'barca' && club !== 'nacional') club = 'nacional';
+          if (mode !== 'dark' && mode !== 'light') {
+            mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          var root = document.documentElement;
+          root.dataset.club = club;
+          root.dataset.mode = mode;
+          var colors = {
+            'nacional:light': '#f4f7f2',
+            'nacional:dark': '#07150e',
+            'barca:light': '#f7f4f6',
+            'barca:dark': '#120810',
+          };
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', colors[club + ':' + mode]);
+        } catch (error) {}
+      })();
+    </script>
+    <Seo {...props} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <noscript>
+      <style>
+        .reveal-target { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {props.showProgress && <div class="reading-progress" aria-hidden="true"></div>}
+    <PitchField />
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
