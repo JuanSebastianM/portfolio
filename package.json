@@ -8,9 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev --host",
-    "build": "astro build",
+    "build": "node scripts/check-no-hashnode.mjs && astro build",
     "preview": "astro preview --host",
-    "check": "astro check",
+    "check": "node scripts/check-no-hashnode.mjs && astro check",
     "cf:preview": "astro build && wrangler dev",
     "cf:deploy": "astro build && wrangler deploy"
   },

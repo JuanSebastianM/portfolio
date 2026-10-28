@@ -12,7 +12,7 @@ The brief floated Next.js. The build uses the stack already agreed with Juan. On
 - **React islands** — only the theme switcher, scroll reveals, tilt cards, and the ball hydrate.
 - **Motion** — scroll reveals and pointer tilt. Native view-timeline is used only for the reading progress bar, which is a single CSS effect.
 - **React Three Fiber / Three.js** — one idle-loaded ball on the hero. It does not load on small screens, `prefers-reduced-motion`, or Save-Data. A full WebGL page would fight the performance goal.
-- **Astro content collections** — the Hashnode markdown already has the schema we need. A database CMS would fight “publish from git.”
+- **Astro content collections** — the existing markdown already has the schema we need. A database CMS would fight “publish from git.”
 
 ### Hosting
 
@@ -30,7 +30,7 @@ Public address `hello@juansebastianmendoza.com` via Cloudflare Email Routing lat
 
 ### Language
 
-English only. The about copy is the old homepage text with grammar edited (“team working” → “teamwork”, and the learning sentence split). Meaning is unchanged. The hero one-liner is the GitHub bio, verbatim aside from punctuation around the list.
+English only. Phase 1 used the old homepage about text, with grammar tightened. Phase 2 replaces that about with the LinkedIn about, also lightly edited and not extended. The hero line is the LinkedIn headline, “Software Engineer / AI @GoDaddy”. The GitHub bio string remains in `src/data/site.ts` and is no longer the hero.
 
 ### CMS
 
@@ -42,7 +42,7 @@ Publishing commits to `main`. Do not sign in until this revamp is on `main`, or 
 
 ### Blog
 
-Content collection, existing frontmatter, no extra required fields. Category pages come from `src/lib/posts.ts` (first matching tag wins). Tag pages are one route per tag. Reading time is 220 words per minute. RSS is `/rss.xml`. Shiki uses `github-light` and `github-dark`, switched with `data-mode`. Hashnode `%[url]` embeds are links. Images from `cdn.hashnode.com` are WebP in `public/images/blog` (max width 1600, quality 78).
+Content collection, existing frontmatter, no extra required fields. Category pages come from `src/lib/posts.ts` (first matching tag wins). Tag pages are one route per tag. Reading time is 220 words per minute. RSS is `/rss.xml`. Shiki uses `github-light` and `github-dark`, switched with `data-mode`. Essay images are local WebP files in `public/images/blog` (max width 1600, quality 78). The old host name was removed later; see “Publishing platform name removed” below.
 
 ### Theme and design
 
@@ -52,8 +52,41 @@ Two fan palettes, Atlético Nacional (green and white) and FC Barcelona (blue an
 
 Blurbs state only what the GitHub snapshot, pull request titles, or the old homepage already said. `commentful`’s README is still the create-next-app starter, so its card is summarized from public pull request titles. `cal.com` is described as a public fork. A merged upstream pull request was not in the 2026-10-28 search. LynStore’s old GitHub URL did not resolve; the Netlify link stays.
 
-### What we did not do
+### What phase 1 did not do
 
 - No live deploy, no domain registration, no email routing.
-- No LinkedIn import.
-- No new claims about employers or school.
+- No LinkedIn import yet.
+- No guessed employers or school.
+
+## 2026-10-28 — Phase 2 content
+
+The public LinkedIn export is now the source for about, experience, education, certifications, volunteering, and the bench.
+
+- **Headline** on the hero is “Software Engineer / AI @GoDaddy”. Location is Barranquilla, Colombia.
+- **GoDaddy** is two rows: Senior Software Engineer (Apr 2026–present) and Software Engineer II (May 2024–Apr 2026), remote, Colombia. LinkedIn has no bullets, so the rows say that and name the headline stack (React, TypeScript, AWS, Node.js) as a stack, not as duties.
+- **Devsu** (Jan 2022–Mar 2024) keeps his bullets, including the 100% coverage claim, plus Prefectura de Pichincha and Certificado de tradición y libertad. Kushki’s URL is labeled as the company, not the private app. Prefectura has no public URL.
+- **Freelance** (Oct 2021–Jan 2022) points at https://lynstore.netlify.app/. The missing GitHub repo stays a TODO.
+- **Education** is the Simón Araújo high school diploma (Feb 2011–Nov 2016) only. The college essay stays linked and is not treated as a credential.
+- **AWS Cloud Practitioner** is shown as expired Nov 2025. No credential IDs anywhere.
+- **Bench** is Accessibility, Redux, and Responsive Web Design. SASS is on the LinkedIn list and is left off so the bench stays three. The starting XI is unchanged, including Git in goal, because that name was already sourced and LinkedIn did not replace it.
+- **Volunteering** is Margarita Humanitarian Foundation, Oct 2021, linked to the helpafamily repository.
+- **Featured** is the BarranquillaJS talk (via the 2022 retro, because LinkedIn has no recording URL) and the four essays he pinned.
+- **About** is his LinkedIn about, grammar only. The old soccer sentence is no longer the quote.
+
+### Publishing platform name removed
+
+The essays were first written on Hashnode. That name is dropped from the site, the essay text, RSS, metadata, and the CMS. `scripts/check-no-hashnode.mjs` fails `npm run check` and `npm run build` if the string appears under `src/`. Platform-only tags (`programming-blogs`, `debuggingfeb`, `devretro2022`, `hacktoberfest-1`) were removed. Topical tags stayed. `hacktoberfest-1` became `hacktoberfest`.
+
+### Light and dark are the two palettes
+
+Juan confirmed both palettes, but not as text tabs. Light is the green and white palette. Dark is the deep blue and garnet palette. One sun/moon button switches them, follows `prefers-color-scheme` on the first visit, and remembers the choice. Club crests and logos are trademarks, so they are not used. The soccer identity is color, pitch lines, the formation, and motion.
+
+### Projects and open source
+
+The Projects section is only LynStore (https://lynstore.netlify.app/, React and styled-components, Oct 2021–Jan 2022) and commentful, labeled an unfinished prototype. The public README is still the create-next-app starter, so the card does not list product features. Devsu’s two client apps stay in Experience. A separate “Open source contributions” section lists the public forks from the 28 Oct 2026 snapshot: cal.com, Documenso, and Help a Family, using the upstream descriptions only. Margarita volunteering stays in the experience log and does not get a second project card.
+
+### Motion and sound
+
+`data-motion` is the single switch for animation. It defaults from `prefers-reduced-motion`, is saved in `localStorage`, and is a visible “Reduce motion” control. Off removes the scroll ball, the load bounce, pitch draw-in, lineup slide, net ripple, confetti, scroll reveals, and the 3D ball. Decorative motion uses transform and opacity. The scroll ball and pitch draw use CSS scroll or one-shot keyframes, not a second animation frame loop. The 3D ball is the only continuous frame loop, and it stops when the tab is hidden or motion is off.
+
+Stadium ambience is generated in the browser with the Web Audio API: a short loop of filtered noise shaped in code, with a slow filter wobble. There is no audio file and no recording. It is original to this repository, so no club anthem, chant, or broadcast is used. It is off until the visitor presses the speaker button, then fades in. Volume is a separate slider and is remembered. A later visit does not start audio by itself. Sound does not follow the motion switch.

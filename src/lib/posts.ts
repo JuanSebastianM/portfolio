@@ -51,12 +51,12 @@ const categoryBySlug = new Map(categories.map((category) => [category.slug, cate
  * broader ones such as reactjs or javascript, which show up on those essays too.
  */
 const rules: { slug: string; tags: string[] }[] = [
-  { slug: 'career', tags: ['college', 'devretro2022'] },
-  { slug: 'open-source', tags: ['hacktoberfest-1', 'opensource'] },
+  { slug: 'career', tags: ['college', 'meetup'] },
+  { slug: 'open-source', tags: ['hacktoberfest', 'opensource'] },
   { slug: 'full-stack', tags: ['graphql', 'mongodb', 'nextauthjs'] },
   { slug: 'testing', tags: ['jest', 'unit-testing', 'testing'] },
   { slug: 'react', tags: ['reactjs', 'reacthooks', 'react-router'] },
-  { slug: 'javascript', tags: ['mutationobserver', 'debugging', 'debuggingfeb', 'javascript', 'css', 'html5'] },
+  { slug: 'javascript', tags: ['mutationobserver', 'debugging', 'javascript', 'css', 'html5'] },
 ];
 
 export function categoryFor(tags: string[]): Category {

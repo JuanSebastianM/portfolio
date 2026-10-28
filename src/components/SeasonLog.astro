@@ -1,36 +1,51 @@
 ---
-import { education, experience, onTheRecord } from '../data/profile';
+import { certifications, education, experience, featured } from '../data/profile';
 ---
 
 <div class="split">
   <div>
     <h3 class="h-display" style="font-size: 1.8rem;">Experience</h3>
-    <p class="lede">Empty slots on purpose. Nothing below is a job Juan held.</p>
+    <p class="lede">From the public LinkedIn profile. GoDaddy has titles and dates only.</p>
     <ol class="season-list">
       {
         experience.map((item) => (
           <li class="season-item">
             <span class="minute">{item.slot}</span>
-            <article class="card card-pad placeholder-card">
-              <span class="flag">Placeholder</span>
-              <h3 style="margin: 0.45rem 0 0; font-family: var(--font-display); font-weight: 560; letter-spacing: -0.03em;">
-                {item.title}
-              </h3>
-              <p style="margin: 0.35rem 0 0; color: var(--muted);">{item.note}</p>
+            <article class="card card-pad">
+              {item.kind === 'volunteer' && <span class="flag">Volunteering</span>}
+              <h3>{item.title}</h3>
+              <p class="org">{item.org}</p>
               <dl class="stat-grid">
-                <div>
-                  <dt>Club</dt>
-                  <dd>{item.place}</dd>
-                </div>
                 <div>
                   <dt>Season</dt>
                   <dd>{item.season}</dd>
                 </div>
                 <div>
-                  <dt>Competition</dt>
-                  <dd>{item.detail}</dd>
+                  <dt>Where</dt>
+                  <dd>{item.meta}</dd>
                 </div>
               </dl>
+              {item.summary && <p class="role-copy">{item.summary}</p>}
+              {item.bullets && (
+                <ul class="role-points">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              )}
+              {item.projects && (
+                <ul class="role-projects">
+                  {item.projects.map((project) => (
+                    <li>
+                      <strong>{project.name}</strong>
+                      <span>{project.detail}</span>
+                      {project.href && (
+                        <a href={project.href} target="_blank" rel="noreferrer">
+                          {project.hrefLabel}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </article>
           </li>
         ))
@@ -39,34 +54,43 @@ import { education, experience, onTheRecord } from '../data/profile';
   </div>
   <div>
     <h3 class="h-display" style="font-size: 1.8rem;">Education</h3>
-    <p class="lede">Same rule. An essay is not a diploma.</p>
-    {
-      education.map((item) => (
-        <article class="card card-pad placeholder-card" style="margin-top: 1rem;">
-          <span class="flag">Placeholder</span>
-          <h3 style="margin: 0.45rem 0 0; font-family: var(--font-display); font-weight: 560;">
-            {item.title}
-          </h3>
-          <p style="margin: 0.35rem 0 0; color: var(--muted);">{item.note}</p>
-          <dl class="stat-grid">
-            <div>
-              <dt>School</dt>
-              <dd>{item.place}</dd>
-            </div>
-            <div>
-              <dt>Season</dt>
-              <dd>{item.season}</dd>
-            </div>
-          </dl>
-        </article>
-      ))
-    }
     <article class="card card-pad" style="margin-top: 1rem;">
-      <p class="kicker">On the record</p>
-      <p class="lede" style="margin-top: 0.4rem;">Published essays. Not employment.</p>
+      <h3>{education.credential}</h3>
+      <p class="org">{education.school}</p>
+      <dl class="stat-grid">
+        <div>
+          <dt>Season</dt>
+          <dd>{education.season}</dd>
+        </div>
+      </dl>
+      <p class="role-copy">
+        {education.note}{' '}
+        <a href={education.essayHref}>{education.essayTitle}</a>
+      </p>
+    </article>
+
+    <h3 class="h-display" style="font-size: 1.8rem; margin-top: 1.6rem;">Certifications</h3>
+    <ul class="cert-list">
+      {
+        certifications.map((item) => (
+          <li class="card card-pad">
+            <h3>{item.name}</h3>
+            <p class="org">{item.issuer}</p>
+            <p class="role-copy">
+              Issued {item.issued}
+              {item.expired && <span class="chip expired">Expired {item.expired}</span>}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <article class="card card-pad" style="margin-top: 1rem;">
+      <p class="kicker">Featured</p>
+      <p class="lede" style="margin-top: 0.4rem;">The BarranquillaJS talk and the essays pinned on LinkedIn.</p>
       <ul class="record-list">
         {
-          onTheRecord.map((item) => (
+          featured.map((item) => (
             <li>
               <a href={item.href}>{item.title}</a>
               <div style="color: var(--muted); font-size: 0.9rem;">{item.meta}</div>

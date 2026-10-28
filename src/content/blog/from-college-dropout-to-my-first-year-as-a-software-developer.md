@@ -7,7 +7,6 @@ tags:
   - 100daysofcode
   - javascript
   - reactjs
-  - programming-blogs
 coverImage: >-
   /images/blog/4795cb13-5613-4391-ab9b-170ea2e845d4.webp
 ---
@@ -86,7 +85,7 @@ So, this is what I deeply thought about and then discussed with my girlfriend an
     
 <p><a href="https://twitter.com/JuanMendozaDev/status/1438683262663151622?s=20&t=A2C-d8laprKf_kD9shKiNA">View the original post on X</a></p>
     
-6. I **committed to the** [**100DaysOfCode**](https://www.100daysofcode.com/) **challenge** on Twitter just 100 days before new year's day. For this challenge, I set some goals, including writing articles (and chose Hashnode as the platform).
+6. I **committed to the** [**100DaysOfCode**](https://www.100daysofcode.com/) **challenge** on Twitter just 100 days before new year's day. For this challenge, I set some goals, including writing articles.
     
 <p><a href="https://twitter.com/JuanMendozaDev/status/1441068161751785473">View the original post on X</a></p>
     

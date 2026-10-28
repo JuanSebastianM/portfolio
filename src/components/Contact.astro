@@ -1,4 +1,5 @@
 ---
+import CopyEmail from '../islands/CopyEmail';
 import { identity } from '../data/site';
 ---
 
@@ -32,7 +33,7 @@ import { identity } from '../data/site';
   <aside class="card card-pad">
     <p class="kicker">Direct</p>
     <p style="margin: 0.6rem 0 0;">
-      <a href={`mailto:${identity.email}`}>{identity.email}</a>
+      <CopyEmail client:visible email={identity.email} />
     </p>
     <p class="lede">{identity.emailNote}</p>
     <div class="socials" style="margin-top: 1rem;">

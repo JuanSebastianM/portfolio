@@ -1,15 +1,16 @@
 ---
 import Contact from '../components/Contact.astro';
+import OpenSource from '../components/OpenSource.astro';
 import Formation from '../components/Formation.astro';
 import PostCard from '../components/PostCard.astro';
 import SeasonLog from '../components/SeasonLog.astro';
 import { about } from '../data/profile';
-import { githubSnapshot, projects } from '../data/projects';
+import { projects } from '../data/projects';
 import { identity } from '../data/site';
 import PitchBall from '../islands/PitchBall';
 import ProjectGrid from '../islands/ProjectGrid';
 import Reveal from '../islands/Reveal';
-import { formatDate, getPosts } from '../lib/posts';
+import { getPosts } from '../lib/posts';
 import Base from '../layouts/Base.astro';
 
 const posts = (await getPosts()).slice(0, 3);
@@ -24,38 +25,34 @@ const featured = projects
     links: project.links,
     image: project.image,
     imageAlt: project.imageAlt,
-    meta:
-      typeof project.stars === 'number'
-        ? `${project.stars} ${project.stars === 1 ? 'star' : 'stars'}`
-        : undefined,
   }));
 ---
 
 <Base title={`${identity.name} · ${identity.role}`} description={identity.description}>
   <section class="shell hero">
     <div>
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Front-end developer · Colombia</p>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> {identity.location}</p>
       <h1>
         {identity.givenName}
         <span>{identity.familyName}</span>
       </h1>
-      <p class="lede" style="margin-top: 1rem;">{identity.githubBio}</p>
+      <p class="lede" style="margin-top: 1rem;">{identity.headline}</p>
       <div class="actions">
         <a class="btn btn-primary" href="/projects">See the work</a>
         <a class="btn btn-ghost" href="/blog">Read the blog</a>
       </div>
       <dl class="facts">
         <div>
-          <dt>Focus</dt>
-          <dd>TypeScript, React, AWS</dd>
+          <dt>Now</dt>
+          <dd>Senior Software Engineer</dd>
         </div>
         <div>
-          <dt>Repos</dt>
-          <dd>21 public</dd>
+          <dt>Since</dt>
+          <dd>Apr 2026</dd>
         </div>
         <div>
-          <dt>Essays</dt>
-          <dd>9 on this site</dd>
+          <dt>Stack</dt>
+          <dd>React, TypeScript, AWS, Node.js</dd>
         </div>
       </dl>
     </div>
@@ -77,15 +74,15 @@ const featured = projects
     <section class="shell section" id="about">
       <header class="section-head">
         <p class="kicker"><span>01</span> Kickoff</p>
-        <h2>A front-end developer who still likes a match.</h2>
+        <h2>Full-stack, with a front-end background.</h2>
       </header>
       <div class="about-grid" style="margin-top: 1.5rem;">
         <div class="prose-about">
           {about.map((paragraph) => <p class="lede">{paragraph}</p>)}
         </div>
         <blockquote class="card quote-card">
-          <p>Coding has become my biggest passion besides gaming and soccer.</p>
-          <span>From the previous portfolio</span>
+          <p>I bring my own ideas, and I like developing new features and innovating.</p>
+          <span>LinkedIn about</span>
         </blockquote>
       </div>
     </section>
@@ -97,7 +94,7 @@ const featured = projects
         <p class="kicker"><span>02</span> Starting XI</p>
         <h2>Skills, set the way a lineup is.</h2>
         <p class="lede">
-          Attack at the top, goalkeeper at the bottom. Each name is sourced. The bench is empty until LinkedIn can be added.
+          Attack at the top, goalkeeper at the bottom. The bench is three more names from the LinkedIn skills list.
         </p>
       </header>
       <Formation />
@@ -108,9 +105,9 @@ const featured = projects
     <section class="shell section" id="season">
       <header class="section-head">
         <p class="kicker"><span>03</span> Season log</p>
-        <h2>Experience, once the fixtures are real.</h2>
+        <h2>A season log, from the profile.</h2>
         <p class="lede">
-          LinkedIn was not available for this build. The log is laid out like a match sheet and every row is marked as a placeholder.
+          GoDaddy, Devsu, a freelance stretch, and a month with Margarita Humanitarian Foundation. GoDaddy has no duty list on LinkedIn, so those rows stay short.
         </p>
       </header>
       <SeasonLog />
@@ -123,7 +120,7 @@ const featured = projects
         <p class="kicker"><span>04</span> Fixtures</p>
         <h2>Selected work.</h2>
         <p class="lede">
-          Original repositories and open-source forks. Stars are from the GitHub snapshot on {formatDate(new Date(githubSnapshot))}, not a live count.
+          LynStore shipped for a local business. commentful is an unfinished prototype.
         </p>
       </header>
       <div style="margin-top: 1.4rem;">
@@ -134,11 +131,15 @@ const featured = projects
   </Reveal>
 
   <Reveal client:visible>
+    <OpenSource />
+  </Reveal>
+
+  <Reveal client:visible>
     <section class="shell section" id="writing">
       <header class="section-head">
         <p class="kicker"><span>05</span> Notebook</p>
         <h2>Recent essays.</h2>
-        <p class="lede">Imported from Hashnode. Covers and inline images now live in this repo.</p>
+        <p class="lede">Essays from 2021 to 2023, kept in this site.</p>
       </header>
       <ul class="post-grid" style="margin-top: 1.4rem;">
         {posts.map((post) => (

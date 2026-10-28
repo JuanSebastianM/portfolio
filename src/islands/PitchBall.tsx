@@ -15,7 +15,7 @@ class WebGLBoundary extends Component<{ children: ReactNode }, { failed: boolean
 }
 
 function canShowBall() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  if (document.documentElement.dataset.motion === 'off') return false;
   if (window.matchMedia('(max-width: 767px)').matches) return false;
   const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
   if (connection?.saveData) return false;
@@ -26,13 +26,22 @@ export default function PitchBall() {
   const [Canvas, setCanvas] = useState<CanvasComponent | null>(null);
 
   useEffect(() => {
-    if (!canShowBall()) return;
     let alive = true;
-    import('./PitchBallCanvas').then((mod) => {
-      if (alive) setCanvas(() => mod.default);
-    });
+    const sync = () => {
+      if (!alive) return;
+      if (!canShowBall()) {
+        setCanvas(null);
+        return;
+      }
+      import('./PitchBallCanvas').then((mod) => {
+        if (alive && canShowBall()) setCanvas(() => mod.default);
+      });
+    };
+    sync();
+    window.addEventListener('motionchange', sync);
     return () => {
       alive = false;
+      window.removeEventListener('motionchange', sync);
     };
   }, []);
 

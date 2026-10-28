@@ -6,7 +6,7 @@ subtitle: >-
 date: '2021-10-28T21:53:44.522Z'
 slug: my-first-hacktoberfest-my-first-experience-as-a-contributor
 tags:
-  - hacktoberfest-1
+  - hacktoberfest
   - reactjs
   - nextjs
   - opensource

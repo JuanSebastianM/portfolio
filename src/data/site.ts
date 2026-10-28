@@ -5,8 +5,8 @@ export const identity = {
   name: 'Juan Sebastián Mendoza',
   givenName: 'Juan Sebastián',
   familyName: 'Mendoza',
-  role: 'Front-end developer',
-  location: 'Colombia',
+  role: 'Software Engineer / AI @GoDaddy',
+  location: 'Barranquilla, Colombia',
   githubUser: 'JuanSebastianM',
   email: 'hello@juansebastianmendoza.com',
   emailNote:
@@ -16,9 +16,9 @@ export const identity = {
   twitter: 'https://twitter.com/JuanMendozaDev',
   twitterHandle: '@JuanMendozaDev',
   linkedin: 'https://www.linkedin.com/in/juan-sebastian-mendoza-perez',
-  hashnode: 'https://juansebastian.hashnode.dev',
   /** Verbatim GitHub profile bio, snapshot 2026-10-28. */
   githubBio: 'Software Developer specialized in Front End | TypeScript, React, AWS.',
+  headline: 'Software Engineer / AI @GoDaddy',
   description:
-    'Juan Sebastián Mendoza is a front-end developer in Colombia. TypeScript, React, and AWS. Projects, open-source work, and essays.',
+    'Juan Sebastián Mendoza is a software engineer at GoDaddy in Barranquilla, Colombia. React, TypeScript, AWS, and Node.js.',
 } as const;

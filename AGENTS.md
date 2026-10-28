@@ -16,7 +16,10 @@ Read these before editing:
 - Do not invent employers, schools, dates, or skill levels. Unknowns stay as placeholders in `src/data/profile.ts` and get a `TODO(content)` line in `docs/ROADMAP.md`.
 - Do not add a `CNAME`. The domain is `https://juansebastianmendoza.com` (`src/data/site.ts`). It is not registered.
 - Do not deploy to Cloudflare and do not commit secrets. `.dev.vars` is local only.
-- Blog posts keep the Hashnode frontmatter fields: `title`, `subtitle`, `date`, `slug`, `tags`, `coverImage`.
+- Blog posts use frontmatter `title`, `subtitle`, `date`, `slug`, `tags`, `coverImage`. Do not put the old publishing-platform name anywhere under `src/`. `npm run check` fails if that string appears.
+- Light is the green/white palette. Dark is blue/garnet. Do not add club crests or text tabs for clubs.
+- `data-motion` gates animation. Do not autoplay sound. Ambience is the synthetic Web Audio loop in `HeaderTools.tsx`.
+- The projects page lists LynStore and commentful only.
 - Categories are derived in `src/lib/posts.ts`. Do not treat that map as something Juan wrote.
 - Club colors are fan palettes. Do not add official crests or trademarks.
 - Respect `prefers-reduced-motion`. The 3D ball stays off for reduced motion, narrow screens, and Save-Data.

@@ -3,10 +3,8 @@ title: Dev Retro 2022 - My Journey As A Developer
 date: '2022-12-22T19:03:05.556Z'
 slug: dev-retro-2022-my-journey-as-a-developer
 tags:
-  - devretro2022
   - aws
   - meetup
-  - programming-blogs
   - javascript
 coverImage: >-
   /images/blog/bf6527ae-7206-4b0f-8d49-9dfef276ebf2.webp

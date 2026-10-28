@@ -18,8 +18,8 @@ import { bench, startingXi } from '../data/profile';
 <ul class="bench">
   {
     bench.map((skill, index) => (
-      <li class="player placeholder">
-        <span class="flag">Placeholder</span>
+      <li class:list={['player', skill.placeholder && 'placeholder']}>
+        {skill.placeholder && <span class="flag">Placeholder</span>}
         <span class="pos">SUB {index + 1}</span>
         <span class="skill">{skill.short}</span>
         <span class="src">{skill.name}. {skill.source}.</span>
@@ -27,3 +27,27 @@ import { bench, startingXi } from '../data/profile';
     ))
   }
 </ul>
+<script>
+  const rows = document.querySelectorAll('.xi');
+  const reduced = document.documentElement.dataset.motion === 'off';
+  for (const row of rows) {
+    if (reduced) {
+      row.classList.add('is-set');
+      continue;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        row.classList.add('is-set');
+        observer.disconnect();
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(row);
+  }
+  window.addEventListener('motionchange', () => {
+    if (document.documentElement.dataset.motion === 'off') {
+      for (const row of rows) row.classList.add('is-set');
+    }
+  });
+</script>

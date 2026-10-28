@@ -3,7 +3,6 @@ title: 'Dealing with Debugging: 7 Techniques You Should Know'
 date: '2023-02-18T01:01:18.771Z'
 slug: dealing-with-debugging-7-techniques-you-should-know
 tags:
-  - debuggingfeb
   - javascript
   - css
   - debugging

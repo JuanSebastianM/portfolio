@@ -1,5 +1,5 @@
 ---
-import ThemeSwitcher from '../islands/ThemeSwitcher';
+import HeaderTools from '../islands/HeaderTools';
 
 const path = Astro.url.pathname;
 const items = [
@@ -35,7 +35,7 @@ function current(href: string) {
         }
       </ul>
     </nav>
-    <ThemeSwitcher client:load />
+    <HeaderTools client:load />
   </div>
   <div class="shell nav-mobile">
     <details class="nav-drawer">

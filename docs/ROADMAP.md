@@ -4,9 +4,9 @@
 
 Done on this branch.
 
-- [x] Astro app, Nacional / Barcelona themes, light and dark
+- [x] Astro app, green/white theme, light and dark toggle
 - [x] Home, projects, blog index, post, category, tag, 404, RSS, sitemap
-- [x] Hashnode essays and images stored in the repo
+- [x] Nine essays and their images stored in the repo
 - [x] Sveltia at `/admin`, Worker OAuth handler, Wrangler config
 - [x] `CNAME` removed
 - [x] Placeholder experience, education, and bench skills
@@ -14,8 +14,8 @@ Done on this branch.
 
 ## Phase 2 — LinkedIn content, polish, SEO
 
-- [ ] Replace every `TODO(content)` below with Juan’s real entries
-- [ ] Juan reviews project blurbs, especially commentful and cal.com
+- [x] Replace experience, education, certifications, volunteering, about, and the bench from the LinkedIn export
+- [x] Projects limited to LynStore and commentful
 - [ ] Optional: generated Open Graph images per essay (covers are used today)
 - [ ] Optional: pagination if the blog grows past a single index
 - [ ] Pass a Lighthouse pass on the production URL after deploy
@@ -36,15 +36,14 @@ Done on this branch.
 
 ## TODO(content)
 
-All of these are unknown. Do not invent them.
+Still unknown. Do not invent them.
 
-1. **Experience** — `src/data/profile.ts` `experience` slots 01–03. Employers, titles, and dates. LinkedIn was not readable.
-2. **Education** — `education` slot. School, program, dates. The college-dropout essay is not a credential.
-3. **Bench skills** — three `TODO(content)` subs under the starting XI. Levels and years are unknown. The XI itself is sourced and is not a placeholder.
-4. **commentful blurb** — README is still the create-next-app text. The card uses public pull request titles. Juan should replace the summary when he wants a product description.
-5. **cal.com** — public fork only. Confirm whether a merged contribution should be named.
-6. **LynStore** — live Netlify URL from the old site. `JuanSebastianM/lynstore` did not resolve on 2026-10-28. Add a code link only if the repo exists.
-7. **Categories** — inferred from tags in `src/lib/posts.ts`, not chosen by Juan. He can change the map or add a frontmatter field later.
-8. **Email** — `hello@juansebastianmendoza.com` is the planned address. Routing is not on.
-9. **CMS secrets** — GitHub OAuth client id and secret are not set. `/admin` loads; sign-in cannot finish.
-10. **Domain** — `juansebastianmendoza.com` is not registered. Canonical URL only.
+1. **GoDaddy duties** — the export has titles and dates only. Do not write responsibilities.
+2. **commentful** — unfinished. Do not add features the README does not describe. The README is still the create-next-app starter.
+3. **LynStore code** — the live site is https://lynstore.netlify.app/. `JuanSebastianM/lynstore` did not resolve on 2026-10-28.
+4. **Prefectura de Pichincha URL** — LinkedIn does not give one.
+5. **BarranquillaJS recording** — no URL on the export. Featured points at the 2022 retro.
+6. **Categories** — inferred from tags in `src/lib/posts.ts`, not chosen by Juan.
+7. **Email** — `hello@juansebastianmendoza.com` is planned. Routing is not on.
+8. **CMS secrets** — GitHub OAuth client id and secret are not set.
+9. **Domain** — `juansebastianmendoza.com` is not registered.
