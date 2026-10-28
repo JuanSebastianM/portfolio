@@ -1,7 +1,5 @@
 /**
- * Profile copy sourced from the public LinkedIn export (2026-10-28)
- * and, where noted, the previous site or GitHub.
- * Do not add employers, dates, or duties that are not in those sources.
+ * Editable profile copy. Sourcing lives in docs/, not in these strings.
  */
 
 export type Skill = {
@@ -11,16 +9,28 @@ export type Skill = {
   line: 'att' | 'mid' | 'def' | 'gk';
   x: string;
   y: string;
-  source: string;
   placeholder?: boolean;
 };
 
 export const about = [
   'I’m a full-stack developer with a strong background in front-end development. I have strong problem-solving skills with TypeScript, React, Redux, Node.js, Express.js, GraphQL, and MongoDB.',
-  'I bring my own ideas, and I like developing new features and innovating.',
 ];
 
-/** Starting XI. Names he has stated publicly on the old site, GitHub, or LinkedIn. */
+export const ai = {
+  title: 'AI',
+  lede: 'I love building with AI.',
+  tools: ['Claude', 'Grok Bot', 'Gemini', 'ChatGPT'],
+  uses: [
+    'Writing and refactoring code',
+    'Debugging and understanding code',
+    'Planning and architecture',
+    'Learning new tech',
+    'Automating tasks and building bots',
+    'Writing docs and content',
+  ],
+};
+
+/** Starting XI. */
 export const startingXi: Skill[] = [
   {
     name: 'TypeScript',
@@ -29,7 +39,6 @@ export const startingXi: Skill[] = [
     line: 'att',
     x: '22%',
     y: '22%',
-    source: 'LinkedIn headline and about',
   },
   {
     name: 'React',
@@ -38,7 +47,6 @@ export const startingXi: Skill[] = [
     line: 'att',
     x: '50%',
     y: '18%',
-    source: 'LinkedIn headline and about',
   },
   {
     name: 'Next.js',
@@ -47,7 +55,6 @@ export const startingXi: Skill[] = [
     line: 'att',
     x: '78%',
     y: '22%',
-    source: 'Devsu role on LinkedIn',
   },
   {
     name: 'JavaScript',
@@ -56,7 +63,6 @@ export const startingXi: Skill[] = [
     line: 'mid',
     x: '26%',
     y: '40%',
-    source: 'LinkedIn skills',
   },
   {
     name: 'AWS',
@@ -65,7 +71,6 @@ export const startingXi: Skill[] = [
     line: 'mid',
     x: '50%',
     y: '44%',
-    source: 'LinkedIn headline',
   },
   {
     name: 'Jest',
@@ -74,7 +79,6 @@ export const startingXi: Skill[] = [
     line: 'mid',
     x: '74%',
     y: '40%',
-    source: 'Devsu role on LinkedIn',
   },
   {
     name: 'HTML',
@@ -83,7 +87,6 @@ export const startingXi: Skill[] = [
     line: 'def',
     x: '14%',
     y: '66%',
-    source: 'LinkedIn skills',
   },
   {
     name: 'CSS',
@@ -92,7 +95,6 @@ export const startingXi: Skill[] = [
     line: 'def',
     x: '38%',
     y: '70%',
-    source: 'LinkedIn skills',
   },
   {
     name: 'React Testing Library',
@@ -101,7 +103,6 @@ export const startingXi: Skill[] = [
     line: 'def',
     x: '62%',
     y: '70%',
-    source: 'Devsu role on LinkedIn',
   },
   {
     name: 'Bootstrap',
@@ -110,7 +111,6 @@ export const startingXi: Skill[] = [
     line: 'def',
     x: '86%',
     y: '66%',
-    source: 'LinkedIn skills',
   },
   {
     name: 'Git',
@@ -119,11 +119,9 @@ export const startingXi: Skill[] = [
     line: 'gk',
     x: '50%',
     y: '88%',
-    source: 'Previous site',
   },
 ];
 
-/** Three more skills from the LinkedIn list. SASS is also listed and is not shown here. */
 export const bench: Skill[] = [
   {
     name: 'Accessibility',
@@ -132,7 +130,6 @@ export const bench: Skill[] = [
     line: 'mid',
     x: '0',
     y: '0',
-    source: 'LinkedIn skills. The Margarita volunteering line is about accessibility fixes.',
   },
   {
     name: 'Redux',
@@ -141,7 +138,6 @@ export const bench: Skill[] = [
     line: 'mid',
     x: '0',
     y: '0',
-    source: 'LinkedIn about and the Devsu role',
   },
   {
     name: 'Responsive Web Design',
@@ -150,7 +146,6 @@ export const bench: Skill[] = [
     line: 'mid',
     x: '0',
     y: '0',
-    source: 'LinkedIn skills and the freeCodeCamp certificate',
   },
 ];
 
@@ -183,8 +178,7 @@ export const experience: ExperienceItem[] = [
     season: 'Apr 2026 – present',
     meta: 'Full-time · Remote · Colombia',
     kind: 'job',
-    summary:
-      'LinkedIn lists the title and the dates, and no description. The headline names React, TypeScript, AWS, and Node.js. Those are not written as duties of this role.',
+    summary: 'Remote, Colombia. React, TypeScript, AWS, and Node.js.',
   },
   {
     id: 'godaddy-ii',
@@ -194,8 +188,7 @@ export const experience: ExperienceItem[] = [
     season: 'May 2024 – Apr 2026',
     meta: 'Full-time · Remote · Colombia',
     kind: 'job',
-    summary:
-      'LinkedIn lists the title and the dates, and no description. Same headline stack: React, TypeScript, AWS, and Node.js.',
+    summary: 'Remote, Colombia. React, TypeScript, AWS, and Node.js.',
   },
   {
     id: 'devsu',
@@ -218,14 +211,14 @@ export const experience: ExperienceItem[] = [
       {
         name: 'Certificado de tradición y libertad',
         detail:
-          'Private web app, Supernotariado y Registro. LinkedIn says Kushki runs it. The certificates record property owners and their legal supports. kushkipagos.com is the company site, not the app.',
+          'Private web app for Supernotariado y Registro, run by Kushki. The certificates record property owners and their legal supports.',
         href: 'https://kushkipagos.com/en/',
         hrefLabel: 'Kushki',
       },
       {
         name: 'Prefectura de Pichincha',
         detail:
-          'A platform that helps the Government of Pichincha Province collect taxes in order to maintain road infrastructure. No public URL is on the LinkedIn profile.',
+          'A platform that helps the Government of Pichincha Province collect taxes in order to maintain road infrastructure.',
       },
     ],
   },
@@ -238,33 +231,14 @@ export const experience: ExperienceItem[] = [
     meta: 'Full-time · Colombia · 4 mos',
     kind: 'job',
     bullets: [
-      'Developed and released a website with React and styled-components for a local business. LinkedIn says it decreased the administrators’ daily workload.',
+      'Developed and released a website with React and styled-components for a local business. It decreased the administrators’ daily workload.',
     ],
     projects: [
       {
         name: 'LynStore',
-        detail: 'The live site linked from that freelance role.',
+        detail: 'Live site for that local business.',
         href: 'https://lynstore.netlify.app/',
         hrefLabel: 'Live site',
-      },
-    ],
-  },
-  {
-    id: 'margarita',
-    slot: '05',
-    title: 'Frontend Developer',
-    org: 'Margarita Humanitarian Foundation',
-    season: 'Oct 2021',
-    meta: 'Volunteering · 1 mo · Social services',
-    kind: 'volunteer',
-    summary:
-      'Fixed accessibility issues and removed bug risks with React and Next.js.',
-    projects: [
-      {
-        name: 'Help a Family',
-        detail: 'The public repository for that work.',
-        href: 'https://github.com/JuanSebastianM/helpafamily',
-        hrefLabel: 'Repository',
       },
     ],
   },
@@ -274,7 +248,7 @@ export const education = {
   school: 'Institución Educativa Simón Araújo',
   credential: 'High School Diploma',
   season: 'Feb 2011 – Nov 2016',
-  note: 'LinkedIn lists this diploma and no other credential. The college-dropout essay is a personal story, not a second diploma.',
+  note: '',
   essayHref: '/blog/from-college-dropout-to-my-first-year-as-a-software-developer',
   essayTitle: 'From College Dropout to My First Year as a Software Developer',
 };
@@ -314,26 +288,26 @@ export const featured = [
   {
     href: '/blog/build-a-full-stack-crud-app-with-graphql-mongodb-nextjs-nextauth-and-typescript',
     title: 'Build a Full Stack CRUD App With GraphQL, MongoDB, Next.js, NextAuth, and TypeScript',
-    meta: 'Essay · featured on LinkedIn',
+    meta: 'Essay',
   },
   {
     href: '/blog/detecting-changes-in-html-attributes-with-javascript-mutation-observer',
     title: 'Detecting Changes in HTML Attributes with JavaScript Mutation Observer',
-    meta: 'Essay · featured on LinkedIn',
+    meta: 'Essay',
   },
   {
     href: '/blog/dev-retro-2022-my-journey-as-a-developer',
     title: 'First talk at BarranquillaJS',
-    meta: 'Self-taught programming, in English and Spanish. The write-up is in the 2022 retro. LinkedIn does not include a recording.',
+    meta: 'Self-taught programming, in English and Spanish.',
   },
   {
     href: '/blog/dealing-with-debugging-7-techniques-you-should-know',
     title: 'Dealing with Debugging: 7 Techniques You Should Know',
-    meta: 'Essay · featured on LinkedIn',
+    meta: 'Essay',
   },
   {
     href: '/blog/understanding-hooks-usestate-and-useeffect-basics',
     title: 'Understanding Hooks: useState and useEffect',
-    meta: 'Essay · featured on LinkedIn',
+    meta: 'Essay',
   },
 ];

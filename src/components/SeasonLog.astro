@@ -5,7 +5,7 @@ import { certifications, education, experience, featured } from '../data/profile
 <div class="split">
   <div>
     <h3 class="h-display" style="font-size: 1.8rem;">Experience</h3>
-    <p class="lede">From the public LinkedIn profile. GoDaddy has titles and dates only.</p>
+    <p class="lede">GoDaddy, Devsu, and freelance work.</p>
     <ol class="season-list">
       {
         experience.map((item) => (
@@ -63,10 +63,7 @@ import { certifications, education, experience, featured } from '../data/profile
           <dd>{education.season}</dd>
         </div>
       </dl>
-      <p class="role-copy">
-        {education.note}{' '}
-        <a href={education.essayHref}>{education.essayTitle}</a>
-      </p>
+      {education.note ? <p class="role-copy">{education.note}</p> : null}
     </article>
 
     <h3 class="h-display" style="font-size: 1.8rem; margin-top: 1.6rem;">Certifications</h3>
@@ -87,7 +84,7 @@ import { certifications, education, experience, featured } from '../data/profile
 
     <article class="card card-pad" style="margin-top: 1rem;">
       <p class="kicker">Featured</p>
-      <p class="lede" style="margin-top: 0.4rem;">The BarranquillaJS talk and the essays pinned on LinkedIn.</p>
+      <p class="lede" style="margin-top: 0.4rem;">The BarranquillaJS talk and a few essays.</p>
       <ul class="record-list">
         {
           featured.map((item) => (

@@ -4,7 +4,7 @@ import OpenSource from '../components/OpenSource.astro';
 import Formation from '../components/Formation.astro';
 import PostCard from '../components/PostCard.astro';
 import SeasonLog from '../components/SeasonLog.astro';
-import { about } from '../data/profile';
+import { about, ai } from '../data/profile';
 import { projects } from '../data/projects';
 import { identity } from '../data/site';
 import PitchBall from '../islands/PitchBall';
@@ -37,6 +37,7 @@ const featured = projects
         <span>{identity.familyName}</span>
       </h1>
       <p class="lede" style="margin-top: 1rem;">{identity.headline}</p>
+      <p class="lede">{ai.lede}</p>
       <div class="actions">
         <a class="btn btn-primary" href="/projects">See the work</a>
         <a class="btn btn-ghost" href="/blog">Read the blog</a>
@@ -56,16 +57,8 @@ const featured = projects
         </div>
       </dl>
     </div>
-    <div class="hero-portrait">
-      <figure>
-        <img
-          src="/images/profile.jpg"
-          width="340"
-          height="340"
-          alt="Juan Sebastián Mendoza, smiling with his arms crossed"
-          fetchpriority="high"
-        />
-      </figure>
+    <div class="hero-stage" aria-hidden="true">
+      <span class="hero-spot"></span>
       <PitchBall client:idle />
     </div>
   </section>
@@ -80,10 +73,16 @@ const featured = projects
         <div class="prose-about">
           {about.map((paragraph) => <p class="lede">{paragraph}</p>)}
         </div>
-        <blockquote class="card quote-card">
-          <p>I bring my own ideas, and I like developing new features and innovating.</p>
-          <span>LinkedIn about</span>
-        </blockquote>
+        <aside class="card quote-card" id="ai">
+          <p class="kicker">{ai.title}</p>
+          <p>{ai.lede}</p>
+          <p class="lede" style="margin-top: 0.8rem;">
+            I use {ai.tools.join(', ').replace(/, ([^,]+)$/, ', and $1')} for everything.
+          </p>
+          <ul class="role-points">
+            {ai.uses.map((item) => <li>{item}</li>)}
+          </ul>
+        </aside>
       </div>
     </section>
   </Reveal>
@@ -94,7 +93,7 @@ const featured = projects
         <p class="kicker"><span>02</span> Starting XI</p>
         <h2>Skills, set the way a lineup is.</h2>
         <p class="lede">
-          Attack at the top, goalkeeper at the bottom. The bench is three more names from the LinkedIn skills list.
+          Attack at the top, goalkeeper at the bottom. Three more skills sit on the bench.
         </p>
       </header>
       <Formation />
@@ -105,10 +104,8 @@ const featured = projects
     <section class="shell section" id="season">
       <header class="section-head">
         <p class="kicker"><span>03</span> Season log</p>
-        <h2>A season log, from the profile.</h2>
-        <p class="lede">
-          GoDaddy, Devsu, a freelance stretch, and a month with Margarita Humanitarian Foundation. GoDaddy has no duty list on LinkedIn, so those rows stay short.
-        </p>
+        <h2>A season log.</h2>
+        <p class="lede">GoDaddy, Devsu, and freelance work.</p>
       </header>
       <SeasonLog />
     </section>

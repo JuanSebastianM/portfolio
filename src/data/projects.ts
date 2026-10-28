@@ -21,38 +21,51 @@ export type Project = {
   featured: boolean;
 };
 
-export type OpenSourceItem = {
-  name: string;
-  summary: string;
-  links: ProjectLink[];
+export type OpenSourceAction = {
+  text: string;
+  href: string;
 };
 
-/** Forks from the 2026-10-28 public repo list. Descriptions are the upstream text. */
+export type OpenSourceItem = {
+  name: string;
+  kind: 'Contribution' | 'Volunteering';
+  detail?: string;
+  actions: OpenSourceAction[];
+};
+
+/** Merged pull requests only. cal.com has a fork and no authored upstream pull request. */
 export const openSource: OpenSourceItem[] = [
   {
-    name: 'cal.com',
-    summary:
-      'Public fork. The repository description reads: scheduling infrastructure for absolutely everyone.',
-    links: [
-      { label: 'Upstream', href: 'https://cal.com' },
-      { label: 'Fork', href: 'https://github.com/JuanSebastianM/cal.com' },
-    ],
-  },
-  {
     name: 'Documenso',
-    summary: 'Public fork. The repository description reads: the open source DocuSign alternative.',
-    links: [
-      { label: 'Upstream', href: 'https://documenso.com' },
-      { label: 'Fork', href: 'https://github.com/JuanSebastianM/documenso' },
+    kind: 'Contribution',
+    actions: [
+      {
+        text: 'Added sticky behavior to the pricing options container.',
+        href: 'https://github.com/documenso/documenso/pull/1042',
+      },
     ],
   },
   {
     name: 'Help a Family',
-    summary:
-      'Public fork of Margarita Humanitarian Foundation. The repository description is about donated meals, hygiene kits, and other aid.',
-    links: [
-      { label: 'Live', href: 'https://helpafamily.margaritahumanitarian.org/' },
-      { label: 'Fork', href: 'https://github.com/JuanSebastianM/helpafamily' },
+    kind: 'Volunteering',
+    detail: 'Frontend developer, October 2021. Fixed accessibility issues and removed bug risks with React and Next.js.',
+    actions: [
+      {
+        text: 'Added passHref on Link components and an href on each anchor so Next.js links keep a real href.',
+        href: 'https://github.com/margaritahumanitarian/helpafamily/pull/308',
+      },
+      {
+        text: 'Moved toggleTheme below the setThemeColor declaration to avoid a bug risk.',
+        href: 'https://github.com/margaritahumanitarian/helpafamily/pull/315',
+      },
+      {
+        text: 'Reapplied the link href fix after an earlier pull request failed the build.',
+        href: 'https://github.com/margaritahumanitarian/helpafamily/pull/325',
+      },
+      {
+        text: 'Renamed DoctorsAsVolunteers.js to DoctorsAsVolunteersCard.js and updated its import.',
+        href: 'https://github.com/margaritahumanitarian/helpafamily/pull/326',
+      },
     ],
   },
 ];

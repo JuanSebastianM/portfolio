@@ -436,33 +436,37 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
   font-weight: 620;
 }
 
-.hero-portrait {
+.hero-stage {
   position: relative;
-  max-width: 28rem;
+  width: min(100%, 26rem);
+  aspect-ratio: 16 / 11;
   margin-inline: auto;
+  border-radius: 1.75rem;
+  border: 2px solid var(--pitch-strong);
+  background:
+    linear-gradient(var(--pitch-strong), var(--pitch-strong)) center / 2px 100% no-repeat,
+    radial-gradient(circle at 50% 50%, transparent 0 22%, var(--pitch-strong) 23% 24.2%, transparent 25%),
+    linear-gradient(var(--pitch-fill), var(--pitch-fill));
+  box-shadow: inset 0 0 0 12px color-mix(in srgb, var(--pitch-fill) 70%, transparent);
+  overflow: hidden;
 }
 
-.hero-portrait figure {
-  margin: 0;
-  padding: 0.45rem;
-  border-radius: 1.8rem;
-  background: linear-gradient(145deg, var(--accent), var(--accent-2));
-}
-
-.hero-portrait img {
-  display: block;
-  width: 100%;
-  border-radius: 1.45rem;
-  object-fit: cover;
-  background: var(--elev);
+.hero-spot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4.6rem;
+  height: 4.6rem;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 35% 35%, color-mix(in srgb, white 55%, var(--accent)), var(--accent) 58%, var(--accent-2));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 .pitch-ball {
   position: absolute;
-  width: 10.5rem;
-  height: 10.5rem;
-  right: -1.2rem;
-  bottom: -1.4rem;
+  inset: 12% 18%;
   z-index: 2;
   pointer-events: none;
 }
@@ -1119,7 +1123,8 @@ label.field {
     padding-top: 1.5rem;
   }
 
-  .hero-portrait {
+  .hero-stage {
+    aspect-ratio: 4 / 5;
     margin-inline: 0 0 0 auto;
   }
 
@@ -1200,10 +1205,6 @@ label.field {
 @media (max-width: 767px) {
   .facts {
     grid-template-columns: 1fr;
-  }
-
-  .pitch-ball {
-    display: none;
   }
 
   .nav-desktop {
@@ -1296,30 +1297,23 @@ html[data-motion='on'] .load-ball {
 html[data-motion='on'] .pitch-field rect,
 html[data-motion='on'] .pitch-field line,
 html[data-motion='on'] .pitch-field circle {
-  stroke-dasharray: 1800;
-  stroke-dashoffset: 1800;
-  animation: pitch-draw 1.5s ease forwards;
-}
-
-html[data-motion='on'] .xi:not(.is-set) .player {
-  opacity: 0;
+  animation: pitch-draw 1.4s ease;
 }
 
 html[data-motion='on'] .xi.is-set .player {
-  opacity: 1;
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  animation: lineup-in 0.5s ease;
 }
 
-html[data-motion='on'] .xi.is-set .player:nth-child(2) { transition-delay: 0.04s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(3) { transition-delay: 0.08s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(4) { transition-delay: 0.12s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(5) { transition-delay: 0.16s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(6) { transition-delay: 0.2s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(7) { transition-delay: 0.24s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(8) { transition-delay: 0.28s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(9) { transition-delay: 0.32s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(10) { transition-delay: 0.36s; }
-html[data-motion='on'] .xi.is-set .player:nth-child(11) { transition-delay: 0.4s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(2) { animation-delay: 0.04s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(3) { animation-delay: 0.08s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(4) { animation-delay: 0.12s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(5) { animation-delay: 0.16s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(6) { animation-delay: 0.2s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(7) { animation-delay: 0.24s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(8) { animation-delay: 0.28s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(9) { animation-delay: 0.32s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(10) { animation-delay: 0.36s; }
+html[data-motion='on'] .xi.is-set .player:nth-child(11) { animation-delay: 0.4s; }
 
 .copy-email {
   position: relative;
@@ -1363,12 +1357,8 @@ html[data-motion='on'] .confetti i {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  html[data-motion='on'] .pitch-board .xi:not(.is-set) .player {
-    transform: translate(-50%, calc(-50% + 16px));
-  }
-
   html[data-motion='on'] .pitch-board .xi.is-set .player {
-    transform: translate(-50%, -50%);
+    animation-name: lineup-in-pitch;
   }
 }
 
@@ -1397,7 +1387,18 @@ html[data-motion='off'] .reveal-target {
 }
 
 @keyframes pitch-draw {
-  to { stroke-dashoffset: 0; }
+  from { stroke-dasharray: 1800; stroke-dashoffset: 1800; }
+  to { stroke-dasharray: 1800; stroke-dashoffset: 0; }
+}
+
+@keyframes lineup-in {
+  from { transform: translateY(12px); }
+  to { transform: none; }
+}
+
+@keyframes lineup-in-pitch {
+  from { transform: translate(-50%, calc(-50% + 14px)); }
+  to { transform: translate(-50%, -50%); }
 }
 
 @keyframes net-ripple {

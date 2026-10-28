@@ -17,7 +17,7 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 
 | Path | Role |
 | --- | --- |
-| `src/data/site.ts` | Canonical URL, name, social links, planned email, Formspree action |
+| `src/data/site.ts` | Canonical URL, name, social links, planned email |
 | `src/data/profile.ts` | About, lineup, experience, education, certifications, featured |
 | `src/data/projects.ts` | Repos and open-source notes from the 2026-10-28 GitHub snapshot |
 | `src/content/blog` | Markdown essays |
@@ -32,9 +32,9 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 
 - About, headline, jobs, diploma, certifications, volunteering, and featured posts: public LinkedIn export, 2026-10-28. See `docs/DECISIONS.md`.
 - Starting XI: LinkedIn where it names the skill, otherwise the previous site or a public repo. Git in goal is from the previous site.
-- Projects on the site: LynStore and commentful only. Open source, separately: cal.com, Documenso, Help a Family.
+- Projects on the site: LynStore and commentful only. Open source: Documenso and Help a Family pull requests. cal.com needs Juan’s input.
 - Essays: nine local posts, 2021-10-05 through 2023-07-21
-- Contact form: existing Formspree endpoint `xzbyoqde`
+- Contact: copy button and mailto for hello@juansebastianmendoza.com
 
 ## Content that is not filled in
 

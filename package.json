@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "astro dev --host",
-    "build": "node scripts/check-no-hashnode.mjs && astro build",
+    "build": "astro build",
     "preview": "astro preview --host",
-    "check": "node scripts/check-no-hashnode.mjs && astro check",
+    "check": "astro check",
+    "test:smoke": "playwright test",
     "cf:preview": "astro build && wrangler dev",
     "cf:deploy": "astro build && wrangler deploy"
   },
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
+    "@playwright/test": "^1.64.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@types/three": "^0.180.0",

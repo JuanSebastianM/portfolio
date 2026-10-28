@@ -34,7 +34,7 @@ After the domain is on Cloudflare:
 3. Destination: an inbox Juan actually reads.
 4. Then delete the “inbox is not live” sentence in `src/data/site.ts` and the contact aside.
 
-The Formspree form can stay until he decides he does not want it.
+Contact on the site is the copy button and mailto link. There is no third-party form.
 
 ## CMS after the domain works
 

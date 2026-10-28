@@ -6,12 +6,10 @@ export const identity = {
   givenName: 'Juan Sebastián',
   familyName: 'Mendoza',
   role: 'Software Engineer / AI @GoDaddy',
-  location: 'Barranquilla, Colombia',
+  location: 'Colombia',
   githubUser: 'JuanSebastianM',
   email: 'hello@juansebastianmendoza.com',
-  emailNote:
-    'Planned address. Cloudflare Email Routing is not turned on yet, so this inbox is not live.',
-  formAction: 'https://formspree.io/f/xzbyoqde',
+  emailNote: 'Email routing is not turned on yet, so this inbox is not live.',
   github: 'https://github.com/JuanSebastianM',
   twitter: 'https://twitter.com/JuanMendozaDev',
   twitterHandle: '@JuanMendozaDev',
@@ -20,5 +18,5 @@ export const identity = {
   githubBio: 'Software Developer specialized in Front End | TypeScript, React, AWS.',
   headline: 'Software Engineer / AI @GoDaddy',
   description:
-    'Juan Sebastián Mendoza is a software engineer at GoDaddy in Barranquilla, Colombia. React, TypeScript, AWS, and Node.js.',
+    'Juan Sebastián Mendoza is a software engineer at GoDaddy in Colombia. React, TypeScript, AWS, and Node.js.',
 } as const;

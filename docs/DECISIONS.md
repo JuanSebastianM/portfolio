@@ -26,7 +26,7 @@ Canonical URL: `https://juansebastianmendoza.com` (`src/data/site.ts`). Not regi
 
 `juanmendozadev.xyz` and the old meta host `juanmendoza.me` are dropped.
 
-Public address `hello@juansebastianmendoza.com` via Cloudflare Email Routing later. The site says the inbox is not live. The working contact path is still the old Formspree form.
+Public address `hello@juansebastianmendoza.com` via Cloudflare Email Routing later. The site says the inbox is not live. Contact is a copy button and a mailto link. The old Formspree form was removed.
 
 ### Language
 
@@ -62,7 +62,7 @@ Blurbs state only what the GitHub snapshot, pull request titles, or the old home
 
 The public LinkedIn export is now the source for about, experience, education, certifications, volunteering, and the bench.
 
-- **Headline** on the hero is “Software Engineer / AI @GoDaddy”. Location is Barranquilla, Colombia.
+- **Headline** on the hero is “Software Engineer / AI @GoDaddy”. The public location is Colombia. The profile export named a city; Juan asked that the site show only the country.
 - **GoDaddy** is two rows: Senior Software Engineer (Apr 2026–present) and Software Engineer II (May 2024–Apr 2026), remote, Colombia. LinkedIn has no bullets, so the rows say that and name the headline stack (React, TypeScript, AWS, Node.js) as a stack, not as duties.
 - **Devsu** (Jan 2022–Mar 2024) keeps his bullets, including the 100% coverage claim, plus Prefectura de Pichincha and Certificado de tradición y libertad. Kushki’s URL is labeled as the company, not the private app. Prefectura has no public URL.
 - **Freelance** (Oct 2021–Jan 2022) points at https://lynstore.netlify.app/. The missing GitHub repo stays a TODO.
@@ -75,7 +75,7 @@ The public LinkedIn export is now the source for about, experience, education, c
 
 ### Publishing platform name removed
 
-The essays were first written on Hashnode. That name is dropped from the site, the essay text, RSS, metadata, and the CMS. `scripts/check-no-hashnode.mjs` fails `npm run check` and `npm run build` if the string appears under `src/`. Platform-only tags (`programming-blogs`, `debuggingfeb`, `devretro2022`, `hacktoberfest-1`) were removed. Topical tags stayed. `hacktoberfest-1` became `hacktoberfest`.
+The essays were first written on Hashnode. The site no longer promotes that name. Juan asked that the build not fail if the word remains in old posts, so the check script was removed. Platform-only tags (`programming-blogs`, `debuggingfeb`, `devretro2022`, `hacktoberfest-1`) were removed. Topical tags stayed. `hacktoberfest-1` became `hacktoberfest`.
 
 ### Light and dark are the two palettes
 
@@ -83,10 +83,22 @@ Juan confirmed both palettes, but not as text tabs. Light is the green and white
 
 ### Projects and open source
 
-The Projects section is only LynStore (https://lynstore.netlify.app/, React and styled-components, Oct 2021–Jan 2022) and commentful, labeled an unfinished prototype. The public README is still the create-next-app starter, so the card does not list product features. Devsu’s two client apps stay in Experience. A separate “Open source contributions” section lists the public forks from the 28 Oct 2026 snapshot: cal.com, Documenso, and Help a Family, using the upstream descriptions only. Margarita volunteering stays in the experience log and does not get a second project card.
+The Projects section is only LynStore (https://lynstore.netlify.app/, React and styled-components, Oct 2021–Jan 2022) and commentful, labeled an unfinished prototype. The public README is still the create-next-app starter, so the card does not list product features. Devsu’s two client apps stay in Experience. Margarita is not a job. It appears only under Open source contributions, as volunteering, with the merged Help a Family pull requests. Documenso is the merged pricing-container pull request. cal.com is a public fork only: no pull request or commit by Juan showed up on calcom/cal.diy or elsewhere in that org, so it is not listed on the site.
 
 ### Motion and sound
 
 `data-motion` is the single switch for animation. It defaults from `prefers-reduced-motion`, is saved in `localStorage`, and is a visible “Reduce motion” control. Off removes the scroll ball, the load bounce, pitch draw-in, lineup slide, net ripple, confetti, scroll reveals, and the 3D ball. Decorative motion uses transform and opacity. The scroll ball and pitch draw use CSS scroll or one-shot keyframes, not a second animation frame loop. The 3D ball is the only continuous frame loop, and it stops when the tab is hidden or motion is off.
 
 Stadium ambience is generated in the browser with the Web Audio API: a short loop of filtered noise shaped in code, with a slow filter wobble. There is no audio file and no recording. It is original to this repository, so no club anthem, chant, or broadcast is used. It is off until the visitor presses the speaker button, then fades in. Volume is a separate slider and is remembered. A later visit does not start audio by itself. Sound does not follow the motion switch.
+
+### Visibility and sound
+
+Scroll sections no longer start at opacity 0. Motion can nudge them, but the first HTML is readable with JavaScript off or if an animation never finishes. The old pitch-line dash offset is only inside the animation keyframes, so a missed animation cannot leave the lines (or the page) blank.
+
+The first ambience attempt used brown noise through a narrow band-pass. Almost all of that energy sits below the filter, so the speaker button produced silence. It now resumes the audio context on the click, then plays looped white noise through a low-pass, faded in to a default gain of about 0.3. A Playwright check reads an AnalyserNode and requires a non-zero level.
+
+The portrait is gone from the hero, the metadata image, and the repo. The hero’s right side is a pitch with the 3D ball on wide screens and a flat ball on small screens.
+
+### AI copy
+
+Juan said he uses Claude, Grok Bot, Gemini, and ChatGPT, and that he uses AI for writing and refactoring code, debugging and understanding code, planning and architecture, learning new tech, automating tasks and building bots, and writing docs and content. The tone he asked for is enthusiastic: “I love building with AI.” That sentence is the hero line. The AI block lists the tools and those uses. Nothing else was added. The strings live in `src/data/profile.ts` as `ai`.

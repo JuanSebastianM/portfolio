@@ -4,26 +4,23 @@ import { openSource } from '../data/projects';
 
 <section class="shell section" id="open-source">
   <header class="section-head">
-    <p class="kicker">Forks</p>
+    <p class="kicker">Pull requests</p>
     <h2>Open source contributions</h2>
-    <p class="lede">
-      Public forks from the GitHub snapshot on 28 Oct 2026. The words below are the upstream descriptions, not a claim about what landed in those projects.
-    </p>
   </header>
   <ul class="oss-list">
     {
       openSource.map((item) => (
         <li class="card card-pad">
-          <p class="flag">Contribution</p>
+          <p class="flag">{item.kind}</p>
           <h3>{item.name}</h3>
-          <p class="role-copy">{item.summary}</p>
-          <div class="link-row">
-            {item.links.map((link) => (
-              <a href={link.href} target="_blank" rel="noreferrer">
-                {link.label}
-              </a>
+          {item.detail && <p class="role-copy">{item.detail}</p>}
+          <ul class="role-points">
+            {item.actions.map((action) => (
+              <li>
+                <a href={action.href} target="_blank" rel="noreferrer">{action.text}</a>
+              </li>
             ))}
-          </div>
+          </ul>
         </li>
       ))
     }

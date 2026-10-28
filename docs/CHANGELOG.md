@@ -23,3 +23,9 @@ Phase 1 of the portfolio revamp, on `cursor/portfolio-v2-1d23`. The live site on
 - Projects are LynStore and commentful only. Open source lists cal.com, Documenso, and Help a Family as forks.
 - Added a Reduce motion control and optional synthetic stadium ambience, off until the visitor turns it on.
 - Lighthouse on the production build, 28 Oct 2026: mobile performance 99, accessibility 100, best practices 100, SEO 100. Desktop performance 100, accessibility 100, best practices 100, SEO 100.
+- Removed the build check that failed on the old publishing-platform name. Old posts may still contain it.
+- Public location is Colombia only.
+- Contact is copy-email plus mailto. The third-party form is gone.
+- Open source entries describe merged pull requests. cal.com is omitted until Juan confirms a contribution.
+- Added the AI block from Juan’s own notes.
+- Scroll sections stay visible if motion never finishes. Ambience is low-passed noise that actually reaches the speakers. The portrait is no longer on the site.

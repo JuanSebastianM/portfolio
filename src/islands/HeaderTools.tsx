@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ambienceLevel, createAmbience, type Ambience } from '../lib/ambience';
 
 type Mode = 'light' | 'dark';
 
@@ -30,80 +31,25 @@ function applyMotion(off: boolean) {
   window.dispatchEvent(new CustomEvent('motionchange'));
 }
 
-type Crowd = {
-  context: AudioContext;
-  gain: GainNode;
-  stop: () => Promise<void>;
-};
-
-function makeCrowd(level: number): Crowd {
-  const context = new AudioContext();
-  const seconds = 2;
-  const buffer = context.createBuffer(1, context.sampleRate * seconds, context.sampleRate);
-  const samples = buffer.getChannelData(0);
-  let brown = 0;
-  for (let i = 0; i < samples.length; i += 1) {
-    const white = Math.random() * 2 - 1;
-    brown = brown * 0.985 + white * 0.015;
-    samples[i] = brown * 3.2;
-  }
-  const source = context.createBufferSource();
-  source.buffer = buffer;
-  source.loop = true;
-  const filter = context.createBiquadFilter();
-  filter.type = 'bandpass';
-  filter.frequency.value = 480;
-  filter.Q.value = 0.65;
-  const wobble = context.createOscillator();
-  const wobbleGain = context.createGain();
-  wobble.frequency.value = 0.12;
-  wobbleGain.gain.value = 70;
-  wobble.connect(wobbleGain);
-  wobbleGain.connect(filter.frequency);
-  const gain = context.createGain();
-  gain.gain.value = 0;
-  source.connect(filter);
-  filter.connect(gain);
-  gain.connect(context.destination);
-  source.start();
-  wobble.start();
-  const now = context.currentTime;
-  gain.gain.linearRampToValueAtTime(level, now + 0.7);
-  return {
-    context,
-    gain,
-    async stop() {
-      const time = context.currentTime;
-      gain.gain.cancelScheduledValues(time);
-      gain.gain.setValueAtTime(gain.gain.value, time);
-      gain.gain.linearRampToValueAtTime(0, time + 0.45);
-      await new Promise((resolve) => setTimeout(resolve, 480));
-      source.stop();
-      wobble.stop();
-      await context.close();
-    },
-  };
-}
 
 export default function HeaderTools() {
   const [mode, setMode] = useState<Mode>('light');
   const [reduced, setReduced] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
-  const [volume, setVolume] = useState(35);
-  const crowd = useRef<Crowd | null>(null);
+  const [volume, setVolume] = useState(70);
+  const crowd = useRef<Ambience | null>(null);
 
   useEffect(() => {
     setMode(readMode());
     setReduced(motionOff());
-    const saved = Number(localStorage.getItem('soundVolume'));
+    const raw = localStorage.getItem('soundVolume');
+    const saved = raw === null ? Number.NaN : Number(raw);
     if (Number.isFinite(saved)) setVolume(Math.min(100, Math.max(0, saved)));
     return () => {
       void crowd.current?.stop();
       crowd.current = null;
     };
   }, []);
-
-  const level = (volume / 100) * 0.12;
 
   async function toggleSound() {
     if (soundOn) {
@@ -114,7 +60,8 @@ export default function HeaderTools() {
       await current?.stop();
       return;
     }
-    const next = makeCrowd(level);
+    const next = await createAmbience(ambienceLevel(volume));
+    (window as unknown as { __ambienceAnalyser?: AnalyserNode }).__ambienceAnalyser = next.analyser;
     crowd.current = next;
     setSoundOn(true);
     localStorage.setItem('sound', 'on');
@@ -123,11 +70,7 @@ export default function HeaderTools() {
   function onVolume(value: number) {
     setVolume(value);
     localStorage.setItem('soundVolume', String(value));
-    const node = crowd.current;
-    if (!node) return;
-    const time = node.context.currentTime;
-    node.gain.gain.cancelScheduledValues(time);
-    node.gain.gain.linearRampToValueAtTime((value / 100) * 0.12, time + 0.12);
+    crowd.current?.setLevel(ambienceLevel(value));
   }
 
   return (

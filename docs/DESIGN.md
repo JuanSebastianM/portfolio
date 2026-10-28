@@ -76,7 +76,7 @@ Default before JavaScript: light. A tiny inline script then applies the saved mo
 | Season log | `SeasonLog.astro` | Jobs, diploma, certifications, featured |
 | Project grid | `ProjectGrid.tsx` | Tilt, real screenshots or a letter mark |
 | Post card | `PostCard.astro` | Cover, category, tags, reading time |
-| Contact | `Contact.astro` | Formspree plus the planned email |
+| Contact | `Contact.astro` | Copy email and mailto |
 | Essay | `blog/[slug].astro` | Prose, Shiki, related posts |
 | CMS | `public/admin` | Sveltia |
 

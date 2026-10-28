@@ -28,9 +28,10 @@ export default function CopyEmail({ email }: { email: string }) {
   return (
     <span className="copy-email">
       <a href={`mailto:${email}`}>{email}</a>
-      <button type="button" className="icon-btn" onClick={() => void copy()} aria-label={`Copy ${email}`}>
-        {copied ? 'Copied' : 'Copy'}
+      <button type="button" className="btn btn-primary" onClick={() => void copy()}>
+        Copy email
       </button>
+      {copied ? <span className="copy-note" role="status">Email copied.</span> : null}
       <span className="confetti" aria-hidden="true">
         {bits.map((bit) => (
           <i
