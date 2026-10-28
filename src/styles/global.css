@@ -1073,7 +1073,7 @@ label.field {
     height: 100%;
   }
 
-  .player {
+  .pitch-board .player {
     position: absolute;
     left: var(--x);
     top: var(--y);
@@ -1085,7 +1085,19 @@ label.field {
     backdrop-filter: blur(8px);
   }
 
-  .player .skill {
+  .pitch-board .player .src {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .pitch-board .player .skill {
     font-size: 1rem;
   }
 }

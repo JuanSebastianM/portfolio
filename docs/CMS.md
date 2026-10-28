@@ -1,6 +1,6 @@
 # CMS
 
-Sveltia CMS is at `/admin`. The config is `public/admin/config.yml`. The app bundle is `public/admin/sveltia-cms.js` (`@sveltia/cms@0.253.1`).
+Sveltia CMS is at `/admin` (`src/pages/admin.astro`). The config is `public/admin/config.yml`. The app bundle is `public/admin/sveltia-cms.js` (`@sveltia/cms@0.253.1`).
 
 It is a visual editor over git. Saving a post commits markdown under `src/content/blog`. New images go to `public/images/uploads` and are stored as `/images/uploads/...`. Existing covers already point at `/images/blog/...`; leave those paths unless you upload a replacement.
 

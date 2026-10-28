@@ -29,8 +29,8 @@ export const startingXi: Skill[] = [
     short: 'TypeScript',
     pos: 'LW',
     line: 'att',
-    x: '20%',
-    y: '18%',
+    x: '22%',
+    y: '22%',
     source: 'GitHub bio',
   },
   {
@@ -39,7 +39,7 @@ export const startingXi: Skill[] = [
     pos: 'ST',
     line: 'att',
     x: '50%',
-    y: '14%',
+    y: '18%',
     source: 'Previous site and GitHub bio',
   },
   {
@@ -47,8 +47,8 @@ export const startingXi: Skill[] = [
     short: 'Next.js',
     pos: 'RW',
     line: 'att',
-    x: '80%',
-    y: '18%',
+    x: '78%',
+    y: '22%',
     source: 'commentful README and blog posts',
   },
   {
