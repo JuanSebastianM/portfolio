@@ -1,6 +1,6 @@
-# Design
+# Claude - Design
 
-Light is green and white. Dark is deep blue and garnet. A sun or moon button switches them. Pitch lines, a lineup, a season log, and tilt on the project cards carry the soccer idea. Club crests, wordmarks, and kit art are trademarks, so they are not used, and the clubs are not named in the interface.
+Light is green and white. Dark is deep blue and garnet. A sun or moon button switches them. A to-scale pitch, a lineup, a season log, and tilt on the project cards carry the soccer idea. Club crests, wordmarks, and kit art are trademarks, so they are not used, and the clubs are not named in the interface.
 
 The page should feel like a match program set in editorial type. It should not feel like a soccer template with badges and emoji.
 
@@ -46,6 +46,19 @@ Accent text is for type sitting on the accent fill (buttons, placeholder flags).
 
 Default before JavaScript: light. A tiny inline script then applies the saved mode, or the operating system scheme on the first visit. The control is an icon button with an accessible name. `data-motion` is `on` or `off`. It starts from `prefers-reduced-motion` unless the visitor has saved a choice. The header shows that choice as “Reduce motion”.
 
+## Pitch
+
+`src/components/Pitch.astro` draws a full field at 105 x 68 m, one SVG unit per 10 cm, with 4 m of run-off. It takes `orientation` (`portrait` or `landscape`).
+
+| Token | Light (day match) | Dark (night match) |
+| --- | --- | --- |
+| `--grass` | `#2b7a45` | `#0c2620` |
+| `--grass-alt` (mowed stripe) | `#31884d` | `#0f2d26` |
+| `--chalk` | white, 92% | `#e2ecff`, 78% |
+| `--floodlight` | warm white, 22% | `--accent-2`, 34% |
+
+Grass is always green. Club color lives on the players and in the floodlight. Players on the pitch are accent discs with the position and a dark name plate. The goalkeeper disc uses `--accent-2`. Below 768px the lineup is a team sheet with no grass.
+
 ## Typography
 
 - UI: Outfit, variable, latin (and latin-ext as a fallback range).
@@ -68,16 +81,18 @@ Default before JavaScript: light. A tiny inline script then applies the saved mo
 
 | Piece | Where | Notes |
 | --- | --- | --- |
-| Pitch lines | `PitchField.astro` | Fixed SVG, masked, draws in once |
+| Pitch | `Pitch.astro` | To-scale field, striped grass, goals with nets |
+| Pitch lines | `PitchField.astro` | Faint page background, same markings, draws in once |
 | Header + stripe | `Header.astro` | Sticky, blur, mobile `details` menu |
 | Header tools | `HeaderTools.tsx` | Sun/moon, Reduce motion, ambience |
-| Hero | `index.astro` | Name, bio, portrait, idle ball |
-| Starting XI | `Formation.astro` | Team sheet on small screens, absolute pitch from 768px |
+| Hero | `index.astro` | Name, headline, AI line, pitch in perspective, idle ball |
+| AI card | `index.astro` | Kicker, title, model chips, six uses |
+| Starting XI | `Formation.astro` | Team sheet on small screens, players on `Pitch.astro` from 768px |
 | Season log | `SeasonLog.astro` | Jobs, diploma, certifications, featured |
 | Project grid | `ProjectGrid.tsx` | Tilt, real screenshots or a letter mark |
 | Post card | `PostCard.astro` | Cover, category, tags, reading time |
-| Contact | `Contact.astro` | Copy email and mailto |
-| Essay | `blog/[slug].astro` | Prose, Shiki, related posts |
+| Contact | `Contact.astro` | Copy email (Clipboard API, then `execCommand` fallback) and mailto |
+| Essay | `blog/[slug].astro` | Prose, Shiki, callouts, details, related posts |
 | CMS | `public/admin` | Sveltia |
 
 ## Layout

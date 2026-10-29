@@ -1,4 +1,4 @@
-# Decisions
+# Claude - Decisions
 
 ## 2026-10-28
 
@@ -36,7 +36,7 @@ English only. Phase 1 used the old homepage about text, with grammar tightened. 
 
 Sveltia CMS at `/admin`, GitHub backend, pinned build `@sveltia/cms@0.253.1` committed at `public/admin/sveltia-cms.js` so the editor does not depend on a CDN at runtime. Chosen over Decap/Tina because the brief’s later instruction was Sveltia, it is a git-based visual editor, and it speaks the same OAuth postMessage protocol as Sveltia CMS Authenticator.
 
-Publishing commits to `main`. Do not sign in until this revamp is on `main`, or those commits land on the old site. OAuth is implemented but secrets are unset. See `docs/CMS.md`.
+Publishing commits to `main`. Do not sign in until this revamp is on `main`, or those commits land on the old site. OAuth is implemented but secrets are unset. See `docs/Claude - CMS.md`.
 
 `auth_scope` is `public_repo` because the portfolio repository is public.
 
@@ -46,7 +46,7 @@ Content collection, existing frontmatter, no extra required fields. Category pag
 
 ### Theme and design
 
-Two fan palettes, Atlético Nacional (green and white) and FC Barcelona (blue and garnet), each with light and dark. Default is Nacional and, when there is no saved choice, the OS color scheme. No official crests. Pitch lines, a starting XI, a season-log timeline, tilt on project cards, and scroll reveal are the soccer language. Details and hex values are in `docs/DESIGN.md`.
+Two fan palettes, Atlético Nacional (green and white) and FC Barcelona (blue and garnet), each with light and dark. Default is Nacional and, when there is no saved choice, the OS color scheme. No official crests. Pitch lines, a starting XI, a season-log timeline, tilt on project cards, and scroll reveal are the soccer language. Details and hex values are in `docs/Claude - DESIGN.md`.
 
 ### Projects copy
 
@@ -101,4 +101,36 @@ The portrait is gone from the hero, the metadata image, and the repo. The hero�
 
 ### AI copy
 
-Juan said he uses Claude, Grok Bot, Gemini, and ChatGPT, and that he uses AI for writing and refactoring code, debugging and understanding code, planning and architecture, learning new tech, automating tasks and building bots, and writing docs and content. The tone he asked for is enthusiastic: “I love building with AI.” That sentence is the hero line. The AI block lists the tools and those uses. Nothing else was added. The strings live in `src/data/profile.ts` as `ai`.
+Juan said he uses Claude, Grok Bot, Gemini, and ChatGPT, and that he uses AI for writing and refactoring code, debugging and understanding code, planning and architecture, learning new tech, automating tasks and building bots, and writing docs and content. The tone he asked for is enthusiastic: “I love building with AI.” That sentence is the hero line. The AI block lists the tools and those uses. Nothing else was added. The strings live in `src/data/profile.ts` as `ai`. Superseded on 2026-10-29, see below.
+
+## Claude - 2026-10-29
+
+### A pitch that reads as a pitch
+
+Juan said the field did not look like a soccer field. It was a rounded rectangle with one line down the long axis and a circle, which reads as a tablet or a court. `Pitch.astro` now draws every marking to scale from FIFA dimensions (1 SVG unit = 10 cm), on striped grass, with goals. It is plain SVG, so it costs no JavaScript and no image request. The hero tilts it with a CSS `rotateX`, which is static and not gated by `data-motion`.
+
+Grass is real grass colors, not the club accent, because a pitch tinted garnet or blue stops looking like a pitch. The club identity moved onto the players (accent discs) and the floodlight tint in dark mode.
+
+### AI copy, second pass
+
+Juan asked for AI copy that sounds less childish. “I love building with AI.” and “for everything” read as hype without information. The rewrite keeps his facts (the four tools and the six uses) and only changes the framing: a concrete hero line, a soccer metaphor for the card (“The assistant coach.”), and the uses as short verbs. “Grok Bot” became “Grok”, the product name. Nothing about how he uses AI was added beyond his list. He should still read it and change any line that does not sound like him.
+
+### Clipboard
+
+`navigator.clipboard` only exists in secure contexts, and the copy button returned early with no message when it was missing or refused. The fallback is a hidden textarea and `document.execCommand('copy')`, which is deprecated but still supported and works inside a click. If both fail the button says so, and the mailto link is still there.
+
+### Essays are standard markdown
+
+The essays came from a host with its own markdown extensions. Astro uses CommonMark, so the sources were normalized: no `align` on images, HTML blocks indented into the list item they belong to, and tables of contents written as HTML links to the ids Astro generates. `scripts/check-posts.mjs` runs after every build so a CMS edit cannot silently reintroduce raw markdown.
+
+### Screenshots stay out of git
+
+Juan does not want screenshots committed. `docs/screenshots/` is ignored and the smoke tests write to `test-results/`. The files are still in the history of `cursor/portfolio-v2-1d23`; squash-merging PR #1 keeps them out of `main`.
+
+### Doc names
+
+Juan asked that docs be prefixed with “Claude - ”. Every file in `docs/` is now `docs/Claude - <NAME>.md`, with the same prefix on its title. `README.md` and `AGENTS.md` keep their names because tools look for them by name.
+
+### Cloudflare
+
+Nothing is deployed. There is no Cloudflare account or token in this repo or in the agent’s environment, so an agent cannot create the Worker, buy the domain, or turn on Email Routing. Juan runs `npx wrangler login` once and follows `docs/Claude - DEPLOY.md`.

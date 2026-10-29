@@ -24,26 +24,26 @@ Let's now get our hands dirty with React Router:
 <details>
 <summary>Table of Contents:</summary>
 <ol>
-<li>[React Router ](#react-router)</li>
-<li>[Installation](#installation)</li>
-<li>[Import](#import)</li>
-<li>[`<Router>` component ](#lessroutergreater)</li>
-<li>[`<Route>` component](#lessroutegreater)</li>
-<li>[Displaying an Error Page](#displaying-an-error-page)</li>
-<li>[`<Switch>` component](#lessswitchgreater)</li>
-<li>[Children and Component Props](#children-and-component-props) </li>
-<li>[Children Prop](#children-prop)</li>
-<li>[Component Prop](#component-prop)</li>
-<li>[`<Link>` component](#lesslinkgreater)</li>
-<li>[Difference between `<Link>` and `<a>`](Link) </li>
-<li>[Implementing Navbars](#implementing-navbars) </li>
-<li>[`<NavLink>` component](#lessnavlinkgreater)</li>
-<li>[Working with Nested Routes](#working-with-nested-routes) </li>
-<li>[`useParam` hook](#useparam) </li>
-<li>[`useRouteMatch` hook](#useroutematch) </li>
-<li>[Big Issue Regarding Routes on App Deployment](#big-issue-regarding-routes-on-app-deployment) </li>
-<li>[`<HashRouter>` component](#lesshashroutergreater)</li>
-<li>[Source Code Used](#source-code-used-in-this-article)</li>
+<li><a href="#react-router">React Router</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#router"><code>&lt;Router&gt;</code> component</a></li>
+<li><a href="#route"><code>&lt;Route&gt;</code> component</a></li>
+<li><a href="#displaying-an-error-page">Displaying an Error Page</a></li>
+<li><a href="#switch"><code>&lt;Switch&gt;</code> component</a></li>
+<li><a href="#children-and-component-props">Children and Component Props</a></li>
+<li><a href="#children-prop">Children Prop</a></li>
+<li><a href="#component-prop">Component Prop</a></li>
+<li><a href="#link"><code>&lt;Link&gt;</code> component</a></li>
+<li><a href="#difference-between-link-and-a">Difference between <code>&lt;Link&gt;</code> and <code>&lt;a&gt;</code></a></li>
+<li><a href="#implementing-navbars">Implementing Navbars</a></li>
+<li><a href="#navlink"><code>&lt;NavLink&gt;</code> component</a></li>
+<li><a href="#working-with-nested-routes">Working with Nested Routes</a></li>
+<li><a href="#useparam"><code>useParam</code> hook</a></li>
+<li><a href="#useroutematch"><code>useRouteMatch</code> hook</a></li>
+<li><a href="#big-issue-regarding-routes-on-app-deployment">Big Issue Regarding Routes on App Deployment</a></li>
+<li><a href="#hashrouter"><code>&lt;HashRouter&gt;</code> component</a></li>
+<li><a href="#source-code-used-in-this-article">Source Code Used</a></li>
 </ol>
 </details>
 
@@ -436,32 +436,46 @@ Now, your app's URL would be:
 As promised, I'm providing the whole source code for further reference :)
 
 <details>
-<summary>`index.js`</summary>
+<summary><code>index.js</code></summary>
+
 ![indexjs.png](/images/blog/4wJJPYiVg.webp)
+
 </details>
 <details>
-<summary>`Navbar.js`</summary>
+<summary><code>Navbar.js</code></summary>
+
 ![navbar.png](/images/blog/fmMCXZgEv.webp)
+
 </details>
 <details>
-<summary>`Home.js`</summary>
+<summary><code>Home.js</code></summary>
+
 ![home.png](/images/blog/dNXzXwDfF.webp)
+
 </details>
 <details>
-<summary>`About.js`</summary>
+<summary><code>About.js</code></summary>
+
 ![about.png](/images/blog/mNRwXGw7E.webp)
+
 </details>
 <details>
-<summary>`ReactHooks.js`</summary>
+<summary><code>ReactHooks.js</code></summary>
+
 ![reacthooks.png](/images/blog/Ga7VDK58Q.webp)
+
 </details>
 <details>
-<summary>`Hook.js`</summary>
+<summary><code>Hook.js</code></summary>
+
 ![hook.png](/images/blog/mj6M6BRJI.webp)
+
 </details>
 <details>
-<summary>`Error.js`</summary>
+<summary><code>Error.js</code></summary>
+
 ![error.png](/images/blog/BX1sLtNaR.webp)
+
 </details>
 
 <hr>

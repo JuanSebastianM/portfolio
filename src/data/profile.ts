@@ -13,20 +13,27 @@ export type Skill = {
 };
 
 export const about = [
-  'I’m a full-stack developer with a strong background in front-end development. I have strong problem-solving skills with TypeScript, React, Redux, Node.js, Express.js, GraphQL, and MongoDB.',
+  'I’m a full-stack developer with a front-end background and strong problem-solving skills in TypeScript, React, Redux, Node.js, Express.js, GraphQL, and MongoDB.',
 ];
 
+/**
+ * AI copy. The tools and the six uses are Juan’s own list (docs/Claude - DECISIONS.md, “AI copy”).
+ * The wording around them is a suggestion he can rewrite.
+ */
 export const ai = {
-  title: 'AI',
-  lede: 'I love building with AI.',
-  tools: ['Claude', 'Grok Bot', 'Gemini', 'ChatGPT'],
+  kicker: 'AI in the loop',
+  lede: 'I build with AI in the loop, from the first plan to the last refactor.',
+  title: 'The assistant coach.',
+  intro:
+    'AI is part of how I work every day, not a side experiment. I reach for whichever model fits the job.',
+  tools: ['Claude', 'ChatGPT', 'Gemini', 'Grok'],
   uses: [
-    'Writing and refactoring code',
-    'Debugging and understanding code',
-    'Planning and architecture',
-    'Learning new tech',
-    'Automating tasks and building bots',
-    'Writing docs and content',
+    { label: 'Plan', detail: 'Architecture options and trade-offs before any code.' },
+    { label: 'Build', detail: 'Writing new code and refactoring old code.' },
+    { label: 'Debug', detail: 'Tracing bugs and reading unfamiliar codebases.' },
+    { label: 'Learn', detail: 'Ramping up on new tech.' },
+    { label: 'Automate', detail: 'Bots and scripts for repetitive work.' },
+    { label: 'Write', detail: 'Docs and content.' },
   ],
 };
 

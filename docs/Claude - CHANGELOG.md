@@ -1,4 +1,21 @@
-# Changelog
+# Claude - Changelog
+
+## Claude - 2026-10-29
+
+Follow-up on `claude/portfolio-revamp-tasks-h5tp2q`, branched from `cursor/portfolio-v2-1d23` (PR #1).
+
+- Redrew the pitch. `src/components/Pitch.astro` is a full field at FIFA proportions (105 x 68): mowed stripes, halfway line, center circle, both penalty and goal areas, penalty spots and arcs, corner arcs, and goals with nets. The old version was a rounded box with a single line down the wrong axis.
+- The hero is that pitch in broadcast-camera perspective (portrait on desktop, landscape on phones) with a white ball on the center spot. The lineup sits on the same pitch as numbered discs with name plates. The faint page background uses the same markings.
+- Grass follows the mode: a day match in light mode, a floodlit night match in dark mode (`--grass`, `--grass-alt`, `--chalk`, `--floodlight`).
+- Rewrote the AI copy. The hero line is “I build with AI in the loop, from the first plan to the last refactor.” The card is “The assistant coach.” with the four models as chips and Juan’s six uses as Plan, Build, Debug, Learn, Automate, Write. “Grok Bot” is now “Grok”.
+- Tightened section copy: the lineup, career, and essays headings, and the about paragraph (it said “strong” twice).
+- Fixed the email copy button. It failed silently whenever `navigator.clipboard` was missing or refused, which is always the case on plain HTTP (for example `npm run dev` opened from a phone on the LAN IP). It now falls back to `execCommand('copy')` and says so if both are blocked.
+- Fixed essay rendering. 22 images used the old host’s `![](src align="center")` syntax and printed as text. A nested list in the career essay fell into a code block and showed raw `[link](url)`. The React Router essay’s table of contents and its source-code `<details>` blocks showed raw markdown and pointed at heading ids that no longer exist. A callout link had `pointer-events: none`.
+- Added `scripts/check-posts.mjs`. `npm run build` now fails if an essay shows raw markdown links or images, or links to a missing in-page anchor.
+- Styled essay callouts and `<details>` blocks.
+- Removed `docs/screenshots/` from git and ignored it. Smoke tests write screenshots to `test-results/`.
+- Added smoke tests for the copy button (normal and fallback) and for essay images and anchors.
+- Renamed every file in `docs/` to start with `Claude - `.
 
 ## 2026-10-28
 

@@ -1,4 +1,4 @@
-# CMS
+# Claude - CMS
 
 Sveltia CMS is at `/admin` (`src/pages/admin.astro`). The config is `public/admin/config.yml`. The app bundle is `public/admin/sveltia-cms.js` (`@sveltia/cms@0.253.1`).
 
@@ -10,7 +10,7 @@ Open `/admin` locally (`npm run dev`) or on the deployed site. The editor UI loa
 
 ## When you are ready
 
-Do this after the new site is the default branch and the Worker is deployed (see `docs/DEPLOY.md`). The OAuth callback has to be a public HTTPS URL.
+Do this after the new site is the default branch and the Worker is deployed (see `docs/Claude - DEPLOY.md`). The OAuth callback has to be a public HTTPS URL.
 
 ### 1. GitHub OAuth app
 

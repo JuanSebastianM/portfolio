@@ -1,6 +1,8 @@
-# Deploy
+# Claude - Deploy
 
 Do not deploy until Juan is at the Cloudflare login. Nothing in this repo has been published.
+
+As of 2026-10-29 no Cloudflare account, API token, or Wrangler login is set up anywhere an agent can use. Every step below that touches Cloudflare needs Juan.
 
 Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.com` on Cloudflare Registrar. Mail later: `hello@juansebastianmendoza.com` via Email Routing.
 
@@ -8,8 +10,8 @@ Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.co
 
 - `wrangler.jsonc` — Worker name `juansebastianmendoza`, assets from `./dist`, OAuth routes run the Worker first
 - `worker/index.ts` — GitHub OAuth for Sveltia
-- `npm run cf:preview` — `astro build` then `wrangler dev`
-- `npm run cf:deploy` — `astro build` then `wrangler deploy`
+- `npm run cf:preview` — `npm run build` (Astro plus the essay check) then `wrangler dev`
+- `npm run cf:deploy` — `npm run build` then `wrangler deploy`
 
 `astro dev` is enough to work on the site. It does not boot the Worker.
 
@@ -38,7 +40,7 @@ Contact on the site is the copy button and mailto link. There is no third-party 
 
 ## CMS after the domain works
 
-Follow `docs/CMS.md`. The GitHub OAuth callback is `https://juansebastianmendoza.com/callback`. Secrets:
+Follow `docs/Claude - CMS.md`. The GitHub OAuth callback is `https://juansebastianmendoza.com/callback`. Secrets:
 
 ```bash
 npx wrangler secret put GITHUB_CLIENT_ID

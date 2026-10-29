@@ -133,13 +133,13 @@ Before adding any code, let's create a new database in MongoDB Atlas:
     
 2. In the **Overview** section, click on the "Create" button to create a new database deployment.
     
-    ![](/images/blog/97d6ea65-d38a-40b2-95d1-953d9220af9c.webp align="center")
+    ![](/images/blog/97d6ea65-d38a-40b2-95d1-953d9220af9c.webp)
     
 3. There, select the "M0" option to create a free [cluster](https://www.mongodb.com/basics/clusters), and click on "Create".
     
 4. After that, you'll be redirected to a section like this:
     
-    ![](/images/blog/39b96a8f-0e85-45f7-973d-95720c20776b.webp align="center")
+    ![](/images/blog/39b96a8f-0e85-45f7-973d-95720c20776b.webp)
     
 5. There, add a username and a password which you will need to connect to the DB (so, save it somewhere). These credentials must be different from your real username and password for security reasons.
     
@@ -150,13 +150,13 @@ Before adding any code, let's create a new database in MongoDB Atlas:
 
 With this, you should have a MongoDB Cluster ready for use:
 
-![](/images/blog/1f10d74c-32ac-46ee-b3c7-d73b12e700b3.webp align="center")
+![](/images/blog/1f10d74c-32ac-46ee-b3c7-d73b12e700b3.webp)
 
 Now, to connect to this database deployment from the code, we will need a [MongoDB Atlas connection string](https://www.mongodb.com/basics/mongodb-connection-string#how-to-get-your-mongodb-atlas-connection-string) that looks like this: `mongodb+srv://<username>:<password>@name-of-your-cluster.mongodb.net/`. Here, `<username>` and `<password>` are the credentials you created previously.
 
 To get this connection string, click on "Connect", and a window like this will pop up:
 
-![](/images/blog/063c68f9-c0ff-4710-b05c-8f2acc9ea2bb.webp align="center")
+![](/images/blog/063c68f9-c0ff-4710-b05c-8f2acc9ea2bb.webp)
 
 Select "Drivers" from "Connect to your application". Then, copy the connection string and replace the missing fields with their respective values.
 
@@ -398,7 +398,7 @@ Below, we add an [Object Type](https://graphql.org/learn/schema/#object-types-an
 
 <div data-node-type="callout">
 <div data-node-type="callout-emoji">💡</div>
-<div data-node-type="callout-text">To make a field required, add an exclamation mark (<strong>!</strong>) after the return type, e.g. <code>String!</code>. In GraphQL, required fields are known as <a target="_blank" rel="noopener noreferrer nofollow" href="https://graphql.org/learn/schema/#lists-and-non-null" style="pointer-events: none"><strong>Non-Null</strong></a> values</div>
+<div data-node-type="callout-text">To make a field required, add an exclamation mark (<strong>!</strong>) after the return type, e.g. <code>String!</code>. In GraphQL, required fields are known as <a target="_blank" rel="noopener noreferrer nofollow" href="https://graphql.org/learn/schema/#lists-and-non-null"><strong>Non-Null</strong></a> values</div>
 </div>
 
 Next, we add an [Input type](https://graphql.org/learn/schema/#input-types) called `TaskInput`. As per the docs, Input types are particularly valuable in the case of mutations, where you might want to pass in a whole object to be created. They are defined similarly to Object Types but with the `input` keyword instead. In our case, we use it as one of the arguments for two mutation operations (`createTask` and `editTaskBody`).
@@ -953,7 +953,7 @@ Connected to DB successfully.
 
 If you open that link, you'll be directed to a Sandbox that is loaded with your app's schema:
 
-![](/images/blog/93d5d407-4400-4024-b00f-0de8fd15d112.webp align="center")
+![](/images/blog/93d5d407-4400-4024-b00f-0de8fd15d112.webp)
 
 Okay, amazing 🎉!
 
@@ -1075,7 +1075,7 @@ We get the authorization token from the `context` parameter (`{ dataSources, aut
 
 With this, if we now build our app, then run the server locally, and test the resolvers without providing an `Authorization` header, the `UNAUTHENTICATED` error should be thrown:
 
-![](/images/blog/5d63cff3-d5ab-46a4-a5d1-e3b5df80b125.webp align="center")
+![](/images/blog/5d63cff3-d5ab-46a4-a5d1-e3b5df80b125.webp)
 
 This is the response the client should get when an error was thrown. Basically, the response includes an `errors` array that contains each error that occurred. Each error object has an `extensions` field that details additional information that can be useful. In this case, it includes an error `code`, a `httpStatus` and a `stacktrace.`
 
@@ -1154,7 +1154,7 @@ const server = new ApolloServer<ContextValue>({
 
 Now, if someone tries to execute a query similar to the one from above, they should get an error like this:
 
-![](/images/blog/81c98ba5-7493-4221-b2e9-e9b5b0424757.webp align="center")
+![](/images/blog/81c98ba5-7493-4221-b2e9-e9b5b0424757.webp)
 
 To learn more about how you can secure your GraphQL API, make sure to read the [Securing Your GraphQL API from Malicious Queries](https://www.apollographql.com/blog/graphql/security/securing-your-graphql-api-from-malicious-queries/) article from the Apollo GraphQL's blog.
 
@@ -1166,17 +1166,17 @@ You can deploy this wherever you're more comfortable. But, as for this article's
     
 2. Click on "New +", then on "Web Service".
     
-    ![](/images/blog/2bcfd057-68fd-4e12-b65c-e1b36de1da1f.webp align="center")
+    ![](/images/blog/2bcfd057-68fd-4e12-b65c-e1b36de1da1f.webp)
     
 3. Once on the Web Service section, click on "Configure account" under GitHub to connect a repository from your GitHub account.
     
-    ![](/images/blog/8a8fa726-246b-41a7-ba1b-d088d82f3339.webp align="center")
+    ![](/images/blog/8a8fa726-246b-41a7-ba1b-d088d82f3339.webp)
     
 4. After that, follow the steps you're given. When you're prompted if you want to connect **all** of your repos or only a specific one, select the option to pick a specific repo.
     
 5. Once you've successfully connected a repository, you'll be sent to a section where you have to configure environment variables, commands, and all of the other info related to your web service:
     
-    ![](/images/blog/3c5d0cc1-d105-478c-8c8c-0e9d287a1eaf.webp align="center")
+    ![](/images/blog/3c5d0cc1-d105-478c-8c8c-0e9d287a1eaf.webp)
     
     **Name**: the name of your web service.  
     **Branch**: the branch that will be used as the source of your Web Service.  
@@ -1229,7 +1229,7 @@ Considering this article's publishing date, July 2023, this command will help yo
     
 2. As [**Next.js 13.2**](https://nextjs.org/blog/next-13-2#custom-route-handlers) introduced [**Route Handlers**](https://beta.nextjs.org/docs/routing/route-handlers), we're going to create a new folder called `api` where we will have all API routes and it will live under the `app` directory.
     
-    ![A preview of a folder structure showing a folder called app and its subfolder called api](/images/blog/a7e08417-1e60-469b-9ff5-f90e5ad7aa36.webp align="center")
+    ![A preview of a folder structure showing a folder called app and its subfolder called api](/images/blog/a7e08417-1e60-469b-9ff5-f90e5ad7aa36.webp)
     
 
 ### Setting up authentication with NextAuth
@@ -1242,7 +1242,7 @@ Considering this article's publishing date, July 2023, this command will help yo
     
 2. Create a new subfolder inside `app/api` called `auth`, which will include a dynamic route handler called `[...nextauth]`. Finally, add a `route.ts` file to let the App Router know that this is a [Route Handler](https://nextjs.org/docs/app/building-your-application/routing/router-handlers).
     
-    ![](/images/blog/56553732-bb02-490b-8552-46efa5cc5a82.webp align="center")
+    ![](/images/blog/56553732-bb02-490b-8552-46efa5cc5a82.webp)
     
     Here, `[...nextauth]` will contain all of the NextAuth configurations.
     
@@ -1307,7 +1307,7 @@ Considering this article's publishing date, July 2023, this command will help yo
     
 5. Now, to get the value of the `GITHUB_ID` and the `GITHUB_SECRET` environment variables, we'll need to create a [GitHub app](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/creating-a-github-app). For this, go to [https://github.com/settings/apps](https://github.com/settings/apps) and click on "New GitHub app".
     
-    ![](/images/blog/9dc5d441-b93b-41df-aedd-64a96f4e716a.webp align="center")
+    ![](/images/blog/9dc5d441-b93b-41df-aedd-64a96f4e716a.webp)
     
 6. Once on the registration page, you'll be required to fill out a form.
     
@@ -1325,11 +1325,11 @@ Considering this article's publishing date, July 2023, this command will help yo
     
     * Client ID:
         
-        ![](/images/blog/047b575a-84f7-4cc1-a88f-87451cc012a1.webp align="center")
+        ![](/images/blog/047b575a-84f7-4cc1-a88f-87451cc012a1.webp)
         
     * Client secret:
         
-        ![](/images/blog/a0a8e6d3-cdde-4d0f-a2f0-87cfc781630a.webp align="center")
+        ![](/images/blog/a0a8e6d3-cdde-4d0f-a2f0-87cfc781630a.webp)
         
 8. If you still haven't done it, create a new `.env` file in the root of your repository and add `GITHUB_ID` and `GITHUB_SECRET` with their respective values, along with 2 other NextAuth-related variables that are optional during development but you can get warnings (which can be ignored) if you don't set them up. These 2 variables are:
     
@@ -1373,7 +1373,7 @@ Considering this article's publishing date, July 2023, this command will help yo
                 
             2. If your component is a use case for Client Components, you'll get an error like this:
                 
-                ![](/images/blog/651e0977-faac-45c9-a5e9-fcaabfa63825.webp align="center")
+                ![](/images/blog/651e0977-faac-45c9-a5e9-fcaabfa63825.webp)
                 
         * Also, we accept a `session` object of type `Session` or `null` from `next-auth` and pass it as value to the `SessionProvider`'s session prop. This way, we fetch the session server-side (from our `layout.tsx` component) and provide it to the session context provider to avoid re-fetching it on every future component and making them behave incorrectly.
             
@@ -1555,7 +1555,7 @@ const HomeCtaButton = () => {
 
 But that's not all! Currently, what this button does is that it redirects the users to the sign-in page where they can choose which authentication provider to use:
 
-![](/images/blog/75da1dce-9a24-4db5-91ed-ea3b76a1dc0e.webp align="center")
+![](/images/blog/75da1dce-9a24-4db5-91ed-ea3b76a1dc0e.webp)
 
 This flow is not the one we want our users to experience because then why would we have a button saying "**Sign in with GitHub**" on our homepage?
 
@@ -1809,7 +1809,7 @@ export default async function RootLayout({
 
 After this, the sign-out functionality should be working 🔥. But, you should know that its default behavior is to redirect the users to the sign-in page **IF** they sign out from a page accessible only by authenticated users.
 
-![A sign in container that displays a red warning that says "Please sign in to access this page." and a button below that says "Sign in with GitHub"](/images/blog/def9c523-115c-4e1c-9fe5-e5fb0cb27dd1.webp align="center")
+![A sign in container that displays a red warning that says "Please sign in to access this page." and a button below that says "Sign in with GitHub"](/images/blog/def9c523-115c-4e1c-9fe5-e5fb0cb27dd1.webp)
 
 If you want to change this behavior and, for example, make it so users who log out are sent to the homepage (or any other specific page), you can do something similar to what we did with the `signIn` method.
 
@@ -1966,7 +1966,7 @@ There are two important factors to take into account:
 
 Let's begin by creating a new folder under the `app` directory called `todos` to denote that it's a route and a `page.tsx` component inside. Its full path should be `app/todos/page.tsx`.
 
-![](/images/blog/a56e8b1a-a51e-4a0d-a67d-ba33b4e07838.webp align="center")
+![](/images/blog/a56e8b1a-a51e-4a0d-a67d-ba33b4e07838.webp)
 
 Inside, let's add this basic code before we move on to creating our to-do item components.
 
@@ -2092,7 +2092,7 @@ export default async function TodosPage() {
 
 With this, every user should now see their name there. Nice, uh?!
 
-![](/images/blog/5aab24ea-3301-4e30-86b8-4bff22c27422.webp align="center")
+![](/images/blog/5aab24ea-3301-4e30-86b8-4bff22c27422.webp)
 
 Next, let's get our hands dirty with fetching the data by using GraphQL before diving into the UI building💪.
 
@@ -2325,7 +2325,7 @@ query GetTasksByAuthorEmail($authorEmail: String!) {
 
 Now, if we run `npm run generate`, we'll see a new `gql` folder created, like this:
 
-![](/images/blog/46489d98-f660-4e4b-8c90-c0b7da670eec.webp align="center")
+![](/images/blog/46489d98-f660-4e4b-8c90-c0b7da670eec.webp)
 
 In case you actually get an error like the following because you set your production GraphQL API URL as the schema:
 
@@ -2405,7 +2405,7 @@ const GetAllTasksByAuthorQuery = graphql(`query GetTasksByAuthorEmail($authorEma
 
 Now, if we hover over the variable name (`GetAllTasksQuery`), we can see that we have a typed document:
 
-![](/images/blog/2fbc8a7d-626c-431a-a30d-56e6dc37d133.webp align="center")
+![](/images/blog/2fbc8a7d-626c-431a-a30d-56e6dc37d133.webp)
 
 That's awesome, isn't it? 🥳
 

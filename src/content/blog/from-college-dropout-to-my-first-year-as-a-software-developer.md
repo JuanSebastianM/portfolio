@@ -26,7 +26,7 @@ I was just a guideless and uninformed kid, don't blame me 😂.
 
 Anyways, what hurts me more now is that, out of all things I knew a System Engineer could do professionally, one I never imagined they could do was programming 😬🤧...
 
-![](https://media.tenor.com/LhJYmxGLt_QAAAAC/jackblack-fool.gif align="center")
+![](https://media.tenor.com/LhJYmxGLt_QAAAAC/jackblack-fool.gif)
 
 ## What made me realize learning programming was not impossible as I thought
 
@@ -97,7 +97,7 @@ So, this is what I deeply thought about and then discussed with my girlfriend an
         
     2. [TheOdinProject](https://www.theodinproject.com/) (Full Stack JavaScript path, didn't finish it though),
         
-<p><a href="https://twitter.com/JuanMendozaDev/status/1418713688383557634?s=20&t=A2C-d8laprKf_kD9shKiNA">View the original post on X</a></p>
+       <p><a href="https://twitter.com/JuanMendozaDev/status/1418713688383557634?s=20&t=A2C-d8laprKf_kD9shKiNA">View the original post on X</a></p>
         
     3. Udemy (my girlfriend bought me the only 2 paid courses I took during this journey):
         

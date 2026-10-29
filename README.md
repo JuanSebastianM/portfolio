@@ -32,7 +32,9 @@ npm run build
 npm run preview
 ```
 
-Deploy notes are in `docs/DEPLOY.md`. CMS setup is in `docs/CMS.md`. Do not deploy from this repo until Juan’s Cloudflare account is available.
+Every build also runs `scripts/check-posts.mjs`, which fails if an essay shows raw markdown.
+
+Deploy notes are in `docs/Claude - DEPLOY.md`. CMS setup is in `docs/Claude - CMS.md`. Do not deploy from this repo until Juan’s Cloudflare account is available.
 
 ## Stack
 
@@ -40,4 +42,4 @@ Astro, TypeScript, Tailwind CSS v4, React islands (Motion, and React Three Fiber
 
 ## For the next person or agent
 
-Start at `AGENTS.md`. Placeholders for jobs, school, and extra skills are listed in `docs/ROADMAP.md` as `TODO(content)`. Do not fill them in from guesswork.
+Start at `AGENTS.md`. Project docs live in `docs/` and are named `Claude - <NAME>.md`. Screenshots are not committed. Placeholders for jobs, school, and extra skills are listed in `docs/Claude - ROADMAP.md` as `TODO(content)`. Do not fill them in from guesswork.

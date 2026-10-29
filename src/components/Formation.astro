@@ -1,8 +1,10 @@
 ---
 import { bench, startingXi } from '../data/profile';
+import Pitch from './Pitch.astro';
 ---
 
 <div class="pitch-board">
+  <Pitch class="pitch-board-grass" />
   <ol class="xi">
     {
       startingXi.map((skill) => (

@@ -14,7 +14,7 @@
   --color-line: var(--line);
 }
 
-/* Palettes live in docs/DESIGN.md. Club + mode, not a single locked theme. */
+/* Palettes live in docs/Claude - DESIGN.md. Club + mode, not a single locked theme. */
 html[data-club="nacional"][data-mode="light"] {
   --bg: #f4f7f2;
   --elev: #ffffff;
@@ -95,6 +95,21 @@ html[data-club="barca"][data-mode="dark"] {
   color-scheme: dark;
 }
 
+/* Grass and chalk follow the mode: a day match on the green palette, a floodlit night match on the blue and garnet one. */
+html[data-mode="light"] {
+  --grass: #2b7a45;
+  --grass-alt: #31884d;
+  --chalk: rgba(255, 255, 255, 0.92);
+  --floodlight: rgba(255, 255, 240, 0.22);
+}
+
+html[data-mode="dark"] {
+  --grass: #0c2620;
+  --grass-alt: #0f2d26;
+  --chalk: rgba(226, 236, 255, 0.78);
+  --floodlight: color-mix(in srgb, var(--accent-2) 34%, transparent);
+}
+
 html {
   background: var(--bg);
   color: var(--ink);
@@ -172,6 +187,29 @@ a {
 .pitch-field svg {
   width: 100%;
   height: 100%;
+}
+
+.pitch-grass {
+  fill: var(--grass);
+}
+
+.pitch-stripe {
+  fill: var(--grass-alt);
+}
+
+.pitch-lines {
+  fill: none;
+  stroke: var(--chalk);
+  stroke-width: 3;
+}
+
+.pitch-lines .pitch-dot {
+  fill: var(--chalk);
+  stroke: none;
+}
+
+.pitch-lines .pitch-goal {
+  stroke-width: 2.5;
 }
 
 .club-stripe {
@@ -439,29 +477,41 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
 .hero-stage {
   position: relative;
   width: min(100%, 26rem);
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 1130 / 760;
   margin-inline: auto;
-  border-radius: 1.75rem;
-  border: 2px solid var(--pitch-strong);
-  background:
-    linear-gradient(var(--pitch-strong), var(--pitch-strong)) center / 2px 100% no-repeat,
-    radial-gradient(circle at 50% 50%, transparent 0 22%, var(--pitch-strong) 23% 24.2%, transparent 25%),
-    linear-gradient(var(--pitch-fill), var(--pitch-fill));
-  box-shadow: inset 0 0 0 12px color-mix(in srgb, var(--pitch-fill) 70%, transparent);
+  perspective: 1100px;
+}
+
+.hero-pitch {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
   overflow: hidden;
+  box-shadow: var(--shadow), 0 0 0 1px var(--line);
+  background: var(--grass);
+}
+
+.hero-pitch .pitch {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-pitch-portrait {
+  display: none !important;
 }
 
 .hero-spot {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 4.6rem;
-  height: 4.6rem;
+  width: 2.6rem;
+  height: 2.6rem;
   border-radius: 999px;
   transform: translate(-50%, -50%);
   background:
-    radial-gradient(circle at 35% 35%, color-mix(in srgb, white 55%, var(--accent)), var(--accent) 58%, var(--accent-2));
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 35%, transparent);
+    radial-gradient(circle at 35% 30%, #fff 0 30%, #e9edf2 55%, #b9c0c9);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
 }
 
 .pitch-ball {
@@ -523,6 +573,70 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
   margin: 0 0 0.9rem;
 }
 
+.ai-card {
+  padding: 1.5rem;
+  border-top: 4px solid var(--accent);
+}
+
+.ai-title {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.ai-intro {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+}
+
+.ai-tools {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ai-tools li {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 0.85rem;
+  font-weight: 620;
+}
+
+.ai-uses {
+  margin: 1.2rem 0 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ai-uses div {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
+}
+
+.ai-uses dt {
+  color: var(--kicker);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ai-uses dd {
+  margin: 0;
+}
+
 .quote-card {
   padding: 1.4rem;
 }
@@ -547,6 +661,11 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
 
 .pitch-board {
   margin-top: 1.5rem;
+}
+
+/* Below 768px the lineup is a team sheet, so the grass stays out of the way. */
+.pitch-board-grass {
+  display: none;
 }
 
 .xi {
@@ -984,6 +1103,42 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
   border-radius: 1rem;
 }
 
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+/* Callouts carried over from the original essays. */
+.post-body [data-node-type="callout"] {
+  display: flex;
+  gap: 0.8rem;
+  margin: 1.6em 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 0.9rem;
+  background: var(--elev);
+}
+
+.post-body [data-node-type="callout-emoji"] {
+  flex: none;
+  line-height: 1.6;
+}
+
+.post-body details {
+  margin: 1em 0;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--elev);
+}
+
+.post-body summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
 html[data-mode="light"] .astro-code,
 html[data-mode="light"] .astro-code span {
   color: var(--shiki-light) !important;
@@ -1124,8 +1279,23 @@ label.field {
   }
 
   .hero-stage {
-    aspect-ratio: 4 / 5;
-    margin-inline: 0 0 0 auto;
+    aspect-ratio: 760 / 1130;
+    width: min(100%, 24rem);
+    margin-inline: auto 0;
+  }
+
+  .hero-pitch {
+    transform: rotateX(24deg);
+    transform-origin: 50% 100%;
+    border-radius: 1.5rem;
+  }
+
+  .hero-pitch-portrait {
+    display: block !important;
+  }
+
+  .hero-pitch-landscape {
+    display: none !important;
   }
 
   .about-grid,
@@ -1146,33 +1316,74 @@ label.field {
 
   .pitch-board {
     position: relative;
-    max-width: 44rem;
+    max-width: 38rem;
     margin-inline: auto;
-    aspect-ratio: 4 / 5;
-    border: 2px solid var(--pitch-strong);
-    border-radius: 1.6rem;
-    background:
-      linear-gradient(var(--pitch-strong), var(--pitch-strong)) center / 2px 100% no-repeat,
-      radial-gradient(circle at 50% 50%, transparent 0 16%, var(--pitch-strong) 16.6% 17.4%, transparent 18%),
-      linear-gradient(var(--pitch-fill), var(--pitch-fill));
-    box-shadow: inset 0 0 0 10px color-mix(in srgb, var(--pitch-fill) 80%, transparent);
+    aspect-ratio: 760 / 1130;
+    border-radius: 1.4rem;
+    overflow: hidden;
+    box-shadow: var(--shadow), 0 0 0 1px var(--line);
+  }
+
+  .pitch-board-grass {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .xi {
+    position: relative;
     display: block;
     height: 100%;
   }
 
+  /* On the grass a player is a shirt number disc with a name plate, like a tactics board. */
   .pitch-board .player {
     position: absolute;
     left: var(--x);
     top: var(--y);
-    width: 7.5rem;
+    width: 8rem;
     transform: translate(-50%, -50%);
     align-items: center;
+    gap: 0.35rem;
     text-align: center;
-    padding: 0.55rem 0.4rem;
-    backdrop-filter: blur(8px);
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .pitch-board .player .pos {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: 2px solid var(--chalk);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35), inset 0 -6px 0 color-mix(in srgb, var(--accent-2) 45%, transparent);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+  }
+
+  .pitch-board .player:last-child .pos {
+    background: var(--accent-2);
+    color: var(--bg);
+  }
+
+  .pitch-board .player .skill {
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, #000 55%, transparent);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 620;
+    letter-spacing: 0;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
   }
 
   .pitch-board .player .src {
@@ -1187,9 +1398,6 @@ label.field {
     border: 0;
   }
 
-  .pitch-board .player .skill {
-    font-size: 1rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -1296,7 +1504,8 @@ html[data-motion='on'] .load-ball {
 
 html[data-motion='on'] .pitch-field rect,
 html[data-motion='on'] .pitch-field line,
-html[data-motion='on'] .pitch-field circle {
+html[data-motion='on'] .pitch-field circle,
+html[data-motion='on'] .pitch-field path {
   animation: pitch-draw 1.4s ease;
 }
 
@@ -1321,6 +1530,13 @@ html[data-motion='on'] .xi.is-set .player:nth-child(11) { animation-delay: 0.4s;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem;
+}
+
+.copy-note {
+  flex-basis: 100%;
+  min-height: 1.4em;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .confetti {

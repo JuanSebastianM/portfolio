@@ -41,7 +41,7 @@ for (const theme of themes) {
         expect(opacity).toBeGreaterThan(0.9);
         if (!reduced) {
           await page.screenshot({
-            path: `docs/screenshots/home-${viewport.name}-${theme}-motion.png`,
+            path: `test-results/screenshots/home-${viewport.name}-${theme}-motion.png`,
             fullPage: false,
           });
         }
@@ -64,4 +64,31 @@ test('stadium ambience produces a signal', async ({ page }) => {
     return Math.sqrt(sum / data.length);
   });
   expect(rms).toBeGreaterThan(0.02);
+});
+
+test('copy email puts the address on the clipboard', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.goto('/#contact');
+  await page.getByRole('button', { name: 'Copy email' }).click();
+  await expect(page.getByText('Email copied.')).toBeVisible();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('hello@juansebastianmendoza.com');
+});
+
+test('copy email falls back when the Clipboard API is missing', async ({ page }) => {
+  // Plain HTTP on a LAN address has no navigator.clipboard.
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', { value: undefined });
+  });
+  await page.goto('/#contact');
+  await page.getByRole('button', { name: 'Copy email' }).click();
+  await expect(page.getByText('Email copied.')).toBeVisible();
+});
+
+test('essay images and links render', async ({ page }) => {
+  await page.goto('/blog/build-a-full-stack-crud-app-with-graphql-mongodb-nextjs-nextauth-and-typescript');
+  const images = page.locator('.post-body img');
+  expect(await images.count()).toBeGreaterThan(20);
+  await expect(page.locator('.post-body')).not.toContainText('align=');
+  await page.goto('/blog/introduction-to-react-router-and-single-page-applications');
+  await expect(page.locator('.post-body a[href="#hashrouter"]')).toHaveCount(1);
 });

@@ -8,12 +8,12 @@
   },
   "scripts": {
     "dev": "astro dev --host",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-posts.mjs",
     "preview": "astro preview --host",
     "check": "astro check",
     "test:smoke": "playwright test",
-    "cf:preview": "astro build && wrangler dev",
-    "cf:deploy": "astro build && wrangler deploy"
+    "cf:preview": "npm run build && wrangler dev",
+    "cf:deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
