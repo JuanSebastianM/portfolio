@@ -14,7 +14,7 @@
   --color-line: var(--line);
 }
 
-/* Palettes live in docs/Claude - DESIGN.md. Club + mode, not a single locked theme. */
+/* Palettes live in docs/DESIGN.md. Club + mode, not a single locked theme. */
 html[data-club="nacional"][data-mode="light"] {
   --bg: #f4f7f2;
   --elev: #ffffff;
@@ -101,6 +101,7 @@ html[data-mode="light"] {
   --grass-alt: #31884d;
   --chalk: rgba(255, 255, 255, 0.92);
   --floodlight: rgba(255, 255, 240, 0.22);
+  --keeper: #f2c230;
 }
 
 html[data-mode="dark"] {
@@ -108,6 +109,7 @@ html[data-mode="dark"] {
   --grass-alt: #0f2d26;
   --chalk: rgba(226, 236, 255, 0.78);
   --floodlight: color-mix(in srgb, var(--accent-2) 34%, transparent);
+  --keeper: var(--accent-2);
 }
 
 html {
@@ -501,6 +503,237 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
   display: none !important;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Penalty mini game. The launcher sits on the pitch; playing swaps the stage for the penalty view. */
+.penalty-root {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.penalty-launch {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  gap: 0.5rem;
+  white-space: nowrap;
+  pointer-events: auto;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.hero-stage.is-playing {
+  aspect-ratio: 4 / 5.6;
+}
+
+.hero-stage.is-playing .hero-pitch,
+.hero-stage.is-playing .pitch-ball {
+  visibility: hidden;
+}
+
+.penalty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--grass);
+  box-shadow: var(--shadow), 0 0 0 1px var(--line);
+  pointer-events: auto;
+}
+
+.penalty-hud {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0.6rem 0.55rem 1rem;
+  background: color-mix(in srgb, #000 55%, transparent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.penalty-hud strong {
+  font-weight: 750;
+}
+
+.penalty-exit {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+}
+
+.penalty-exit:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.penalty-scene {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.penalty-scene svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.penalty-stand {
+  fill: color-mix(in srgb, #000 62%, var(--grass));
+}
+
+.penalty-board {
+  fill: var(--accent);
+}
+
+.penalty-fan.tone-0 { fill: var(--accent); }
+.penalty-fan.tone-1 { fill: var(--accent-2); }
+.penalty-fan.tone-2 { fill: rgba(255, 255, 255, 0.75); }
+
+.penalty-post {
+  fill: #fff;
+}
+
+.penalty-net {
+  stroke: none;
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+
+.penalty-keeper {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transition: transform 0.36s cubic-bezier(0.2, 0.7, 0.3, 1) 0.08s;
+}
+
+.keeper-legs { fill: #1d1d22; }
+.keeper-kit { fill: var(--keeper); stroke: #fff; stroke-width: 1.5; }
+.keeper-arms { stroke: var(--keeper); stroke-width: 7; stroke-linecap: round; }
+.keeper-gloves { fill: #f5f5f5; stroke: #1d1d22; stroke-width: 1; }
+.keeper-head { fill: #b98058; }
+
+.penalty-ball,
+.penalty-shadow {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transition: transform 0.5s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+
+.ball-skin { fill: #fff; stroke: #1d1d22; stroke-width: 1.4; }
+.ball-patch { fill: #1d1d22; }
+.penalty-shadow { fill: rgba(0, 0, 0, 0.3); }
+
+.penalty-targets {
+  position: absolute;
+  inset: 0;
+}
+
+.penalty-target {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 18%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: none;
+  transform: translate(-50%, -50%);
+  cursor: crosshair;
+}
+
+.penalty-target span {
+  width: 62%;
+  aspect-ratio: 1;
+  border: 2px dashed rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.penalty-target:hover span,
+.penalty-target:focus-visible span {
+  transform: scale(1.18);
+  background: color-mix(in srgb, var(--accent) 55%, transparent);
+  border-style: solid;
+}
+
+.penalty-target:focus-visible {
+  outline: none;
+}
+
+html[data-motion='on'] .penalty-target span {
+  animation: target-breathe 1.6s ease-in-out infinite alternate;
+}
+
+.penalty-tip,
+.penalty-call {
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #fff;
+  pointer-events: none;
+}
+
+.penalty-tip {
+  bottom: 5%;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #000 50%, transparent);
+  font-size: 0.85rem;
+}
+
+.penalty-call {
+  top: 56%;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 640;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+.penalty-call.call-goal {
+  color: #fff;
+}
+
+html[data-motion='on'] .penalty-call {
+  animation: call-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+html[data-motion='on'] .penalty-scene.is-goal .penalty-net {
+  animation: net-bulge 0.5s ease-out;
+}
+
+html[data-motion='on'] .penalty-scene.is-goal .penalty-fan {
+  animation: crowd-jump 0.35s ease-in-out 4 alternate;
+}
+
+html[data-motion='off'] .penalty-keeper,
+html[data-motion='off'] .penalty-ball,
+html[data-motion='off'] .penalty-shadow {
+  transition: none;
+}
+
 .hero-spot {
   position: absolute;
   left: 50%;
@@ -704,6 +937,122 @@ html[data-motion='on'] .btn-primary:focus-visible::after {
 .player .src {
   color: var(--muted);
   font-size: 0.78rem;
+}
+
+/* Players are buttons that open a position card. */
+.player-btn {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  align-items: inherit;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.player-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 0.6rem;
+}
+
+.xi > .player:has(.player-btn:hover),
+.bench > .player:has(.player-btn:hover) {
+  border-color: var(--accent);
+}
+
+.pos-card {
+  position: relative;
+  margin-top: 0.7rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--elev);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.pos-card[hidden] {
+  display: none;
+}
+
+.pos-card-kicker {
+  margin: 0;
+  padding-right: 1.8rem;
+  color: var(--kicker);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pos-card-role {
+  margin: 0.4rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.pos-card-fit {
+  margin: 0.6rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.pos-card-fit strong {
+  color: var(--ink);
+}
+
+.pos-card-close {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.pos-card-close:hover {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.lineup-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 1.1rem 0 0;
+  padding: 0.35rem 0.85rem;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.lineup-hint-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+html[data-motion='on'] .lineup-hint:not(.is-used) .lineup-hint-dot {
+  animation: hint-ping 1.6s ease-out 4;
 }
 
 .bench {
@@ -1386,6 +1735,50 @@ label.field {
     backdrop-filter: blur(4px);
   }
 
+  .pitch-board .player.is-open {
+    z-index: 4;
+  }
+
+  .pitch-board .player-btn .pos {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .pitch-board .player-btn:hover .pos,
+  .pitch-board .player.is-open .pos {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--chalk) 45%, transparent), 0 8px 18px rgba(0, 0, 0, 0.4);
+  }
+
+  /* A few rings ripple off the discs when the lineup lands, so it is clear they can be tapped. */
+  html[data-motion='on'] .xi.is-set .player-btn .pos {
+    animation: disc-ping 1.8s ease-out 0.8s 3;
+  }
+
+  .pitch-board .pos-card {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    width: 17rem;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .pitch-board .player[data-side='above'] .pos-card {
+    top: auto;
+    bottom: calc(100% + 0.5rem);
+  }
+
+  .pitch-board .player[data-align='start'] .pos-card {
+    left: -1rem;
+    transform: none;
+  }
+
+  .pitch-board .player[data-align='end'] .pos-card {
+    left: auto;
+    right: -1rem;
+    transform: none;
+  }
+
   .pitch-board .player .src {
     position: absolute;
     width: 1px;
@@ -1605,6 +1998,37 @@ html[data-motion='off'] .reveal-target {
 @keyframes pitch-draw {
   from { stroke-dasharray: 1800; stroke-dashoffset: 1800; }
   to { stroke-dasharray: 1800; stroke-dashoffset: 0; }
+}
+
+@keyframes target-breathe {
+  from { opacity: 0.65; }
+  to { opacity: 1; }
+}
+
+@keyframes call-pop {
+  from { transform: translateX(-50%) scale(0.4); opacity: 0; }
+  to { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+@keyframes net-bulge {
+  0% { transform: scale(1, 1); }
+  40% { transform: scale(1.04, 0.9); }
+  100% { transform: scale(1, 1); }
+}
+
+@keyframes crowd-jump {
+  from { transform: translateY(0); }
+  to { transform: translateY(-3px); }
+}
+
+@keyframes hint-ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); }
+  100% { box-shadow: 0 0 0 0.6rem transparent; }
+}
+
+@keyframes disc-ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--chalk) 70%, transparent), 0 6px 14px rgba(0, 0, 0, 0.35); }
+  100% { box-shadow: 0 0 0 0.9rem transparent, 0 6px 14px rgba(0, 0, 0, 0.35); }
 }
 
 @keyframes lineup-in {

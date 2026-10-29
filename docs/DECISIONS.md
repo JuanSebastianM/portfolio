@@ -1,4 +1,4 @@
-# Claude - Decisions
+# Decisions
 
 ## 2026-10-28
 
@@ -36,7 +36,7 @@ English only. Phase 1 used the old homepage about text, with grammar tightened. 
 
 Sveltia CMS at `/admin`, GitHub backend, pinned build `@sveltia/cms@0.253.1` committed at `public/admin/sveltia-cms.js` so the editor does not depend on a CDN at runtime. Chosen over Decap/Tina because the brief’s later instruction was Sveltia, it is a git-based visual editor, and it speaks the same OAuth postMessage protocol as Sveltia CMS Authenticator.
 
-Publishing commits to `main`. Do not sign in until this revamp is on `main`, or those commits land on the old site. OAuth is implemented but secrets are unset. See `docs/Claude - CMS.md`.
+Publishing commits to `main`. Do not sign in until this revamp is on `main`, or those commits land on the old site. OAuth is implemented but secrets are unset. See `docs/CMS.md`.
 
 `auth_scope` is `public_repo` because the portfolio repository is public.
 
@@ -46,7 +46,7 @@ Content collection, existing frontmatter, no extra required fields. Category pag
 
 ### Theme and design
 
-Two fan palettes, Atlético Nacional (green and white) and FC Barcelona (blue and garnet), each with light and dark. Default is Nacional and, when there is no saved choice, the OS color scheme. No official crests. Pitch lines, a starting XI, a season-log timeline, tilt on project cards, and scroll reveal are the soccer language. Details and hex values are in `docs/Claude - DESIGN.md`.
+Two fan palettes, Atlético Nacional (green and white) and FC Barcelona (blue and garnet), each with light and dark. Default is Nacional and, when there is no saved choice, the OS color scheme. No official crests. Pitch lines, a starting XI, a season-log timeline, tilt on project cards, and scroll reveal are the soccer language. Details and hex values are in `docs/DESIGN.md`.
 
 ### Projects copy
 
@@ -129,8 +129,24 @@ Juan does not want screenshots committed. `docs/screenshots/` is ignored and the
 
 ### Doc names
 
-Juan asked that docs be prefixed with “Claude - ”. Every file in `docs/` is now `docs/Claude - <NAME>.md`, with the same prefix on its title. `README.md` and `AGENTS.md` keep their names because tools look for them by name.
+Juan wants every doc update an agent makes to start with that agent’s name, so the next agent knows who wrote it. Sections Claude adds are headed `Claude - ...` and single lines start with `Claude - `. File names and doc titles do not change. A first pass renamed the files by mistake; the second pass reverted that.
 
 ### Cloudflare
 
-Nothing is deployed. There is no Cloudflare account or token in this repo or in the agent’s environment, so an agent cannot create the Worker, buy the domain, or turn on Email Routing. Juan runs `npx wrangler login` once and follows `docs/Claude - DEPLOY.md`.
+Nothing is deployed. There is no Cloudflare account or token in this repo or in the agent’s environment, so an agent cannot create the Worker, buy the domain, or turn on Email Routing. Juan runs `npx wrangler login` once and follows `docs/DEPLOY.md`.
+
+## Claude - 2026-10-29 (second pass)
+
+### A game on the pitch
+
+Juan asked for something playable that brings some joy. A penalty shootout fits the hero because it is one click to start, one click per shot, and done in seconds. It is a React island that loads when the hero is visible. It is SVG with CSS transitions, not a canvas or a physics engine, so it adds no dependency and no frame loop. Odds are rough on purpose: the keeper guesses left 38%, center 24%, right 38%; a matching side and height is a save, and a matching side at the other height is a save 35% of the time. Top-corner shots hit the post 12% of the time. That lands around three goals in four.
+
+`data-motion="off"` does not hide the game. The ball and keeper jump straight to where they end up, and the result shows at once. The game never makes sound.
+
+### Clickable positions
+
+Each lineup player opens a card. The position text is general soccer knowledge. The “fit” line is a light metaphor about the tool (Git in goal: “Every mistake can be undone from here.”), not a claim about how good Juan is with it. Both live in `src/data/profile.ts` (`positions` and each skill’s `fit`). It is plain buttons and a small inline script, not a React island. A dashed hint above the pitch and a few rings on the discs show that they can be clicked.
+
+### Title
+
+Juan does not want the employer name in the page title. The title uses `identity.titleRole` (“Software Engineer”). The hero headline and the career section still name GoDaddy.

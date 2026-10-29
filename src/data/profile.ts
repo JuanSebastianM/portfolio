@@ -10,6 +10,8 @@ export type Skill = {
   x: string;
   y: string;
   placeholder?: boolean;
+  /** Why this tool fits the position. About the tool, not a skill level. */
+  fit?: string;
 };
 
 export const about = [
@@ -17,7 +19,7 @@ export const about = [
 ];
 
 /**
- * AI copy. The tools and the six uses are Juan’s own list (docs/Claude - DECISIONS.md, “AI copy”).
+ * AI copy. The tools and the six uses are Juan’s own list (docs/DECISIONS.md, “AI copy”).
  * The wording around them is a suggestion he can rewrite.
  */
 export const ai = {
@@ -37,10 +39,66 @@ export const ai = {
   ],
 };
 
+/**
+ * What each position does on a real pitch. General soccer knowledge, shown in the lineup popups.
+ * `fit` says why a technology suits that spot. It describes the tool, not Juan’s skill level.
+ */
+export const positions: Record<string, { name: string; role: string }> = {
+  ST: {
+    name: 'Striker',
+    role: 'The focal point of the attack. Holds the ball up, finishes chances, and is judged on goals.',
+  },
+  LW: {
+    name: 'Left winger',
+    role: 'Stretches the defense wide on the left, beats a full-back one on one, and cuts inside to shoot or cross.',
+  },
+  RW: {
+    name: 'Right winger',
+    role: 'The same job on the right: pace and width, crosses, and runs in behind.',
+  },
+  CM: {
+    name: 'Central midfielder',
+    role: 'The engine. Links defense to attack, sets the tempo, and covers ground in both directions.',
+  },
+  LCM: {
+    name: 'Left central midfielder',
+    role: 'Shares the middle of the park. Carries the ball forward and supports the left side.',
+  },
+  RCM: {
+    name: 'Right central midfielder',
+    role: 'Shares the middle on the right. Wins the ball back and keeps possession ticking.',
+  },
+  LB: {
+    name: 'Left back',
+    role: 'Defends the left flank, then overlaps to give the attack width.',
+  },
+  RB: {
+    name: 'Right back',
+    role: 'Defends the right flank and joins the attack when there is space.',
+  },
+  LCB: {
+    name: 'Left center back',
+    role: 'Wins headers and tackles in the middle of the back line and starts play from deep.',
+  },
+  RCB: {
+    name: 'Right center back',
+    role: 'The other half of the central pairing. Reads danger early and keeps the line organized.',
+  },
+  GK: {
+    name: 'Goalkeeper',
+    role: 'The last line of defense. Stops shots, commands the box, and starts attacks with the first pass.',
+  },
+  SUB: {
+    name: 'Substitute',
+    role: 'Fresh legs from the bench. Comes on to change the game or close it out.',
+  },
+};
+
 /** Starting XI. */
 export const startingXi: Skill[] = [
   {
     name: 'TypeScript',
+    fit: 'Gets past bugs before they reach the box. Types catch them at compile time.',
     short: 'TypeScript',
     pos: 'LW',
     line: 'att',
@@ -49,6 +107,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'React',
+    fit: 'The one everything is built around. Most of the UI work ends with it.',
     short: 'React',
     pos: 'ST',
     line: 'att',
@@ -57,6 +116,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'Next.js',
+    fit: 'Runs in behind: routing, rendering on the server, and shipping to production.',
     short: 'Next.js',
     pos: 'RW',
     line: 'att',
@@ -65,6 +125,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'JavaScript',
+    fit: 'Carries everything forward. Every other tool on this pitch compiles to it or runs on it.',
     short: 'JavaScript',
     pos: 'LCM',
     line: 'mid',
@@ -73,6 +134,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'AWS',
+    fit: 'Connects the back line to the front: hosting, storage, and the services in between.',
     short: 'AWS',
     pos: 'CM',
     line: 'mid',
@@ -81,6 +143,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'Jest',
+    fit: 'Wins the ball back. Tests catch regressions before they turn into goals against.',
     short: 'Jest',
     pos: 'RCM',
     line: 'mid',
@@ -89,6 +152,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'HTML',
+    fit: 'Holds the flank. Semantic structure is the base every page builds on.',
     short: 'HTML',
     pos: 'LB',
     line: 'def',
@@ -97,6 +161,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'CSS',
+    fit: 'Keeps the shape. Layout and style hold the page together.',
     short: 'CSS',
     pos: 'LCB',
     line: 'def',
@@ -105,6 +170,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'React Testing Library',
+    fit: 'Reads danger the way a user would: tests what people see and click.',
     short: 'Testing Lib',
     pos: 'RCB',
     line: 'def',
@@ -113,6 +179,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'Bootstrap',
+    fit: 'Quick to cover ground with ready-made layout and components.',
     short: 'Bootstrap',
     pos: 'RB',
     line: 'def',
@@ -121,6 +188,7 @@ export const startingXi: Skill[] = [
   },
   {
     name: 'Git',
+    fit: 'Every mistake can be undone from here.',
     short: 'Git',
     pos: 'GK',
     line: 'gk',
@@ -132,6 +200,7 @@ export const startingXi: Skill[] = [
 export const bench: Skill[] = [
   {
     name: 'Accessibility',
+    fit: 'Makes sure everyone can play. Keyboard, screen reader, and contrast.',
     short: 'Accessibility',
     pos: 'SUB',
     line: 'mid',
@@ -140,6 +209,7 @@ export const bench: Skill[] = [
   },
   {
     name: 'Redux',
+    fit: 'Steady state management when the app gets crowded.',
     short: 'Redux',
     pos: 'SUB',
     line: 'mid',
@@ -148,6 +218,7 @@ export const bench: Skill[] = [
   },
   {
     name: 'Responsive Web Design',
+    fit: 'Fits any pitch size, from a phone to a wide screen.',
     short: 'Responsive',
     pos: 'SUB',
     line: 'mid',

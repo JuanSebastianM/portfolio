@@ -1,6 +1,6 @@
 # Sveltia CMS. Publishing commits to `main` on GitHub.
 # Do not sign in against production until the revamp is merged.
-# Setup steps: docs/Claude - CMS.md
+# Setup steps: docs/CMS.md
 locale: en
 backend:
   name: github
@@ -48,7 +48,7 @@ collections:
         name: tags
         widget: list
         required: false
-        hint: Lowercase. Category pages are derived from tags. See docs/Claude - CMS.md before inventing new ones.
+        hint: Lowercase. Category pages are derived from tags. See docs/CMS.md before inventing new ones.
       - label: Cover image
         name: coverImage
         widget: image

@@ -6,6 +6,8 @@ export const identity = {
   givenName: 'Juan Sebastián',
   familyName: 'Mendoza',
   role: 'Software Engineer / AI @GoDaddy',
+  /** Browser tab and share title. No employer name, per Juan. */
+  titleRole: 'Software Engineer',
   location: 'Colombia',
   githubUser: 'JuanSebastianM',
   email: 'hello@juansebastianmendoza.com',

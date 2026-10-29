@@ -8,6 +8,7 @@ import SeasonLog from '../components/SeasonLog.astro';
 import { about, ai } from '../data/profile';
 import { projects } from '../data/projects';
 import { identity } from '../data/site';
+import PenaltyGame from '../islands/PenaltyGame';
 import PitchBall from '../islands/PitchBall';
 import ProjectGrid from '../islands/ProjectGrid';
 import Reveal from '../islands/Reveal';
@@ -29,7 +30,7 @@ const featured = projects
   }));
 ---
 
-<Base title={`${identity.name} · ${identity.role}`} description={identity.description}>
+<Base title={`${identity.name} · ${identity.titleRole}`} description={identity.description}>
   <section class="shell hero">
     <div>
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span> {identity.location}</p>
@@ -58,13 +59,14 @@ const featured = projects
         </div>
       </dl>
     </div>
-    <div class="hero-stage" aria-hidden="true">
-      <div class="hero-pitch">
+    <div class="hero-stage">
+      <div class="hero-pitch" aria-hidden="true">
         <Pitch orientation="portrait" class="hero-pitch-portrait" />
         <Pitch orientation="landscape" class="hero-pitch-landscape" />
         <span class="hero-spot"></span>
       </div>
       <PitchBall client:idle />
+      <PenaltyGame client:visible />
     </div>
   </section>
 

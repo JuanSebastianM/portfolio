@@ -9,7 +9,7 @@ import { identity } from '../data/site';
     <h3 class="h-display" style="font-size: 2rem; margin-top: 0.4rem;">Let’s work together</h3>
     <p class="lede">{identity.emailNote}</p>
     <div style="margin-top: 1.2rem;">
-      <CopyEmail client:visible email={identity.email} />
+      <CopyEmail client:idle email={identity.email} />
     </div>
   </article>
   <aside class="card card-pad">

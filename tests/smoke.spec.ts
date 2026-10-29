@@ -69,6 +69,7 @@ test('stadium ambience produces a signal', async ({ page }) => {
 test('copy email puts the address on the clipboard', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('/#contact');
+  await page.locator('astro-island[component-url*="CopyEmail"]:not([ssr])').waitFor({ state: 'attached' });
   await page.getByRole('button', { name: 'Copy email' }).click();
   await expect(page.getByText('Email copied.')).toBeVisible();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('hello@juansebastianmendoza.com');
@@ -80,6 +81,7 @@ test('copy email falls back when the Clipboard API is missing', async ({ page })
     Object.defineProperty(navigator, 'clipboard', { value: undefined });
   });
   await page.goto('/#contact');
+  await page.locator('astro-island[component-url*="CopyEmail"]:not([ssr])').waitFor({ state: 'attached' });
   await page.getByRole('button', { name: 'Copy email' }).click();
   await expect(page.getByText('Email copied.')).toBeVisible();
 });
@@ -91,4 +93,30 @@ test('essay images and links render', async ({ page }) => {
   await expect(page.locator('.post-body')).not.toContainText('align=');
   await page.goto('/blog/introduction-to-react-router-and-single-page-applications');
   await expect(page.locator('.post-body a[href="#hashrouter"]')).toHaveCount(1);
+});
+
+test('page title leaves out the employer', async ({ page }) => {
+  await page.goto('/');
+  await expect(page).toHaveTitle('Juan Sebastián Mendoza · Software Engineer');
+});
+
+test('penalty game: shoot, score updates, Escape returns to the pitch', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('astro-island[component-url*="PenaltyGame"]:not([ssr])').waitFor({ state: 'attached' });
+  await page.getByRole('button', { name: 'Take a penalty' }).click();
+  await page.getByRole('button', { name: 'Shoot low left' }).click();
+  await expect(page.locator('.penalty-call')).toHaveText(/./);
+  await expect(page.locator('.penalty-hud')).toContainText('/1');
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('button', { name: 'Take a penalty' })).toBeVisible();
+});
+
+test('lineup players open a position card', async ({ page }) => {
+  await page.goto('/#lineup');
+  const keeper = page.locator('.xi .player-btn[aria-controls="pos-GK"]');
+  await keeper.click();
+  await expect(keeper).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('#pos-GK')).toContainText('Goalkeeper');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#pos-GK')).toBeHidden();
 });

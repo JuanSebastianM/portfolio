@@ -1,0 +1,28 @@
+---
+import type { Skill } from '../data/profile';
+
+interface Props {
+  skill: Skill;
+  info: { name: string; role: string };
+  id: string;
+}
+
+const { skill, info, id } = Astro.props;
+---
+
+<div class="pos-card" id={id} role="group" aria-label={`${info.name}: ${skill.name}`} hidden>
+  <button type="button" class="pos-card-close" aria-label="Close">
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+  </button>
+  <p class="pos-card-kicker">{info.name}</p>
+  <p class="pos-card-role">{info.role}</p>
+  {
+    skill.fit && (
+      <p class="pos-card-fit">
+        <strong>{skill.name}</strong> {skill.fit}
+      </p>
+    )
+  }
+</div>

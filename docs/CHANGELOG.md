@@ -1,4 +1,13 @@
-# Claude - Changelog
+# Changelog
+
+## Claude - 2026-10-29 (second pass)
+
+- Added a penalty shootout (`src/islands/PenaltyGame.tsx`). “Take a penalty” on the hero pitch opens a penalty view with a crowd, a goal, and a keeper. Pick one of six spots, the keeper guesses, and it ends as a goal, a save, or off the post. Goals, shots, streak, and best streak are shown; best streak is kept in `localStorage`. Escape or the close button returns to the pitch. With motion off the shot resolves instantly.
+- Lineup players are buttons. Each opens a card with the position’s name, what that position does, and why the tool fits there. Bench players too. A “Tap a player…” hint sits above the pitch and the discs ripple a few times when the lineup lands.
+- The home page title is “Juan Sebastián Mendoza · Software Engineer”. No employer name (`identity.titleRole`).
+- Copy email hydrates on idle instead of on scroll, so an early click is not lost.
+- Reverted the first pass’s doc renames. Doc files keep their names; Claude’s additions start with `Claude - `.
+- Smoke tests for the title, the game, and the position cards.
 
 ## Claude - 2026-10-29
 
@@ -15,7 +24,7 @@ Follow-up on `claude/portfolio-revamp-tasks-h5tp2q`, branched from `cursor/portf
 - Styled essay callouts and `<details>` blocks.
 - Removed `docs/screenshots/` from git and ignored it. Smoke tests write screenshots to `test-results/`.
 - Added smoke tests for the copy button (normal and fallback) and for essay images and anchors.
-- Renamed every file in `docs/` to start with `Claude - `.
+- Renamed the docs to `Claude - <NAME>.md`. Reverted in the second pass.
 
 ## 2026-10-28
 

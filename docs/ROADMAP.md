@@ -1,4 +1,4 @@
-# Claude - Roadmap
+# Roadmap
 
 ## Phase 1 — Foundation, design, blog
 
@@ -27,17 +27,20 @@ Done on this branch.
 - [x] Email copy works on HTTP and when the Clipboard API is refused
 - [x] Essay images, links, and anchors render; build checks them
 - [x] Screenshots removed from git
+- [x] Claude - Penalty shootout on the hero pitch
+- [x] Claude - Clickable lineup positions with a card per position
+- [x] Claude - Employer name removed from the page title
 - [ ] Juan reads the new AI and section copy and rewrites anything that does not sound like him
 
 ## Phase 3 — CMS enablement
 
-- [ ] Create the GitHub OAuth app and set Worker secrets (`docs/Claude - CMS.md`)
+- [ ] Create the GitHub OAuth app and set Worker secrets (`docs/CMS.md`)
 - [ ] Only after this revamp is on `main`
 - [ ] Juan publishes one test essay and deletes it
 
 ## Phase 4 — Cloudflare, domain, email
 
-- [ ] `npm run cf:deploy` with Juan’s account (`docs/Claude - DEPLOY.md`)
+- [ ] `npm run cf:deploy` with Juan’s account (`docs/DEPLOY.md`)
 - [ ] Register `juansebastianmendoza.com` on Cloudflare Registrar
 - [ ] Attach the domain to the Worker
 - [ ] Email Routing for `hello@juansebastianmendoza.com`
@@ -57,5 +60,6 @@ Still unknown. Do not invent them.
 8. **Email** — `hello@juansebastianmendoza.com` is planned. Routing is not on.
 9. **CMS secrets** — GitHub OAuth client id and secret are not set.
 10. **Domain** — `juansebastianmendoza.com` is not registered.
-11. **AI copy** — the framing in `ai` (`src/data/profile.ts`) is Claude’s suggestion. The tools and uses are Juan’s.
-12. **Cloudflare** — no account is connected. Juan has to run `npx wrangler login` himself.
+11. Claude - **AI copy** — the framing in `ai` (`src/data/profile.ts`) is Claude’s suggestion. The tools and uses are Juan’s.
+12. Claude - **Position “fit” lines** — the one-liners on each lineup card are Claude’s. Juan can rewrite them in `src/data/profile.ts`.
+13. Claude - **Cloudflare** — no account is connected. Juan has to run `npx wrangler login` himself.
