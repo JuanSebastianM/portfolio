@@ -1,14 +1,14 @@
 # Design
 
-Light is green and white. Dark is deep blue and garnet. A sun or moon button switches them. A to-scale pitch (Claude - redrawn 2026-10-29), a lineup, a season log, and tilt on the project cards carry the soccer idea. Club crests, wordmarks, and kit art are trademarks, so they are not used, and the clubs are not named in the interface.
+Grok - Light is green and white. Dark is deep blue and garnet. A sun or moon button switches them. A to-scale pitch (Claude - redrawn 2026-10-29), a lineup, a season log, and tilt on the project cards carry the soccer idea. Club crests, wordmarks, and kit art are trademarks, so they are not used, and the clubs are not named in the interface.
 
-The page should feel like a match program set in editorial type. It should not feel like a soccer template with badges and emoji.
+Grok - The page should feel like a match program set in editorial type. It should not feel like a soccer template with badges and emoji.
 
-## Palettes
+## Grok - Palettes
 
 Light sets `data-mode="light"` and `data-club="nacional"`. Dark sets `data-mode="dark"` and `data-club="barca"`. Tokens live in `src/styles/global.css`.
 
-### Light (green and white)
+### Grok - Light (green and white)
 
 | Token | Light | Dark |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ Light sets `data-mode="light"` and `data-club="nacional"`. Dark sets `data-mode=
 | Ball `--ball` | `#0e6b38` | `#6ee7a8` |
 | Ball ring `--ball-ring` | `#08321a` | `#d7ffe8` |
 
-### Dark (blue and garnet)
+### Grok - Dark (blue and garnet)
 
 | Token | Light | Dark |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Grass is always green. Club color lives on the players and in the floodlight. Pl
 
 Claude - In the penalty view the keeper wears `--keeper` (yellow in light mode, `--accent-2` in dark) so he stands out from the grass. The crowd uses the accent colors.
 
-## Typography
+## Grok - Typography
 
 - UI: Outfit, variable, latin (and latin-ext as a fallback range).
 - Display: Fraunces, variable, weight about 560.
@@ -69,7 +69,7 @@ Claude - In the penalty view the keeper wears `--keeper` (yellow in light mode, 
 - Body size `1.0625rem`. Headlines use tight tracking and a short line height.
 - `text-wrap` is left to the browser; headings are clamped.
 
-## Motion
+## Grok - Motion
 
 - Scroll sections use Motion (`whileInView`, once). Hero text is not hidden behind that animation.
 - Project cards tilt up to about 9 degrees on fine pointers. Coarse pointers do not tilt.
@@ -79,7 +79,7 @@ Claude - In the penalty view the keeper wears `--keeper` (yellow in light mode, 
 - Ambience is synthetic filtered noise from the Web Audio API. No audio file ships in the repo. It starts only after the speaker button is pressed, then fades. Volume is a slider. License: original code in `src/islands/HeaderTools.tsx`, not a recording.
 - `data-motion="off"` is the switch that stops those effects. It starts from `prefers-reduced-motion` and can be changed in the header. A `noscript` rule keeps reveal targets visible without JavaScript.
 
-## Components
+## Grok - Components
 
 | Piece | Where | Notes |
 | --- | --- | --- |
@@ -99,7 +99,7 @@ Claude - In the penalty view the keeper wears `--keeper` (yellow in light mode, 
 | Essay | `blog/[slug].astro` | Claude - Prose, Shiki, callouts, details, related posts |
 | CMS | `public/admin` | Sveltia |
 
-## Layout
+## Grok - Layout
 
 - Content width `min(1120px, 100% - 2rem)`.
 - Mobile first. The lineup becomes a pitch at `768px`. Home project grid becomes a bento at `1024px`.

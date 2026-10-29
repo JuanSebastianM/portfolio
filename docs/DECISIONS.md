@@ -1,8 +1,8 @@
 # Decisions
 
-## 2026-10-28
+## Grok - 2026-10-28
 
-### Stack
+### Grok - Stack
 
 The brief floated Next.js. The build uses the stack already agreed with Juan. One line each:
 
@@ -14,13 +14,13 @@ The brief floated Next.js. The build uses the stack already agreed with Juan. On
 - **React Three Fiber / Three.js** — one idle-loaded ball on the hero. It does not load on small screens, `prefers-reduced-motion`, or Save-Data. A full WebGL page would fight the performance goal.
 - **Astro content collections** — the existing markdown already has the schema we need. A database CMS would fight “publish from git.”
 
-### Hosting
+### Grok - Hosting
 
 Cloudflare Workers static assets, one Worker. The Worker only runs for `/auth`, `/callback`, and `/oauth/*`. Everything else is the Astro `dist/` directory. Pages would also work; one Wrangler config keeps the site and the OAuth handler together. Not deployed. Juan’s Cloudflare login comes later.
 
 `build.format` is `file` and Wrangler’s `html_handling` is `drop-trailing-slash`, so canonical URLs have no trailing slash.
 
-### Domain and email
+### Grok - Domain and email
 
 Canonical URL: `https://juansebastianmendoza.com` (`src/data/site.ts`). Not registered. No `CNAME` file.
 
@@ -28,11 +28,11 @@ Canonical URL: `https://juansebastianmendoza.com` (`src/data/site.ts`). Not regi
 
 Public address `hello@juansebastianmendoza.com` via Cloudflare Email Routing later. The site says the inbox is not live. Contact is a copy button and a mailto link. The old Formspree form was removed.
 
-### Language
+### Grok - Language
 
 English only. Phase 1 used the old homepage about text, with grammar tightened. Phase 2 replaces that about with the LinkedIn about, also lightly edited and not extended. The hero line is the LinkedIn headline, “Software Engineer / AI @GoDaddy”. The GitHub bio string remains in `src/data/site.ts` and is no longer the hero.
 
-### CMS
+### Grok - CMS
 
 Sveltia CMS at `/admin`, GitHub backend, pinned build `@sveltia/cms@0.253.1` committed at `public/admin/sveltia-cms.js` so the editor does not depend on a CDN at runtime. Chosen over Decap/Tina because the brief’s later instruction was Sveltia, it is a git-based visual editor, and it speaks the same OAuth postMessage protocol as Sveltia CMS Authenticator.
 
@@ -40,25 +40,25 @@ Publishing commits to `main`. Do not sign in until this revamp is on `main`, or 
 
 `auth_scope` is `public_repo` because the portfolio repository is public.
 
-### Blog
+### Grok - Blog
 
 Content collection, existing frontmatter, no extra required fields. Category pages come from `src/lib/posts.ts` (first matching tag wins). Tag pages are one route per tag. Reading time is 220 words per minute. RSS is `/rss.xml`. Shiki uses `github-light` and `github-dark`, switched with `data-mode`. Essay images are local WebP files in `public/images/blog` (max width 1600, quality 78). The old host name was removed later; see “Publishing platform name removed” below.
 
-### Theme and design
+### Grok - Theme and design
 
 Two fan palettes, Atlético Nacional (green and white) and FC Barcelona (blue and garnet), each with light and dark. Default is Nacional and, when there is no saved choice, the OS color scheme. No official crests. Pitch lines, a starting XI, a season-log timeline, tilt on project cards, and scroll reveal are the soccer language. Details and hex values are in `docs/DESIGN.md`.
 
-### Projects copy
+### Grok - Projects copy
 
 Blurbs state only what the GitHub snapshot, pull request titles, or the old homepage already said. `commentful`’s README is still the create-next-app starter, so its card is summarized from public pull request titles. `cal.com` is described as a public fork. A merged upstream pull request was not in the 2026-10-28 search. LynStore’s old GitHub URL did not resolve; the Netlify link stays.
 
-### What phase 1 did not do
+### Grok - What phase 1 did not do
 
 - No live deploy, no domain registration, no email routing.
 - No LinkedIn import yet.
 - No guessed employers or school.
 
-## 2026-10-28 — Phase 2 content
+## Grok - 2026-10-28 — Phase 2 content
 
 The public LinkedIn export is now the source for about, experience, education, certifications, volunteering, and the bench.
 
@@ -73,25 +73,25 @@ The public LinkedIn export is now the source for about, experience, education, c
 - **Featured** is the BarranquillaJS talk (via the 2022 retro, because LinkedIn has no recording URL) and the four essays he pinned.
 - **About** is his LinkedIn about, grammar only. The old soccer sentence is no longer the quote.
 
-### Publishing platform name removed
+### Grok - Publishing platform name removed
 
 The essays were first written on Hashnode. The site no longer promotes that name. Juan asked that the build not fail if the word remains in old posts, so the check script was removed. Platform-only tags (`programming-blogs`, `debuggingfeb`, `devretro2022`, `hacktoberfest-1`) were removed. Topical tags stayed. `hacktoberfest-1` became `hacktoberfest`.
 
-### Light and dark are the two palettes
+### Grok - Light and dark are the two palettes
 
 Juan confirmed both palettes, but not as text tabs. Light is the green and white palette. Dark is the deep blue and garnet palette. One sun/moon button switches them, follows `prefers-color-scheme` on the first visit, and remembers the choice. Club crests and logos are trademarks, so they are not used. The soccer identity is color, pitch lines, the formation, and motion.
 
-### Projects and open source
+### Grok - Projects and open source
 
 The Projects section is only LynStore (https://lynstore.netlify.app/, React and styled-components, Oct 2021–Jan 2022) and commentful, labeled an unfinished prototype. The public README is still the create-next-app starter, so the card does not list product features. Devsu’s two client apps stay in Experience. Margarita is not a job. It appears only under Open source contributions, as volunteering, with the merged Help a Family pull requests. Documenso is the merged pricing-container pull request. cal.com is a public fork only: no pull request or commit by Juan showed up on calcom/cal.diy or elsewhere in that org, so it is not listed on the site.
 
-### Motion and sound
+### Grok - Motion and sound
 
 `data-motion` is the single switch for animation. It defaults from `prefers-reduced-motion`, is saved in `localStorage`, and is a visible “Reduce motion” control. Off removes the scroll ball, the load bounce, pitch draw-in, lineup slide, net ripple, confetti, scroll reveals, and the 3D ball. Decorative motion uses transform and opacity. The scroll ball and pitch draw use CSS scroll or one-shot keyframes, not a second animation frame loop. The 3D ball is the only continuous frame loop, and it stops when the tab is hidden or motion is off.
 
 Stadium ambience is generated in the browser with the Web Audio API: a short loop of filtered noise shaped in code, with a slow filter wobble. There is no audio file and no recording. It is original to this repository, so no club anthem, chant, or broadcast is used. It is off until the visitor presses the speaker button, then fades in. Volume is a separate slider and is remembered. A later visit does not start audio by itself. Sound does not follow the motion switch.
 
-### Visibility and sound
+### Grok - Visibility and sound
 
 Scroll sections no longer start at opacity 0. Motion can nudge them, but the first HTML is readable with JavaScript off or if an animation never finishes. The old pitch-line dash offset is only inside the animation keyframes, so a missed animation cannot leave the lines (or the page) blank.
 
@@ -99,7 +99,7 @@ The first ambience attempt used brown noise through a narrow band-pass. Almost a
 
 The portrait is gone from the hero, the metadata image, and the repo. The hero’s right side is a pitch with the 3D ball on wide screens and a flat ball on small screens.
 
-### AI copy
+### Grok - AI copy
 
 Juan said he uses Claude, Grok Bot, Gemini, and ChatGPT, and that he uses AI for writing and refactoring code, debugging and understanding code, planning and architecture, learning new tech, automating tasks and building bots, and writing docs and content. The tone he asked for is enthusiastic: “I love building with AI.” That sentence is the hero line. The AI block lists the tools and those uses. Nothing else was added. The strings live in `src/data/profile.ts` as `ai`. Superseded on 2026-10-29, see below.
 
@@ -129,7 +129,7 @@ Juan does not want screenshots committed. `docs/screenshots/` is ignored and the
 
 ### Doc names
 
-Juan wants every doc update an agent makes to start with that agent’s name, so the next agent knows who wrote it. Sections Claude adds are headed `Claude - ...` and single lines start with `Claude - `. File names and doc titles do not change. A first pass renamed the files by mistake; the second pass reverted that.
+Juan wants every doc update an agent makes to start with that agent’s name, so the next agent knows who wrote it. Sections Claude adds are headed `Claude - ...` and single lines start with `Claude - `. File names and doc titles do not change. A first pass renamed the files by mistake; the second pass reverted that. Juan then confirmed that the docs that existed before were written by Grok, so their headings and opening paragraphs are now marked `Grok - `. A heading’s prefix covers everything under it unless a line carries its own prefix.
 
 ### Cloudflare
 

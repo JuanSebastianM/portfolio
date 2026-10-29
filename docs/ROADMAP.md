@@ -1,6 +1,6 @@
 # Roadmap
 
-## Phase 1 — Foundation, design, blog
+## Grok - Phase 1 — Foundation, design, blog
 
 Done on this branch.
 
@@ -12,7 +12,7 @@ Done on this branch.
 - [x] Placeholder experience, education, and bench skills
 - [x] Project memory in `AGENTS.md` and `docs/`
 
-## Phase 2 — LinkedIn content, polish, SEO
+## Grok - Phase 2 — LinkedIn content, polish, SEO
 
 - [x] Replace experience, education, certifications, volunteering, about, and the bench from the LinkedIn export
 - [x] Projects limited to LynStore and commentful
@@ -32,13 +32,13 @@ Done on this branch.
 - [x] Claude - Employer name removed from the page title
 - [ ] Juan reads the new AI and section copy and rewrites anything that does not sound like him
 
-## Phase 3 — CMS enablement
+## Grok - Phase 3 — CMS enablement
 
 - [ ] Create the GitHub OAuth app and set Worker secrets (`docs/CMS.md`)
 - [ ] Only after this revamp is on `main`
 - [ ] Juan publishes one test essay and deletes it
 
-## Phase 4 — Cloudflare, domain, email
+## Grok - Phase 4 — Cloudflare, domain, email
 
 - [ ] `npm run cf:deploy` with Juan’s account (`docs/DEPLOY.md`)
 - [ ] Register `juansebastianmendoza.com` on Cloudflare Registrar
@@ -46,7 +46,7 @@ Done on this branch.
 - [ ] Email Routing for `hello@juansebastianmendoza.com`
 - [ ] Remove the “inbox is not live” note once mail works
 
-## TODO(content)
+## Grok - TODO(content)
 
 Still unknown. Do not invent them.
 

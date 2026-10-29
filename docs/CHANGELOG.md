@@ -8,6 +8,7 @@
 - Copy email hydrates on idle instead of on scroll, so an early click is not lost.
 - Reverted the first pass’s doc renames. Doc files keep their names; Claude’s additions start with `Claude - `.
 - Smoke tests for the title, the game, and the position cards.
+- Marked the docs that were already here (README, AGENTS, and `docs/`) with `Grok - `, since Grok wrote them.
 
 ## Claude - 2026-10-29
 
@@ -26,7 +27,7 @@ Follow-up on `claude/portfolio-revamp-tasks-h5tp2q`, branched from `cursor/portf
 - Added smoke tests for the copy button (normal and fallback) and for essay images and anchors.
 - Renamed the docs to `Claude - <NAME>.md`. Reverted in the second pass.
 
-## 2026-10-28
+## Grok - 2026-10-28
 
 Phase 1 of the portfolio revamp, on `cursor/portfolio-v2-1d23`. The live site on `main` is unchanged until merge.
 
@@ -38,7 +39,7 @@ Phase 1 of the portfolio revamp, on `cursor/portfolio-v2-1d23`. The live site on
 - Added Sveltia CMS at `/admin` (`src/pages/admin.astro`) and a Cloudflare Worker OAuth handler. Not enabled and not deployed.
 - Left experience, education, and bench skills as explicit placeholders.
 
-### Phase 2
+### Grok - Phase 2
 
 - Filled experience, education, certifications, volunteering, about, and the bench from the public LinkedIn profile.
 - GoDaddy rows stay title, dates, location, and the headline stack. No invented duties.
