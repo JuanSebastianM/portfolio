@@ -1,0 +1,23 @@
+---
+import CopyEmail from '../islands/CopyEmail';
+import { identity } from '../data/site';
+---
+
+<div class="contact-grid">
+  <article class="card card-pad">
+    <p class="kicker">Email</p>
+    <h3 class="h-display" style="font-size: 2rem; margin-top: 0.4rem;">Let’s work together</h3>
+    <p class="lede">{identity.emailNote}</p>
+    <div style="margin-top: 1.2rem;">
+      <CopyEmail client:idle email={identity.email} />
+    </div>
+  </article>
+  <aside class="card card-pad">
+    <p class="kicker">Elsewhere</p>
+    <div class="socials" style="margin-top: 0.8rem;">
+      <a href={identity.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href={identity.twitter} target="_blank" rel="noreferrer">X</a>
+      <a href={identity.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </aside>
+</div>

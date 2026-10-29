@@ -1,0 +1,33 @@
+---
+import PostCard from '../../../components/PostCard.astro';
+import { getPosts } from '../../../lib/posts';
+import Base from '../../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return tags.map((tag) => ({ params: { tag } }));
+}
+
+const tag = Astro.params.tag ?? '';
+const posts = (await getPosts()).filter((post) => post.data.tags.includes(tag));
+---
+
+<Base
+  title={`#${tag}`}
+  description={`Essays tagged ${tag} by Juan Sebastián Mendoza.`}
+>
+  <section class="shell section">
+    <header class="section-head">
+      <p class="kicker">Tag</p>
+      <h1 class="h-display" style="font-size: clamp(2.6rem, 6vw, 4.5rem);">#{tag}</h1>
+      <p class="lede">{posts.length} {posts.length === 1 ? 'essay' : 'essays'} with this tag.</p>
+    </header>
+    <p style="margin-top: 1rem;"><a href="/blog">All essays</a></p>
+    <ul class="post-grid" style="margin-top: 1.2rem;">
+      {posts.map((post) => (
+        <li><PostCard post={post} /></li>
+      ))}
+    </ul>
+  </section>
+</Base>

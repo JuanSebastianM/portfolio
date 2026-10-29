@@ -1,0 +1,87 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PitchField from '../components/PitchField.astro';
+import Seo from '../components/Seo.astro';
+import { identity, siteUrl } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  published?: Date;
+  tags?: string[];
+  showProgress?: boolean;
+  jsonLd?: Record<string, unknown>;
+}
+
+const props = Astro.props;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: identity.name,
+  jobTitle: identity.role,
+  url: siteUrl,
+  email: identity.email,
+  image: new URL('/favicon.svg', siteUrl).toString(),
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'Colombia',
+  },
+  sameAs: [identity.github, identity.twitter, identity.linkedin],
+};
+const jsonLd = props.jsonLd ?? person;
+---
+
+<!doctype html>
+<html lang="en" data-club="nacional" data-mode="light" data-motion="on">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7f2" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <script is:inline>
+      (function () {
+        try {
+          var mode = localStorage.getItem('mode');
+          var motion = localStorage.getItem('motion');
+          if (mode !== 'dark' && mode !== 'light') {
+            mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          if (motion !== 'on' && motion !== 'off') {
+            motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'off' : 'on';
+          }
+          var root = document.documentElement;
+          root.dataset.mode = mode;
+          root.dataset.club = mode === 'dark' ? 'barca' : 'nacional';
+          root.dataset.motion = motion;
+          var colors = { light: '#f4f7f2', dark: '#120810' };
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', colors[mode]);
+        } catch (error) {}
+      })();
+    </script>
+    <Seo {...props} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <noscript>
+      <style>
+        .reveal-target { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {props.showProgress && <div class="reading-progress" aria-hidden="true"></div>}
+    <div class="scroll-ball" aria-hidden="true"></div>
+    <span class="load-ball" aria-hidden="true"></span>
+    <PitchField />
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

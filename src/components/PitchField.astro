@@ -1,0 +1,32 @@
+---
+// Faint full-page pitch behind everything, drawn to the same 105 x 68 proportions as Pitch.astro.
+const W = 1050;
+const H = 680;
+const cy = H / 2;
+const box = { d: 165, w: 403.2 };
+const six = { d: 55, w: 183.2 };
+const r = 91.5;
+const arcDy = Math.sqrt(r * r - (box.d - 110) ** 2);
+---
+
+<div class="pitch-field" aria-hidden="true">
+  <svg viewBox={`-60 -60 ${W + 120} ${H + 120}`} preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke">
+      <rect width={W} height={H}></rect>
+      <line x1={W / 2} y1="0" x2={W / 2} y2={H}></line>
+      <circle cx={W / 2} cy={cy} r={r}></circle>
+      <circle cx={W / 2} cy={cy} r="4" fill="currentColor" stroke="none"></circle>
+      <rect x="0" y={cy - box.w / 2} width={box.d} height={box.w}></rect>
+      <rect x={W - box.d} y={cy - box.w / 2} width={box.d} height={box.w}></rect>
+      <rect x="0" y={cy - six.w / 2} width={six.d} height={six.w}></rect>
+      <rect x={W - six.d} y={cy - six.w / 2} width={six.d} height={six.w}></rect>
+      <circle cx="110" cy={cy} r="3.5" fill="currentColor" stroke="none"></circle>
+      <circle cx={W - 110} cy={cy} r="3.5" fill="currentColor" stroke="none"></circle>
+      <path d={`M${box.d} ${cy - arcDy}A${r} ${r} 0 0 1 ${box.d} ${cy + arcDy}`}></path>
+      <path d={`M${W - box.d} ${cy - arcDy}A${r} ${r} 0 0 0 ${W - box.d} ${cy + arcDy}`}></path>
+      <rect x="-22" y={cy - 36.6} width="22" height="73.2"></rect>
+      <rect x={W} y={cy - 36.6} width="22" height="73.2"></rect>
+      <path d={`M0 10A10 10 0 0 0 10 0M${W - 10} 0A10 10 0 0 0 ${W} 10M${W} ${H - 10}A10 10 0 0 0 ${W - 10} ${H}M10 ${H}A10 10 0 0 0 0 ${H - 10}`}></path>
+    </g>
+  </svg>
+</div>

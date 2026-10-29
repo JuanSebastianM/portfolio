@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "juansebastianmendoza",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-03-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash",
+    "run_worker_first": ["/auth", "/callback", "/oauth/*"]
+  },
+  "vars": {
+    "ALLOWED_DOMAINS": "juansebastianmendoza.com,www.juansebastianmendoza.com"
+  }
+}

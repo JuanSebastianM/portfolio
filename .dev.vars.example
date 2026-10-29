@@ -1,0 +1,4 @@
+# Copy to .dev.vars for `npm run cf:preview`. Never commit .dev.vars.
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+ALLOWED_DOMAINS=localhost,127.0.0.1,juansebastianmendoza.com,www.juansebastianmendoza.com
