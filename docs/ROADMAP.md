@@ -1,6 +1,6 @@
 # Roadmap
 
-## Grok - Phase 1 — Foundation, design, blog
+## Phase 1 — Foundation, design, blog
 
 Done on this branch.
 
@@ -12,7 +12,7 @@ Done on this branch.
 - [x] Placeholder experience, education, and bench skills
 - [x] Project memory in `AGENTS.md` and `docs/`
 
-## Grok - Phase 2 — LinkedIn content, polish, SEO
+## Phase 2 — LinkedIn content, polish, SEO
 
 - [x] Replace experience, education, certifications, volunteering, about, and the bench from the LinkedIn export
 - [x] Projects limited to LynStore and commentful
@@ -20,25 +20,25 @@ Done on this branch.
 - [ ] Optional: pagination if the blog grows past a single index
 - [ ] Pass a Lighthouse pass on the production URL after deploy
 
-## Claude - Phase 2 follow-up (2026-10-29)
+## Phase 2 follow-up (2026-10-29)
 
 - [x] Pitch redrawn to scale, used in the hero, the lineup, and the page background
 - [x] AI copy rewritten around Juan’s own list
 - [x] Email copy works on HTTP and when the Clipboard API is refused
 - [x] Essay images, links, and anchors render; build checks them
 - [x] Screenshots removed from git
-- [x] Claude - Penalty shootout on the hero pitch
-- [x] Claude - Clickable lineup positions with a card per position
-- [x] Claude - Employer name removed from the page title
+- [x] Penalty shootout on the hero pitch
+- [x] Clickable lineup positions with a card per position
+- [x] Employer name removed from the page title
 - [ ] Juan reads the new AI and section copy and rewrites anything that does not sound like him
 
-## Grok - Phase 3 — CMS enablement
+## Phase 3 — CMS enablement
 
 - [ ] Create the GitHub OAuth app and set Worker secrets (`docs/CMS.md`)
 - [ ] Only after this revamp is on `main`
 - [ ] Juan publishes one test essay and deletes it
 
-## Grok - Phase 4 — Cloudflare, domain, email
+## Phase 4 — Cloudflare, domain, email
 
 - [ ] `npm run cf:deploy` with Juan’s account (`docs/DEPLOY.md`)
 - [ ] Register `juansebastianmendoza.com` on Cloudflare Registrar
@@ -46,7 +46,7 @@ Done on this branch.
 - [ ] Email Routing for `hello@juansebastianmendoza.com`
 - [ ] Remove the “inbox is not live” note once mail works
 
-## Grok - TODO(content)
+## TODO(content)
 
 Still unknown. Do not invent them.
 
@@ -60,6 +60,6 @@ Still unknown. Do not invent them.
 8. **Email** — `hello@juansebastianmendoza.com` is planned. Routing is not on.
 9. **CMS secrets** — GitHub OAuth client id and secret are not set.
 10. **Domain** — `juansebastianmendoza.com` is not registered.
-11. Claude - **AI copy** — the framing in `ai` (`src/data/profile.ts`) is Claude’s suggestion. The tools and uses are Juan’s.
-12. Claude - **Position “fit” lines** — the one-liners on each lineup card are Claude’s. Juan can rewrite them in `src/data/profile.ts`.
-13. Claude - **Cloudflare** — no account is connected. Juan has to run `npx wrangler login` himself.
+11. **AI copy** — the framing in `ai` (`src/data/profile.ts`) is Claude’s suggestion. The tools and uses are Juan’s.
+12. **Position “fit” lines** — the one-liners on each lineup card are Claude’s. Juan can rewrite them in `src/data/profile.ts`.
+13. **Cloudflare** — no account is connected. Juan has to run `npx wrangler login` himself.

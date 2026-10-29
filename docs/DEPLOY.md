@@ -1,21 +1,21 @@
 # Deploy
 
-Grok - Do not deploy until Juan is at the Cloudflare login. Nothing in this repo has been published.
+Do not deploy until Juan is at the Cloudflare login. Nothing in this repo has been published.
 
-Claude - As of 2026-10-29 no Cloudflare account, API token, or Wrangler login is set up anywhere an agent can use. Every step below that touches Cloudflare needs Juan.
+As of 2026-10-29 no Cloudflare account, API token, or Wrangler login is set up anywhere an agent can use. Every step below that touches Cloudflare needs Juan.
 
-Grok - Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.com` on Cloudflare Registrar. Mail later: `hello@juansebastianmendoza.com` via Email Routing.
+Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.com` on Cloudflare Registrar. Mail later: `hello@juansebastianmendoza.com` via Email Routing.
 
-## Grok - What is already in the repo
+## What is already in the repo
 
 - `wrangler.jsonc` — Worker name `juansebastianmendoza`, assets from `./dist`, OAuth routes run the Worker first
 - `worker/index.ts` — GitHub OAuth for Sveltia
-- `npm run cf:preview` — Claude - `npm run build` (Astro plus the essay check) then `wrangler dev`
-- `npm run cf:deploy` — Claude - `npm run build` then `wrangler deploy`
+- `npm run cf:preview` — `npm run build` (Astro plus the essay check) then `wrangler dev`
+- `npm run cf:deploy` — `npm run build` then `wrangler deploy`
 
 `astro dev` is enough to work on the site. It does not boot the Worker.
 
-## Grok - First deploy
+## First deploy
 
 1. Install dependencies and confirm `npm run build` and `npm run check`.
 2. `npx wrangler login` with Juan’s Cloudflare account.
@@ -27,7 +27,7 @@ Grok - Target: Cloudflare Workers static assets. Domain later: `juansebastianmen
 
 `ALLOWED_DOMAINS` in `wrangler.jsonc` is the apex and `www` only. Add a `workers.dev` host there only while you are testing CMS sign-in on that host, then remove it.
 
-## Grok - Email
+## Email
 
 After the domain is on Cloudflare:
 
@@ -38,7 +38,7 @@ After the domain is on Cloudflare:
 
 Contact on the site is the copy button and mailto link. There is no third-party form.
 
-## Grok - CMS after the domain works
+## CMS after the domain works
 
 Follow `docs/CMS.md`. The GitHub OAuth callback is `https://juansebastianmendoza.com/callback`. Secrets:
 
@@ -47,7 +47,7 @@ npx wrangler secret put GITHUB_CLIENT_ID
 npx wrangler secret put GITHUB_CLIENT_SECRET
 ```
 
-## Grok - Checks before calling it live
+## Checks before calling it live
 
 - `/`, `/projects`, `/blog`, one essay, one category, one tag, `/admin`, `/rss.xml`
 - Both club palettes, light and dark, on a phone width and a desktop width
