@@ -1,0 +1,34 @@
+---
+import PostCard from '../../../components/PostCard.astro';
+import { categories, getPosts } from '../../../lib/posts';
+import Base from '../../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const slugs = [...new Set(posts.map((post) => post.category.slug))];
+  return slugs.map((category) => ({ params: { category } }));
+}
+
+const { category: categorySlug } = Astro.params;
+const category = categories.find((item) => item.slug === categorySlug);
+const posts = (await getPosts()).filter((post) => post.category.slug === categorySlug);
+if (!category) {
+  throw new Error(`Unknown category ${categorySlug}`);
+}
+---
+
+<Base title={`${category.name} essays`} description={category.description}>
+  <section class="shell section">
+    <header class="section-head">
+      <p class="kicker">Category</p>
+      <h1 class="h-display" style="font-size: clamp(2.6rem, 6vw, 4.5rem);">{category.name}</h1>
+      <p class="lede">{category.description}</p>
+    </header>
+    <p style="margin-top: 1rem;"><a href="/blog">All essays</a></p>
+    <ul class="post-grid" style="margin-top: 1.2rem;">
+      {posts.map((post) => (
+        <li><PostCard post={post} /></li>
+      ))}
+    </ul>
+  </section>
+</Base>

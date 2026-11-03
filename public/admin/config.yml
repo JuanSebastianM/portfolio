@@ -1,0 +1,59 @@
+# Sveltia CMS. Publishing commits to `main` on GitHub.
+# Do not sign in against production until the revamp is merged.
+# Setup steps: docs/CMS.md
+locale: en
+backend:
+  name: github
+  repo: JuanSebastianM/portfolio
+  branch: main
+  base_url: https://juansebastianmendoza.com
+  auth_scope: public_repo
+media_folder: public/images/uploads
+public_folder: /images/uploads
+site_url: https://juansebastianmendoza.com
+display_url: https://juansebastianmendoza.com
+logo_url: /favicon.svg
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Post
+    folder: src/content/blog
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    identifier_field: slug
+    slug: "{{fields.slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields:
+      - date
+      - title
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Subtitle
+        name: subtitle
+        widget: string
+        required: false
+      - label: Date
+        name: date
+        widget: datetime
+        picker_utc: true
+      - label: Slug
+        name: slug
+        widget: string
+        hint: URL segment. The page will be /blog/this-slug. Use lowercase words and hyphens.
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        hint: Lowercase. Category pages are derived from tags. See docs/CMS.md before inventing new ones.
+      - label: Cover image
+        name: coverImage
+        widget: image
+        required: false
+        hint: New uploads go to /images/uploads. Existing essays already point at /images/blog.
+      - label: Body
+        name: body
+        widget: markdown

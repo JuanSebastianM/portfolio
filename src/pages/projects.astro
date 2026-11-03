@@ -1,0 +1,37 @@
+---
+import OpenSource from '../components/OpenSource.astro';
+import { projects } from '../data/projects';
+import ProjectGrid from '../islands/ProjectGrid';
+import Base from '../layouts/Base.astro';
+
+const cards = projects.map((project) => ({
+  slug: project.slug,
+  name: project.name,
+  summary: project.summary,
+  role: project.role,
+  language: project.language,
+  links: project.links,
+  image: project.image,
+  imageAlt: project.imageAlt,
+}));
+---
+
+<Base
+  title="Projects"
+  description="LynStore, a freelance React site, and commentful, an unfinished Next.js prototype, by Juan Sebastián Mendoza."
+>
+  <section class="shell section">
+    <header class="section-head">
+      <p class="kicker">Fixtures</p>
+      <h2 class="h-display" style="font-size: clamp(2.6rem, 6vw, 4.5rem);">Projects</h2>
+      <p class="lede">
+        LynStore is the site that shipped. commentful is a prototype that was never finished.
+        Client work from Devsu stays in the experience log.
+      </p>
+    </header>
+    <div style="margin-top: 1.5rem;">
+      <ProjectGrid client:visible projects={cards} />
+    </div>
+  </section>
+  <OpenSource />
+</Base>

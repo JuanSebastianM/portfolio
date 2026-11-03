@@ -1,0 +1,100 @@
+---
+import { certifications, education, experience, featured } from '../data/profile';
+---
+
+<div class="split">
+  <div>
+    <h3 class="h-display" style="font-size: 1.8rem;">Experience</h3>
+    <p class="lede">GoDaddy, Devsu, and freelance work.</p>
+    <ol class="season-list">
+      {
+        experience.map((item) => (
+          <li class="season-item">
+            <span class="minute">{item.slot}</span>
+            <article class="card card-pad">
+              {item.kind === 'volunteer' && <span class="flag">Volunteering</span>}
+              <h3>{item.title}</h3>
+              <p class="org">{item.org}</p>
+              <dl class="stat-grid">
+                <div>
+                  <dt>Season</dt>
+                  <dd>{item.season}</dd>
+                </div>
+                <div>
+                  <dt>Where</dt>
+                  <dd>{item.meta}</dd>
+                </div>
+              </dl>
+              {item.summary && <p class="role-copy">{item.summary}</p>}
+              {item.bullets && (
+                <ul class="role-points">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              )}
+              {item.projects && (
+                <ul class="role-projects">
+                  {item.projects.map((project) => (
+                    <li>
+                      <strong>{project.name}</strong>
+                      <span>{project.detail}</span>
+                      {project.href && (
+                        <a href={project.href} target="_blank" rel="noreferrer">
+                          {project.hrefLabel}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <div>
+    <h3 class="h-display" style="font-size: 1.8rem;">Education</h3>
+    <article class="card card-pad" style="margin-top: 1rem;">
+      <h3>{education.credential}</h3>
+      <p class="org">{education.school}</p>
+      <dl class="stat-grid">
+        <div>
+          <dt>Season</dt>
+          <dd>{education.season}</dd>
+        </div>
+      </dl>
+      {education.note ? <p class="role-copy">{education.note}</p> : null}
+    </article>
+
+    <h3 class="h-display" style="font-size: 1.8rem; margin-top: 1.6rem;">Certifications</h3>
+    <ul class="cert-list">
+      {
+        certifications.map((item) => (
+          <li class="card card-pad">
+            <h3>{item.name}</h3>
+            <p class="org">{item.issuer}</p>
+            <p class="role-copy">
+              Issued {item.issued}
+              {item.expired && <span class="chip expired">Expired {item.expired}</span>}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <article class="card card-pad" style="margin-top: 1rem;">
+      <p class="kicker">Featured</p>
+      <p class="lede" style="margin-top: 0.4rem;">The BarranquillaJS talk and a few essays.</p>
+      <ul class="record-list">
+        {
+          featured.map((item) => (
+            <li>
+              <a href={item.href}>{item.title}</a>
+              <div style="color: var(--muted); font-size: 0.9rem;">{item.meta}</div>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </div>
+</div>

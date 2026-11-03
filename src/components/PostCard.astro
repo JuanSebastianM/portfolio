@@ -1,0 +1,33 @@
+---
+import { formatDate, tagHref, type PostView } from '../lib/posts';
+
+interface Props {
+  post: PostView;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="card post-card lift">
+  <a href={`/blog/${post.data.slug}`} class="shot" tabindex="-1" aria-hidden="true">
+    {
+      post.data.coverImage && (
+        <img src={post.data.coverImage} alt="" loading="lazy" />
+      )
+    }
+  </a>
+  <div class="body">
+    <div class="meta-row">
+      <a class="chip chip-link" href={`/blog/category/${post.category.slug}`}>{post.category.name}</a>
+      <span class="chip">{formatDate(post.data.date)}</span>
+      <span class="chip">{post.minutes} min</span>
+    </div>
+    <h3>
+      <a href={`/blog/${post.data.slug}`} style="text-decoration: none;">{post.data.title}</a>
+    </h3>
+    <p>{post.excerpt}</p>
+    <div class="meta-row">
+      {post.data.tags.map((tag) => <a class="tag" href={tagHref(tag)}>#{tag}</a>)}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,94 @@
+---
+/**
+ * A full-size pitch drawn to FIFA proportions (105 x 68 m, 1 unit = 10 cm).
+ * Portrait puts the goals top and bottom, landscape puts them left and right.
+ * Grass and chalk come from the --grass, --grass-alt, and --chalk tokens.
+ */
+interface Props {
+  orientation?: 'portrait' | 'landscape';
+  class?: string;
+}
+
+const { orientation = 'portrait', class: className } = Astro.props;
+const uid = `pitch-${Math.random().toString(36).slice(2, 8)}`;
+
+// Everything is laid out in portrait, then rotated for landscape.
+const W = 680;
+const H = 1050;
+const M = 40; // run-off around the lines
+const VW = W + M * 2;
+const VH = H + M * 2;
+const stripes = 14;
+const box = { w: 403.2, d: 165 };
+const six = { w: 183.2, d: 55 };
+const spot = 110;
+const r = 91.5;
+const goal = { w: 73.2, d: 24 };
+// Where the penalty arc meets the edge of the box.
+const arcDx = Math.sqrt(r * r - (box.d - spot) ** 2);
+const cx = W / 2;
+const viewBox = orientation === 'portrait' ? `0 0 ${VW} ${VH}` : `0 0 ${VH} ${VW}`;
+const turn = orientation === 'portrait' ? '' : `translate(${VH} 0) rotate(90)`;
+---
+
+<svg
+  class:list={['pitch', `pitch-${orientation}`, className]}
+  viewBox={viewBox}
+  preserveAspectRatio="xMidYMid meet"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <radialGradient id={`${uid}-light`} cx="50%" cy="0%" r="90%">
+      <stop offset="0" stop-color="var(--floodlight)" />
+      <stop offset="1" stop-color="var(--floodlight)" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id={`${uid}-vignette`} cx="50%" cy="50%" r="75%">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0" />
+      <stop offset="1" stop-color="#000" stop-opacity="0.28" />
+    </radialGradient>
+    <pattern id={`${uid}-net`} width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0 0L8 8M8 0L0 8" stroke="var(--chalk)" stroke-width="0.8" opacity="0.55" />
+    </pattern>
+  </defs>
+  <g transform={turn}>
+    <rect class="pitch-grass" width={VW} height={VH} />
+    {
+      Array.from({ length: stripes }, (_, index) =>
+        index % 2 ? (
+          <rect class="pitch-stripe" x="0" y={(VH / stripes) * index} width={VW} height={VH / stripes} />
+        ) : null,
+      )
+    }
+    <g transform={`translate(${M} ${M})`} class="pitch-lines">
+      <rect width={W} height={H} />
+      <line x1="0" y1={H / 2} x2={W} y2={H / 2} />
+      <circle cx={cx} cy={H / 2} r={r} />
+      <circle class="pitch-dot" cx={cx} cy={H / 2} r="5" />
+      {
+        [0, 1].map((end) => {
+          const flip = end ? `translate(0 ${H}) scale(1 -1)` : '';
+          return (
+            <g transform={flip}>
+              <rect x={cx - box.w / 2} y="0" width={box.w} height={box.d} />
+              <rect x={cx - six.w / 2} y="0" width={six.w} height={six.d} />
+              <circle class="pitch-dot" cx={cx} cy={spot} r="4" />
+              <path d={`M${cx - arcDx} ${box.d} A${r} ${r} 0 0 0 ${cx + arcDx} ${box.d}`} />
+              <rect
+                class="pitch-goal"
+                x={cx - goal.w / 2}
+                y={-goal.d}
+                width={goal.w}
+                height={goal.d}
+                fill={`url(#${uid}-net)`}
+              />
+              <path d={`M0 10A10 10 0 0 0 10 0M${W - 10} 0A10 10 0 0 0 ${W} 10`} />
+            </g>
+          );
+        })
+      }
+    </g>
+    <rect width={VW} height={VH} fill={`url(#${uid}-light)`} />
+    <rect width={VW} height={VH} fill={`url(#${uid}-vignette)`} />
+  </g>
+</svg>

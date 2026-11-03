@@ -1,0 +1,175 @@
+---
+import Contact from '../components/Contact.astro';
+import OpenSource from '../components/OpenSource.astro';
+import Formation from '../components/Formation.astro';
+import Pitch from '../components/Pitch.astro';
+import PostCard from '../components/PostCard.astro';
+import SeasonLog from '../components/SeasonLog.astro';
+import { about, ai } from '../data/profile';
+import { projects } from '../data/projects';
+import { identity } from '../data/site';
+import PenaltyGame from '../islands/PenaltyGame';
+import PitchBall from '../islands/PitchBall';
+import ProjectGrid from '../islands/ProjectGrid';
+import Reveal from '../islands/Reveal';
+import { getPosts } from '../lib/posts';
+import Base from '../layouts/Base.astro';
+
+const posts = (await getPosts()).slice(0, 3);
+const featured = projects
+  .filter((project) => project.featured)
+  .map((project) => ({
+    slug: project.slug,
+    name: project.name,
+    summary: project.summary,
+    role: project.role,
+    language: project.language,
+    links: project.links,
+    image: project.image,
+    imageAlt: project.imageAlt,
+  }));
+---
+
+<Base title={`${identity.name} · ${identity.titleRole}`} description={identity.description}>
+  <section class="shell hero">
+    <div>
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> {identity.location}</p>
+      <h1>
+        {identity.givenName}
+        <span>{identity.familyName}</span>
+      </h1>
+      <p class="lede" style="margin-top: 1rem;">{identity.headline}</p>
+      <p class="lede">{ai.lede}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/projects">See the work</a>
+        <a class="btn btn-ghost" href="/blog">Read the blog</a>
+      </div>
+      <dl class="facts">
+        <div>
+          <dt>Now</dt>
+          <dd>Senior Software Engineer</dd>
+        </div>
+        <div>
+          <dt>Since</dt>
+          <dd>Apr 2026</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>React, TypeScript, AWS, Node.js</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="hero-stage">
+      <div class="hero-pitch" aria-hidden="true">
+        <Pitch orientation="portrait" class="hero-pitch-portrait" />
+        <Pitch orientation="landscape" class="hero-pitch-landscape" />
+        <span class="hero-spot"></span>
+      </div>
+      <PitchBall client:idle />
+      <PenaltyGame client:visible />
+    </div>
+  </section>
+
+  <Reveal client:visible>
+    <section class="shell section" id="about">
+      <header class="section-head">
+        <p class="kicker"><span>01</span> Kickoff</p>
+        <h2>Full-stack, with a front-end background.</h2>
+      </header>
+      <div class="about-grid" style="margin-top: 1.5rem;">
+        <div class="prose-about">
+          {about.map((paragraph) => <p class="lede">{paragraph}</p>)}
+        </div>
+        <aside class="card ai-card" id="ai">
+          <p class="kicker">{ai.kicker}</p>
+          <h3 class="ai-title">{ai.title}</h3>
+          <p class="ai-intro">{ai.intro}</p>
+          <ul class="ai-tools" aria-label="Models I use">
+            {ai.tools.map((tool) => <li>{tool}</li>)}
+          </ul>
+          <dl class="ai-uses">
+            {
+              ai.uses.map((use) => (
+                <div>
+                  <dt>{use.label}</dt>
+                  <dd>{use.detail}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </aside>
+      </div>
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="lineup">
+      <header class="section-head">
+        <p class="kicker"><span>02</span> Starting XI</p>
+        <h2>The everyday stack, in formation.</h2>
+        <p class="lede">
+          React leads the line, AWS runs the midfield, Git keeps goal. Three more wait on the bench.
+        </p>
+      </header>
+      <Formation />
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="season">
+      <header class="section-head">
+        <p class="kicker"><span>03</span> Season log</p>
+        <h2>Career so far.</h2>
+        <p class="lede">From a freelance store build to GoDaddy.</p>
+      </header>
+      <SeasonLog />
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="projects">
+      <header class="section-head">
+        <p class="kicker"><span>04</span> Fixtures</p>
+        <h2>Selected work.</h2>
+        <p class="lede">
+          LynStore shipped for a local business. commentful is an unfinished prototype.
+        </p>
+      </header>
+      <div style="margin-top: 1.4rem;">
+        <ProjectGrid client:visible projects={featured} className="project-grid home-grid" />
+      </div>
+      <p style="margin-top: 1.2rem;"><a class="btn btn-ghost" href="/projects">All projects</a></p>
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <OpenSource />
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="writing">
+      <header class="section-head">
+        <p class="kicker"><span>05</span> Notebook</p>
+        <h2>Recent essays.</h2>
+        <p class="lede">React, testing, debugging, and breaking into the industry.</p>
+      </header>
+      <ul class="post-grid" style="margin-top: 1.4rem;">
+        {posts.map((post) => (
+          <li><PostCard post={post} /></li>
+        ))}
+      </ul>
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="shell section" id="contact">
+      <header class="section-head">
+        <p class="kicker"><span>06</span> Full time</p>
+        <h2>Say hello.</h2>
+      </header>
+      <div style="margin-top: 1.4rem;">
+        <Contact />
+      </div>
+    </section>
+  </Reveal>
+</Base>

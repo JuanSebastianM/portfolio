@@ -1,0 +1,58 @@
+---
+import HeaderTools from '../islands/HeaderTools';
+
+const path = Astro.url.pathname;
+const items = [
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#lineup', label: 'Lineup' },
+  { href: '/#contact', label: 'Contact' },
+];
+
+function current(href: string) {
+  if (href.startsWith('/#')) return false;
+  return path === href || path.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+  <div class="club-stripe"></div>
+  <div class="shell header-row">
+    <a class="brand" href="/">
+      <span class="crest" aria-hidden="true">JSM</span>
+      <span class="brand-name">Juan Mendoza</span>
+    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <ul class="nav-links">
+        {
+          items.map((item) => (
+            <li>
+              <a href={item.href} aria-current={current(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <HeaderTools client:load />
+  </div>
+  <div class="shell nav-mobile">
+    <details class="nav-drawer">
+      <summary class="nav-toggle">Menu</summary>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          {
+            items.map((item) => (
+              <li>
+                <a href={item.href} aria-current={current(item.href) ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

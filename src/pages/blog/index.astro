@@ -1,0 +1,64 @@
+---
+import PostCard from '../../components/PostCard.astro';
+import { identity } from '../../data/site';
+import { categories, getPosts } from '../../lib/posts';
+import Base from '../../layouts/Base.astro';
+
+const posts = await getPosts();
+const used = new Set(posts.map((post) => post.category.slug));
+const visibleCategories = categories.filter((category) => used.has(category.slug));
+---
+
+<Base
+  title="Blog"
+  description="Essays by Juan Sebastián Mendoza on React, testing, JavaScript, open source, and learning to write software."
+>
+  <section class="shell section">
+    <header class="section-head">
+      <p class="kicker">Notebook</p>
+      <h2 class="h-display" style="font-size: clamp(2.6rem, 6vw, 4.5rem);">Blog</h2>
+      <p class="lede">
+        {posts.length} essays from 2021 to 2023. Categories are grouped from the tags.
+        {identity.name.split(' ')[0]} can edit them later in the CMS.
+      </p>
+    </header>
+    <nav class="filter-bar" aria-label="Categories">
+      <a class="tag" href="/blog" aria-current="page">All</a>
+      {visibleCategories.map((category) => (
+        <a class="tag" href={`/blog/category/${category.slug}`}>{category.name}</a>
+      ))}
+    </nav>
+    <label class="search-field">
+      Search posts
+      <input id="post-search" type="search" placeholder="Try hooks, Jest, or Hacktoberfest" />
+    </label>
+    <p id="post-empty" hidden>No posts match that search.</p>
+    <ul class="post-grid" id="post-list">
+      {
+        posts.map((post) => (
+          <li data-search={`${post.data.title} ${post.excerpt} ${post.data.tags.join(' ')} ${post.category.name}`.toLowerCase()}>
+            <PostCard post={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('#post-search');
+  const empty = document.querySelector<HTMLElement>('#post-empty');
+  const items = Array.from(document.querySelectorAll<HTMLElement>('#post-list > li'));
+
+  input?.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+    let shown = 0;
+    for (const item of items) {
+      const haystack = item.dataset.search ?? '';
+      const match = query.length === 0 || haystack.includes(query);
+      item.hidden = !match;
+      if (match) shown += 1;
+    }
+    if (empty) empty.hidden = shown !== 0;
+  });
+</script>
