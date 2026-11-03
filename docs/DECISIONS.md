@@ -158,3 +158,13 @@ Added by Claude: Juan does not want the employer name in the page title. The tit
 ### Essay localizer removed
 
 Added by Claude: `scripts/localize-essays.mjs` downloaded images from the old blog host’s CDN and rewrote the posts once. That import is done: every image is in `public/images`, and the script also read `images/rock.png` from the old site, which is gone. Nothing called it. If an essay ever needs re-importing, it is in the history of this branch.
+
+## 2026-11-03
+
+### A 3D pitch instead of a 3D ball
+
+Added by Claude: With motion on, the hero showed a large spinning ball over the pitch and hid it. Juan wanted three.js to stay and make the page more interactive. The 3D scene is now the pitch itself, seen from behind one goal, with a ball at real proportion to the markings (slightly enlarged) that people can kick around and score with. It reuses the dependencies already in the bundle (React Three Fiber and three), adds no models or image files (the grass and the net are painted on canvases), and renders on demand so an idle page does no GPU work. The penalty game stays separate because it is the keyboard-accessible game; the 3D kick is a mouse toy and is marked `aria-hidden`.
+
+### No sound
+
+Added by Claude: Juan said the ambience made no sense, so it is gone. The earlier sound decisions above no longer apply.

@@ -416,8 +416,10 @@ h1 span {
   border-radius: 999px;
   border: 1px solid transparent;
   text-decoration: none;
+  font: inherit;
   font-weight: 650;
   letter-spacing: -0.01em;
+  cursor: pointer;
 }
 
 .btn-primary {
@@ -749,7 +751,7 @@ html[data-motion='off'] .penalty-shadow {
 
 .pitch-ball {
   position: absolute;
-  inset: 12% 18%;
+  inset: 0;
   z-index: 2;
   pointer-events: none;
 }
@@ -757,6 +759,75 @@ html[data-motion='off'] .penalty-shadow {
 .pitch-ball canvas {
   width: 100% !important;
   height: 100% !important;
+}
+
+/* The 3D pitch replaces the SVG one once it has loaded. */
+.hero-stage.has-3d .hero-pitch {
+  visibility: hidden;
+}
+
+.pitch-3d {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+  /* A dark stand behind the far goal, fading into the grass. */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #000 72%, var(--grass)) 0%,
+    color-mix(in srgb, #000 45%, var(--grass)) 22%,
+    var(--grass) 40%
+  );
+}
+
+.pitch-3d-hint,
+.pitch-3d-score,
+.pitch-3d-goal {
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  color: #fff;
+}
+
+.pitch-3d-hint {
+  top: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, #000 50%, transparent);
+  font-size: 0.82rem;
+  transition: opacity 0.6s ease 1.2s;
+}
+
+.pitch-3d-hint.is-faded {
+  opacity: 0;
+}
+
+.pitch-3d-score {
+  top: auto;
+  bottom: 1.55rem;
+  left: 0.9rem;
+  transform: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.pitch-3d-goal {
+  top: 40%;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 640;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+  animation: call-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
 .section {
@@ -1819,8 +1890,7 @@ label.field {
   }
 }
 
-.header-tools,
-.sound-control {
+.header-tools {
   display: flex;
   align-items: center;
   gap: 0.35rem;
@@ -1852,11 +1922,6 @@ label.field {
 
 .motion-btn {
   padding-inline: 0.55rem 0.7rem;
-}
-
-.volume {
-  width: 4.4rem;
-  accent-color: var(--accent);
 }
 
 .scroll-ball,

@@ -38,7 +38,7 @@ Deploy notes are in `docs/DEPLOY.md`. CMS setup is in `docs/CMS.md`. Do not depl
 
 ## Stack
 
-Astro, TypeScript, Tailwind CSS v4, React islands (Motion, and React Three Fiber for one hero ball). Blog posts are markdown in `src/content/blog`. Editing later is Sveltia with a Cloudflare OAuth Worker.
+Astro, TypeScript, Tailwind CSS v4, React islands (Motion, and React Three Fiber for the 3D hero pitch). Blog posts are markdown in `src/content/blog`. Editing later is Sveltia with a Cloudflare OAuth Worker.
 
 ## For the next person or agent
 

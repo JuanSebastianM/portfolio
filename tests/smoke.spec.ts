@@ -50,22 +50,6 @@ for (const theme of themes) {
   }
 }
 
-test('stadium ambience produces a signal', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('button', { name: 'Turn stadium ambience on' }).click();
-  await page.waitForTimeout(700);
-  const rms = await page.evaluate(() => {
-    const analyser = (window as unknown as { __ambienceAnalyser?: AnalyserNode }).__ambienceAnalyser;
-    if (!analyser) return 0;
-    const data = new Float32Array(analyser.fftSize);
-    analyser.getFloatTimeDomainData(data);
-    let sum = 0;
-    for (const sample of data) sum += sample * sample;
-    return Math.sqrt(sum / data.length);
-  });
-  expect(rms).toBeGreaterThan(0.02);
-});
-
 test('copy email puts the address on the clipboard', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('/#contact');
@@ -119,4 +103,23 @@ test('lineup players open a position card', async ({ page }) => {
   await expect(page.locator('#pos-GK')).toContainText('Goalkeeper');
   await page.keyboard.press('Escape');
   await expect(page.locator('#pos-GK')).toBeHidden();
+});
+
+test('buttons show a pointer cursor', async ({ page }) => {
+  await page.goto('/');
+  const launch = page.getByRole('button', { name: 'Take a penalty' });
+  expect(await launch.evaluate((element) => getComputedStyle(element).cursor)).toBe('pointer');
+});
+
+test('3D pitch loads on desktop and a click kicks the ball', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.addInitScript(() => localStorage.setItem('motion', 'on'));
+  await page.goto('/');
+  const pitch = page.locator('.pitch-3d');
+  await pitch.locator('canvas').waitFor({ timeout: 15_000 });
+  await expect(page.locator('.hero-stage')).toHaveClass(/has-3d/);
+  const box = await pitch.boundingBox();
+  if (!box) throw new Error('3D pitch has no size');
+  await page.mouse.click(box.x + box.width / 2, box.y + box.height * 0.3);
+  await expect(page.locator('.pitch-3d-hint')).toHaveClass(/is-faded/);
 });

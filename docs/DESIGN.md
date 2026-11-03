@@ -74,9 +74,9 @@ In the penalty view the keeper wears `--keeper` (yellow in light mode, `--accent
 - Scroll sections use Motion (`whileInView`, once). Hero text is not hidden behind that animation.
 - Project cards tilt up to about 9 degrees on fine pointers. Coarse pointers do not tilt.
 - Reading progress on essays is a CSS scroll timeline, removed under `prefers-reduced-motion`.
-- The hero ball is React Three Fiber, loaded on idle, desktop only, and only when `data-motion` is `on`. Its frame loop stops when the tab is hidden. It is the only continuous frame loop.
+- The hero pitch is a React Three Fiber scene (`PitchBallCanvas.tsx`), loaded on idle, desktop only, and only when `data-motion` is `on`. Same 105 x 68 markings as `Pitch.astro`, painted on a canvas texture from the theme tokens, with 3D goals, nets, and corner flags. The ball is small and sits on the center spot. Clicking the pitch kicks it toward the click (clicking the ball pops it up); it bounces, rolls, and counts a goal if it crosses a goal line between the posts. The ball and goals are drawn larger than life (ball radius 1.3 m, goals 11 x 3.7 m) so they read at this size. Rendering is on demand: frames run only while the ball moves, and stop when the tab is hidden. Otherwise the SVG pitch and a flat ball show.
 - A small ball follows scroll with a CSS scroll timeline and `offset-path`. Pitch lines draw in once. Primary buttons show a net ripple on hover. Lineup chips fade into place when the formation enters the viewport. Copying the email spills a few dots. A ball bounces once at load. All of that is transform and opacity, and `data-motion="off"` removes it.
-- Ambience is synthetic filtered noise from the Web Audio API. No audio file ships in the repo. It starts only after the speaker button is pressed, then fades. Volume is a slider. License: original code in `src/islands/HeaderTools.tsx`, not a recording.
+- There is no sound. The synthetic stadium ambience was removed.
 - `data-motion="off"` is the switch that stops those effects. It starts from `prefers-reduced-motion` and can be changed in the header. A `noscript` rule keeps reveal targets visible without JavaScript.
 
 ## Components
@@ -86,7 +86,8 @@ In the penalty view the keeper wears `--keeper` (yellow in light mode, `--accent
 | Pitch | `Pitch.astro` | To-scale field, striped grass, goals with nets |
 | Pitch lines | `PitchField.astro` | Faint page background, same markings, draws in once |
 | Header + stripe | `Header.astro` | Sticky, blur, mobile `details` menu |
-| Header tools | `HeaderTools.tsx` | Sun/moon, Reduce motion, ambience |
+| Header tools | `HeaderTools.tsx` | Sun/moon, Reduce motion |
+| 3D pitch | `PitchBallCanvas.tsx` | Click to kick, goals count, SVG fallback |
 | Hero | `index.astro` | Name, headline, AI line, pitch in perspective, idle ball |
 | Penalty game | `PenaltyGame.tsx` | “Take a penalty” on the hero; six targets, keeper, score and streak |
 | Position card | `PositionCard.astro` | Opens from a lineup or bench player; Escape or outside click closes it |

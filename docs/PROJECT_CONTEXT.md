@@ -24,14 +24,14 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 | `src/content/blog` | Markdown essays |
 | `src/lib/posts.ts` | Reading time, excerpts, tag-to-category map |
 | `src/pages` | Routes |
-| `src/islands` | React: theme, scroll reveal, tilt cards, lazy 3D ball |
+| `src/islands` | React: theme, scroll reveal, tilt cards, lazy 3D pitch, penalty game |
 | `public/admin` | Sveltia CMS |
 | `worker/index.ts` | GitHub OAuth for the CMS |
 | `scripts/check-posts.mjs` | Runs after `astro build`; fails on raw markdown or dead in-page anchors in essays |
 | `src/components/Pitch.astro` | The pitch SVG |
 | `src/islands/PenaltyGame.tsx` | The penalty shootout on the hero |
 | `src/components/PositionCard.astro` | The card a lineup player opens |
-| `tests/smoke.spec.ts` | Playwright: visibility, ambience, copy email, essay rendering, title, penalty game, position cards |
+| `tests/smoke.spec.ts` | Playwright: visibility, copy email, essay rendering, title, penalty game, position cards, 3D kick, button cursor |
 
 ## Content that is real
 

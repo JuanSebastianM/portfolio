@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03
+
+- Added by Claude: Replaced the large spinning 3D ball with a 3D pitch. It uses the same markings as the SVG pitch, with goals, nets, corner flags, and a small soccer ball on the center spot. Clicking the pitch kicks the ball toward the click, clicking the ball pops it up, and putting it between the posts scores a goal with a counter. Frames render only while the ball moves. Desktop with motion on only; everywhere else shows the SVG pitch.
+- Added by Claude: Removed the stadium ambience: the speaker button, the volume slider, `src/lib/ambience.ts`, and its test.
+- Added by Claude: All `.btn` buttons, including “Take a penalty”, now show a pointer cursor.
+- Added by Claude: Smoke tests for the 3D kick and the button cursor.
+
 ## 2026-10-29 (third pass)
 
 - Added by Claude: Authorship is marked only in this file and `docs/DECISIONS.md`: each entry starts with `Added by Grok: ` or `Added by Claude: `. Headings and every other doc are unprefixed.

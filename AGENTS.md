@@ -18,11 +18,11 @@ Read these before editing:
 - Do not deploy to Cloudflare and do not commit secrets. `.dev.vars` is local only.
 - Blog posts use frontmatter `title`, `subtitle`, `date`, `slug`, `tags`, `coverImage`. Do not put the old publishing-platform name anywhere under `src/`. `npm run check` fails if that string appears.
 - Light is the green/white palette. Dark is blue/garnet. Do not add club crests or text tabs for clubs.
-- `data-motion` gates animation. Do not autoplay sound. Ambience is the synthetic Web Audio loop in `HeaderTools.tsx`.
+- `data-motion` gates animation. The site has no sound. Juan asked for the ambience to be removed; do not add audio back.
 - The projects page lists LynStore and commentful only.
 - Categories are derived in `src/lib/posts.ts`. Do not treat that map as something Juan wrote.
 - Club colors are fan palettes. Do not add official crests or trademarks.
-- Respect `prefers-reduced-motion`. The 3D ball stays off for reduced motion, narrow screens, and Save-Data.
+- Respect `prefers-reduced-motion`. The 3D pitch (`PitchBallCanvas.tsx`) stays off for reduced motion, narrow screens, and Save-Data, and the SVG pitch shows instead.
 - The pitch is `src/components/Pitch.astro`, drawn to scale. Keep the grass green in both modes.
 - Essays are plain CommonMark. No `align="center"` on images, and HTML blocks inside a list must be indented into the item. `npm run build` runs `scripts/check-posts.mjs` and fails on raw markdown.
 - The page title never names the employer. Use `identity.titleRole`.
