@@ -188,3 +188,9 @@ Added by Claude: Worker custom domains need the zone on Cloudflare, so DNS moves
 Added by Claude: Juan asked to drop Education and commentful and to add Hibiscus Club, his browser game. Its description only restates the game’s own README (fashion-doll CD-ROM inspiration, two ages, stars, runway, island, postcards, English and Spanish, no dependencies). The repository is private, so the card has a Play link and no Code link.
 
 Added by Claude: Later the same day Juan made the Hibiscus Club repository public, and the card gained a Code link.
+
+## 2026-11-21
+
+### No sideways scrolling on phones
+
+Added by Claude: Content must fit the screen on its own; the root clip is only a safety net. `html` and `body` both use `overflow-x: clip` (not `hidden`, which would break the sticky header), because iOS Safari does not apply the body’s value to touch scrolling. The smoke test measures elements rather than the page width, since the clip would hide a regression from a page-width check.

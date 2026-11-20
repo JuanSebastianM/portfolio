@@ -115,6 +115,9 @@ html[data-mode="dark"] {
 html {
   background: var(--bg);
   color: var(--ink);
+  /* iOS Safari ignores horizontal clipping set only on body, so clip the root too.
+     clip (not hidden) keeps the sticky header working. */
+  overflow-x: clip;
 }
 
 body {
@@ -1511,6 +1514,21 @@ html[data-motion='on'] .lineup-hint:not(.is-used) .lineup-hint-dot {
 
 .post-body :where(a) {
   text-underline-offset: 0.15em;
+}
+
+/* Long URLs and inline code in the essays wrap instead of widening the page on phones. */
+.post-body :where(p, li, a, :not(pre) > code) {
+  overflow-wrap: anywhere;
+}
+
+.post-body pre,
+.post-body table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.post-body table {
+  display: block;
 }
 
 .post-body img {

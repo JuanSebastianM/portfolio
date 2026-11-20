@@ -123,3 +123,34 @@ test('3D pitch loads on desktop and a click kicks the ball', async ({ page }) =>
   await page.mouse.click(box.x + box.width / 2, box.y + box.height * 0.3);
   await expect(page.locator('.pitch-3d-hint')).toHaveClass(/is-faded/);
 });
+
+for (const path of [
+  '/',
+  '/projects',
+  '/blog',
+  '/blog/build-a-full-stack-crud-app-with-graphql-mongodb-nextjs-nextauth-and-typescript',
+  '/blog/introduction-to-react-router-and-single-page-applications',
+]) {
+  test(`nothing is wider than a phone screen: ${path}`, async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 740 });
+    await page.goto(path);
+    // Root and body clip sideways overflow, so measure the elements themselves.
+    const wide = await page.evaluate(() => {
+      const limit = document.documentElement.clientWidth + 1;
+      const found: string[] = [];
+      for (const element of document.querySelectorAll('body *')) {
+        const box = element.getBoundingClientRect();
+        if (box.width === 0 || (box.right <= limit && box.left >= -1)) continue;
+        let parent = element.parentElement;
+        let clipped = false;
+        while (parent && parent !== document.body) {
+          if (getComputedStyle(parent).overflowX !== 'visible') clipped = true;
+          parent = parent.parentElement;
+        }
+        if (!clipped && !element.closest('.pitch-field')) found.push(element.tagName.toLowerCase());
+      }
+      return found;
+    });
+    expect(wide).toEqual([]);
+  });
+}
