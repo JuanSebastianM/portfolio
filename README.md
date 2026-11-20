@@ -2,7 +2,7 @@
 
 Portfolio for a front-end developer in Colombia. TypeScript, React, AWS. This branch is the new site. `main` is still the old static page until this is merged.
 
-Canonical URL, not registered yet: <https://juansebastianmendoza.com>
+Canonical URL: <https://jmendozaperez.dev>. Contact: hello@jmendozaperez.dev.
 
 There is no `CNAME`. `juanmendozadev.xyz` is retired.
 

@@ -41,10 +41,10 @@ Done on this branch.
 ## Phase 4 — Cloudflare, domain, email
 
 - [ ] `npm run cf:deploy` with Juan’s account (`docs/DEPLOY.md`)
-- [ ] Register `juansebastianmendoza.com` on Cloudflare Registrar
+- [x] Domain chosen: `jmendozaperez.dev`
 - [ ] Attach the domain to the Worker
-- [ ] Email Routing for `hello@juansebastianmendoza.com`
-- [ ] Remove the “inbox is not live” note once mail works
+- [x] Email: `hello@jmendozaperez.dev`
+- [x] Removed the “inbox is not live” note
 
 ## TODO(content)
 
@@ -57,9 +57,9 @@ Still unknown. Do not invent them.
 5. **BarranquillaJS recording** — no URL on the export. Featured points at the 2022 retro.
 6. **cal.com** — needs Juan's input. The public fork has no pull request or commit authored by him on calcom/cal.diy. It is not shown as a contribution.
 7. **Categories** — inferred from tags in `src/lib/posts.ts`, not chosen by Juan.
-8. **Email** — `hello@juansebastianmendoza.com` is planned. Routing is not on.
+8. **Email** — `hello@jmendozaperez.dev`.
 9. **CMS secrets** — GitHub OAuth client id and secret are not set.
-10. **Domain** — `juansebastianmendoza.com` is not registered.
+10. **Domain** — `jmendozaperez.dev`. Not deployed yet.
 11. **AI copy** — the framing in `ai` (`src/data/profile.ts`) is Claude’s suggestion. The tools and uses are Juan’s.
 12. **Position “fit” lines** — the one-liners on each lineup card are Claude’s. Juan can rewrite them in `src/data/profile.ts`.
 13. **Cloudflare** — no account is connected. Juan has to run `npx wrangler login` himself.

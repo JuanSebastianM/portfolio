@@ -39,7 +39,7 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 - Starting XI: LinkedIn where it names the skill, otherwise the previous site or a public repo. Git in goal is from the previous site.
 - Projects on the site: LynStore and commentful only. Open source: Documenso and Help a Family pull requests. cal.com needs Juan’s input.
 - Essays: nine local posts, 2021-10-05 through 2023-07-21
-- Contact: copy button and mailto for hello@juansebastianmendoza.com
+- Contact: copy button and mailto for hello@jmendozaperez.dev
 
 ## Content that is not filled in
 

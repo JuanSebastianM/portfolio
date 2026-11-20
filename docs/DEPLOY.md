@@ -4,11 +4,11 @@ Do not deploy until Juan is at the Cloudflare login. Nothing in this repo has be
 
 As of 2026-10-29 no Cloudflare account, API token, or Wrangler login is set up anywhere an agent can use. Every step below that touches Cloudflare needs Juan.
 
-Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.com` on Cloudflare Registrar. Mail later: `hello@juansebastianmendoza.com` via Email Routing.
+Target: Cloudflare Workers static assets. Domain: `jmendozaperez.dev`. Mail: `hello@jmendozaperez.dev`.
 
 ## What is already in the repo
 
-- `wrangler.jsonc` — Worker name `juansebastianmendoza`, assets from `./dist`, OAuth routes run the Worker first
+- `wrangler.jsonc` — Worker name `jmendozaperez`, assets from `./dist`, OAuth routes run the Worker first
 - `worker/index.ts` — GitHub OAuth for Sveltia
 - `npm run cf:preview` — `npm run build` (Astro plus the essay check) then `wrangler dev`
 - `npm run cf:deploy` — `npm run build` then `wrangler deploy`
@@ -20,9 +20,9 @@ Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.co
 1. Install dependencies and confirm `npm run build` and `npm run check`.
 2. `npx wrangler login` with Juan’s Cloudflare account.
 3. `npm run cf:deploy`.
-4. Open the `workers.dev` URL Wrangler prints. The custom domain will not exist yet. Canonical links still say `juansebastianmendoza.com`.
-5. Register `juansebastianmendoza.com` in Cloudflare Registrar when Juan is ready.
-6. Workers → the `juansebastianmendoza` service → Domains & Routes → attach `juansebastianmendoza.com` and `www`. Send `www` to the apex if he wants one host.
+4. Open the `workers.dev` URL Wrangler prints. The custom domain will not exist yet. Canonical links say `jmendozaperez.dev`.
+5. Make sure `jmendozaperez.dev` is a zone in the same Cloudflare account.
+6. Workers → the `jmendozaperez` service → Domains & Routes → attach `jmendozaperez.dev` and `www.jmendozaperez.dev`. Send `www` to the apex if he wants one host.
 7. There is no `CNAME` file on purpose. Cloudflare’s dashboard holds the DNS, not GitHub Pages.
 
 `ALLOWED_DOMAINS` in `wrangler.jsonc` is the apex and `www` only. Add a `workers.dev` host there only while you are testing CMS sign-in on that host, then remove it.
@@ -31,16 +31,16 @@ Target: Cloudflare Workers static assets. Domain later: `juansebastianmendoza.co
 
 After the domain is on Cloudflare:
 
-1. Email → Email Routing → enable it for `juansebastianmendoza.com`.
+1. Email → Email Routing → enable it for `jmendozaperez.dev` (skip if `hello@jmendozaperez.dev` already receives mail).
 2. Add `hello` as a custom address.
 3. Destination: an inbox Juan actually reads.
-4. Then delete the “inbox is not live” sentence in `src/data/site.ts` and the contact aside.
+4. The site no longer says the inbox is not live.
 
 Contact on the site is the copy button and mailto link. There is no third-party form.
 
 ## CMS after the domain works
 
-Follow `docs/CMS.md`. The GitHub OAuth callback is `https://juansebastianmendoza.com/callback`. Secrets:
+Follow `docs/CMS.md`. The GitHub OAuth callback is `https://jmendozaperez.dev/callback`. Secrets:
 
 ```bash
 npx wrangler secret put GITHUB_CLIENT_ID

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-20
+
+- Added by Claude: The site lives at `https://jmendozaperez.dev` and the contact email is `hello@jmendozaperez.dev`. Updated the canonical URL, sitemap, robots.txt, CMS config, Wrangler `ALLOWED_DOMAINS`, and docs. The Worker is renamed `jmendozaperez`.
+- Added by Claude: Removed the “inbox is not live” note from the contact card.
+
 ## 2026-11-03
 
 - Added by Claude: Replaced the large spinning 3D ball with a 3D pitch. It uses the same markings as the SVG pitch, with goals, nets, corner flags, and a small soccer ball on the center spot. Clicking the pitch kicks the ball toward the click, clicking the ball pops it up, and putting it between the posts scores a goal with a counter. Frames render only while the ball moves. Desktop with motion on only; everywhere else shows the SVG pitch.

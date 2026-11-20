@@ -1,5 +1,5 @@
 /** Single source for the canonical site URL. Keep astro.config.mjs in sync if this moves. */
-export const siteUrl = 'https://juansebastianmendoza.com';
+export const siteUrl = 'https://jmendozaperez.dev';
 
 export const identity = {
   name: 'Juan Sebastián Mendoza',
@@ -10,8 +10,7 @@ export const identity = {
   titleRole: 'Software Engineer',
   location: 'Colombia',
   githubUser: 'JuanSebastianM',
-  email: 'hello@juansebastianmendoza.com',
-  emailNote: 'Email routing is not turned on yet, so this inbox is not live.',
+  email: 'hello@jmendozaperez.dev',
   github: 'https://github.com/JuanSebastianM',
   twitter: 'https://twitter.com/JuanMendozaDev',
   twitterHandle: '@JuanMendozaDev',

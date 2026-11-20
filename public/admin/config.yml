@@ -6,12 +6,12 @@ backend:
   name: github
   repo: JuanSebastianM/portfolio
   branch: main
-  base_url: https://juansebastianmendoza.com
+  base_url: https://jmendozaperez.dev
   auth_scope: public_repo
 media_folder: public/images/uploads
 public_folder: /images/uploads
-site_url: https://juansebastianmendoza.com
-display_url: https://juansebastianmendoza.com
+site_url: https://jmendozaperez.dev
+display_url: https://jmendozaperez.dev
 logo_url: /favicon.svg
 collections:
   - name: blog

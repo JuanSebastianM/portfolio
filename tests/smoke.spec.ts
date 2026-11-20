@@ -56,7 +56,7 @@ test('copy email puts the address on the clipboard', async ({ page, context }) =
   await page.locator('astro-island[component-url*="CopyEmail"]:not([ssr])').waitFor({ state: 'attached' });
   await page.getByRole('button', { name: 'Copy email' }).click();
   await expect(page.getByText('Email copied.')).toBeVisible();
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('hello@juansebastianmendoza.com');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('hello@jmendozaperez.dev');
 });
 
 test('copy email falls back when the Clipboard API is missing', async ({ page }) => {

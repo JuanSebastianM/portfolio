@@ -17,8 +17,8 @@ Do this after the new site is the default branch and the Worker is deployed (see
 GitHub → Settings → Developer settings → OAuth Apps → New OAuth App.
 
 - Application name: `Juan Mendoza site` (or anything you will recognize)
-- Homepage URL: `https://juansebastianmendoza.com`
-- Authorization callback URL: `https://juansebastianmendoza.com/callback`
+- Homepage URL: `https://jmendozaperez.dev`
+- Authorization callback URL: `https://jmendozaperez.dev/callback`
 
 Create it, then generate a client secret. Copy the client id and the secret once. The secret is not shown again.
 
@@ -35,7 +35,7 @@ npx wrangler secret put GITHUB_CLIENT_SECRET
 
 Do not put those values in `wrangler.jsonc`, `.dev.vars` that you commit, or the CMS config. `.dev.vars.example` shows the names for local Wrangler only. Copy it to `.dev.vars` (gitignored) if you want to try OAuth on `npm run cf:preview`.
 
-Production `ALLOWED_DOMAINS` is `juansebastianmendoza.com,www.juansebastianmendoza.com`. For local OAuth, set `ALLOWED_DOMAINS` in `.dev.vars` to include `localhost` and `127.0.0.1`.
+Production `ALLOWED_DOMAINS` is `jmendozaperez.dev,www.jmendozaperez.dev`. For local OAuth, set `ALLOWED_DOMAINS` in `.dev.vars` to include `localhost` and `127.0.0.1`.
 
 Optional: `GITHUB_ALLOW_WORKFLOW_SCOPE=true` only if you truly need a token that can edit GitHub Actions files. Leave it unset.
 
@@ -57,7 +57,7 @@ Frontmatter stays `title`, `subtitle`, `date`, `slug`, `tags`, `coverImage`. The
 
 `worker/index.ts` implements the Sveltia GitHub flow:
 
-1. The editor opens `https://juansebastianmendoza.com/auth?provider=github`.
+1. The editor opens `https://jmendozaperez.dev/auth?provider=github`.
 2. The Worker redirects to GitHub and stores a CSRF cookie.
 3. GitHub returns to `/callback`.
 4. The Worker exchanges the code and `postMessage`s `authorization:github:success:{...}` to the editor window.

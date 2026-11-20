@@ -168,3 +168,11 @@ Added by Claude: With motion on, the hero showed a large spinning ball over the 
 ### No sound
 
 Added by Claude: Juan said the ambience made no sense, so it is gone. The earlier sound decisions above no longer apply.
+
+## 2026-11-20
+
+### Domain and email
+
+Added by Claude: Juan moved to `jmendozaperez.dev` and `hello@jmendozaperez.dev`. `juansebastianmendoza.com` was never registered and is dropped. The Worker name follows the domain (`jmendozaperez`), so the first deploy creates a fresh Worker rather than reusing an old name.
+
+Added by Claude: Deploying is now something Juan asks for. The Cloudflare API token is stored as a network secret on his personal “portfolio” cloud environment, which the proxy adds to requests to the Cloudflare API. It is never in the repo.
