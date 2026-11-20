@@ -8,7 +8,7 @@ Target: Cloudflare Workers static assets. Domain: `jmendozaperez.dev`. Mail: `he
 
 ## What is already in the repo
 
-- `wrangler.jsonc` — Worker name `jmendozaperez`, assets from `./dist`, OAuth routes run the Worker first
+- `wrangler.jsonc` — Worker name `portfolio`, assets from `./dist`, OAuth routes run the Worker first
 - `worker/index.ts` — GitHub OAuth for Sveltia
 - `npm run cf:preview` — `npm run build` (Astro plus the essay check) then `wrangler dev`
 - `npm run cf:deploy` — `npm run build` then `wrangler deploy`
@@ -22,7 +22,7 @@ Target: Cloudflare Workers static assets. Domain: `jmendozaperez.dev`. Mail: `he
 3. `npm run cf:deploy`.
 4. Open the `workers.dev` URL Wrangler prints. The custom domain will not exist yet. Canonical links say `jmendozaperez.dev`.
 5. Make sure `jmendozaperez.dev` is a zone in the same Cloudflare account.
-6. Workers → the `jmendozaperez` service → Domains & Routes → attach `jmendozaperez.dev` and `www.jmendozaperez.dev`. Send `www` to the apex if he wants one host.
+6. Workers → the `portfolio` Worker → Domains & Routes → attach `jmendozaperez.dev` and `www.jmendozaperez.dev`. Send `www` to the apex if he wants one host.
 7. There is no `CNAME` file on purpose. Cloudflare’s dashboard holds the DNS, not GitHub Pages.
 
 `ALLOWED_DOMAINS` in `wrangler.jsonc` is the apex and `www` only. Add a `workers.dev` host there only while you are testing CMS sign-in on that host, then remove it.

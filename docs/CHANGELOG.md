@@ -2,7 +2,8 @@
 
 ## 2026-11-20
 
-- Added by Claude: The site lives at `https://jmendozaperez.dev` and the contact email is `hello@jmendozaperez.dev`. Updated the canonical URL, sitemap, robots.txt, CMS config, Wrangler `ALLOWED_DOMAINS`, and docs. The Worker is renamed `jmendozaperez`.
+- Added by Claude: Juan connected the repo to Cloudflare Workers Builds, which created the `portfolio` Worker. `wrangler.jsonc` now uses that name so builds and the config agree. Every push to the production branch redeploys.
+- Added by Claude: The site lives at `https://jmendozaperez.dev` and the contact email is `hello@jmendozaperez.dev`. Updated the canonical URL, sitemap, robots.txt, CMS config, Wrangler `ALLOWED_DOMAINS`, and docs. The Worker is named `portfolio`.
 - Added by Claude: Removed the “inbox is not live” note from the contact card.
 
 ## 2026-11-03

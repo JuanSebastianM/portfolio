@@ -173,6 +173,8 @@ Added by Claude: Juan said the ambience made no sense, so it is gone. The earlie
 
 ### Domain and email
 
-Added by Claude: Juan moved to `jmendozaperez.dev` and `hello@jmendozaperez.dev`. `juansebastianmendoza.com` was never registered and is dropped. The Worker name follows the domain (`jmendozaperez`), so the first deploy creates a fresh Worker rather than reusing an old name.
+Added by Claude: Juan moved to `jmendozaperez.dev` and `hello@jmendozaperez.dev`. `juansebastianmendoza.com` was never registered and is dropped. The Worker is named `portfolio`, the name Workers Builds gave it when Juan connected the repo; `wrangler.jsonc` matches it.
+
+Added by Claude: Deploys run through Cloudflare Workers Builds, not from an agent’s session. A session cannot run `wrangler deploy` itself: the cloud proxy puts the saved API token on every request to the Cloudflare API, which also overwrites the one-time upload token Wrangler uses for static assets, so the upload is refused. The `workers.dev` address uses the account-wide subdomain `hibiscus-club`, which predates the portfolio; the real address is the custom domain.
 
 Added by Claude: Deploying is now something Juan asks for. The Cloudflare API token is stored as a network secret on his personal “portfolio” cloud environment, which the proxy adds to requests to the Cloudflare API. It is never in the repo.
