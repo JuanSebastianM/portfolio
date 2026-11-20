@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-21
+
+- Added by Claude: Fixed sideways scrolling on phones. A long inline code string in the GraphQL essay and a long link in the React Router essay were wider than the screen, and iOS Safari ignores `overflow-x` set only on `body`. Essay text, links, and inline code now wrap; code blocks and tables scroll inside their own box; `html` clips sideways overflow too. A smoke test checks five pages at 375px for anything wider than the screen.
+
 ## 2026-11-20 (after launch)
 
 - Added by Claude: Juan made `JuanSebastianM/hibiscus-club` public, so the Hibiscus Club card now has a Code link next to Play.
