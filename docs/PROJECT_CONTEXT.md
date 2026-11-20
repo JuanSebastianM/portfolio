@@ -37,7 +37,7 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 
 - About, headline, jobs, certifications, volunteering, and featured posts: public LinkedIn export, 2026-10-28. See `docs/DECISIONS.md`.
 - Starting XI: LinkedIn where it names the skill, otherwise the previous site or a public repo. Git in goal is from the previous site.
-- Projects on the site: LynStore and Hibiscus Club (`JuanSebastianM/hibiscus-club`, private; the card links to https://hibiscus-club.jmendozaperez.workers.dev, and its copy comes from that repo’s README). Open source: Documenso and Help a Family pull requests. cal.com needs Juan’s input.
+- Projects on the site: LynStore and Hibiscus Club (`JuanSebastianM/hibiscus-club`, public; the card links to https://hibiscus-club.jmendozaperez.workers.dev and the repository, and its copy comes from that repo’s README). Open source: Documenso and Help a Family pull requests. cal.com needs Juan’s input.
 - Essays: nine local posts, 2021-10-05 through 2023-07-21
 - Contact: copy button and mailto for hello@jmendozaperez.dev
 

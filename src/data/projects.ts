@@ -1,6 +1,6 @@
 /**
  * The only projects Juan wants on the site.
- * LynStore is the shipped freelance site. Hibiscus Club is his browser game; its repository is private, so it links to the live game only.
+ * LynStore is the shipped freelance site. Hibiscus Club is his browser game, linked to the live game and its public repository.
  * Devsu client work stays in the experience log, not here.
  */
 
@@ -93,6 +93,9 @@ export const projects: Project[] = [
     imageAlt: 'The Hibiscus Island map in Hibiscus Club, with the dress-up studio, salon, arcade, garden, and photo booth',
     summary:
       'A single-player browser game inspired by early-2000s fashion-doll CD-ROMs. Dress one character at two ages, earn stars in mini-games, rehearse a runway routine, explore Hibiscus Island, and save looks as postcards. Fully bilingual in English and Spanish, with no dependencies.',
-    links: [{ label: 'Play', href: 'https://hibiscus-club.jmendozaperez.workers.dev' }],
+    links: [
+      { label: 'Play', href: 'https://hibiscus-club.jmendozaperez.workers.dev' },
+      { label: 'Code', href: 'https://github.com/JuanSebastianM/hibiscus-club' },
+    ],
   },
 ];

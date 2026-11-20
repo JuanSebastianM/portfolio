@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20 (after launch)
+
+- Added by Claude: Juan made `JuanSebastianM/hibiscus-club` public, so the Hibiscus Club card now has a Code link next to Play.
+
 ## 2026-11-20
 
 - Added by Claude: Removed the Education section (and the `education` data) at Juan’s request.
