@@ -178,3 +178,7 @@ Added by Claude: Juan moved to `jmendozaperez.dev` and `hello@jmendozaperez.dev`
 Added by Claude: Deploys run through Cloudflare Workers Builds, not from an agent’s session. A session cannot run `wrangler deploy` itself: the cloud proxy puts the saved API token on every request to the Cloudflare API, which also overwrites the one-time upload token Wrangler uses for static assets, so the upload is refused. The `workers.dev` address uses the account-wide subdomain `hibiscus-club`, which predates the portfolio; the real address is the custom domain.
 
 Added by Claude: Deploying is now something Juan asks for. The Cloudflare API token is stored as a network secret on his personal “portfolio” cloud environment, which the proxy adds to requests to the Cloudflare API. It is never in the repo.
+
+### Domain on Cloudflare, registration at GoDaddy
+
+Added by Claude: Worker custom domains need the zone on Cloudflare, so DNS moves to Cloudflare while the registration stays at GoDaddy. Email stays on Microsoft 365: its records were copied as they were, DNS-only. Both the apex and `www` serve the site; canonical links point at the apex.

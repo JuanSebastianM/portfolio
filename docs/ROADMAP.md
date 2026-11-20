@@ -59,7 +59,7 @@ Still unknown. Do not invent them.
 7. **Categories** — inferred from tags in `src/lib/posts.ts`, not chosen by Juan.
 8. **Email** — `hello@jmendozaperez.dev`.
 9. **CMS secrets** — GitHub OAuth client id and secret are not set.
-10. **Domain** — `jmendozaperez.dev`. Not deployed yet.
+10. **Domain** — `jmendozaperez.dev`, on Cloudflare once GoDaddy’s nameservers point at it.
 11. **AI copy** — the framing in `ai` (`src/data/profile.ts`) is Claude’s suggestion. The tools and uses are Juan’s.
 12. **Position “fit” lines** — the one-liners on each lineup card are Claude’s. Juan can rewrite them in `src/data/profile.ts`.
 13. **Cloudflare** — no account is connected. Juan has to run `npx wrangler login` himself.

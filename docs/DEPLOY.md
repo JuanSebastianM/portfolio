@@ -1,10 +1,12 @@
 # Deploy
 
-Do not deploy until Juan is at the Cloudflare login. Nothing in this repo has been published.
+Live setup as of 2026-11-20:
 
-As of 2026-10-29 no Cloudflare account, API token, or Wrangler login is set up anywhere an agent can use. Every step below that touches Cloudflare needs Juan.
-
-Target: Cloudflare Workers static assets. Domain: `jmendozaperez.dev`. Mail: `hello@jmendozaperez.dev`.
+- **Builds:** Cloudflare Workers Builds is connected to `JuanSebastianM/portfolio`. Every push to the production branch runs `npm run build` and `npx wrangler deploy` with `NODE_VERSION=22`. Nobody deploys by hand.
+- **Worker:** `portfolio`, account subdomain `jmendozaperez`, so the fallback address is `https://portfolio.jmendozaperez.workers.dev`.
+- **Domain:** `jmendozaperez.dev` is registered at GoDaddy. The zone is on Cloudflare (nameservers `kaiser.ns.cloudflare.com` and `ziggy.ns.cloudflare.com`). `jmendozaperez.dev` and `www.jmendozaperez.dev` are Worker custom domains for `portfolio`.
+- **Email:** `hello@jmendozaperez.dev` is Microsoft 365 through GoDaddy. Its DNS records (MX to `ppe-hosted.com`, SPF, DMARC, DKIM, Autodiscover, Teams/Lync, the Microsoft verification TXT) were copied into Cloudflare unproxied. Do not proxy or delete them.
+- **Agent sessions** cannot run `wrangler deploy` themselves (the cloud proxy overwrites Wrangler's asset-upload token), but can manage DNS and Worker domains through the Cloudflare API with the token saved on the “portfolio” environment.
 
 ## What is already in the repo
 
