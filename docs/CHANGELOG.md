@@ -2,6 +2,7 @@
 
 ## 2026-11-20
 
+- Added by Claude: Fixed the Workers Builds production trigger, which had no build command and had deployed the old static site from `main`. Added a “Preview branches” trigger so every non-`main` branch gets a preview URL.
 - Added by Claude: Renamed the account’s `workers.dev` subdomain from `hibiscus-club` to `jmendozaperez` (Juan, in the dashboard). The portfolio’s fallback address is `portfolio.jmendozaperez.workers.dev`.
 - Added by Claude: Added the `jmendozaperez.dev` zone to Cloudflare, copied the 16 Microsoft 365 and GoDaddy mail records, skipped GoDaddy’s parking `A` records and `www` CNAME, and attached `jmendozaperez.dev` and `www.jmendozaperez.dev` to the `portfolio` Worker. Goes live when GoDaddy’s nameservers change.
 - Added by Claude: Juan connected the repo to Cloudflare Workers Builds, which created the `portfolio` Worker. `wrangler.jsonc` now uses that name so builds and the config agree. Every push to the production branch redeploys.

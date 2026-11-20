@@ -2,7 +2,10 @@
 
 Live setup as of 2026-11-20:
 
-- **Builds:** Cloudflare Workers Builds is connected to `JuanSebastianM/portfolio`. Every push to the production branch runs `npm run build` and `npx wrangler deploy` with `NODE_VERSION=22`. Nobody deploys by hand.
+- **Builds:** Cloudflare Workers Builds is connected to `JuanSebastianM/portfolio`, with two triggers, both `NODE_VERSION=22` and build command `npm run build`:
+  - production: pushes to `main` run `npx wrangler deploy`;
+  - “Preview branches”: pushes to any other branch run `npx wrangler versions upload`, which publishes a preview URL (`<branch>-portfolio.jmendozaperez.workers.dev`) without touching production.
+  Nobody deploys by hand.
 - **Worker:** `portfolio`, account subdomain `jmendozaperez`, so the fallback address is `https://portfolio.jmendozaperez.workers.dev`.
 - **Domain:** `jmendozaperez.dev` is registered at GoDaddy. The zone is on Cloudflare (nameservers `kaiser.ns.cloudflare.com` and `ziggy.ns.cloudflare.com`). `jmendozaperez.dev` and `www.jmendozaperez.dev` are Worker custom domains for `portfolio`.
 - **Email:** `hello@jmendozaperez.dev` is Microsoft 365 through GoDaddy. Its DNS records (MX to `ppe-hosted.com`, SPF, DMARC, DKIM, Autodiscover, Teams/Lync, the Microsoft verification TXT) were copied into Cloudflare unproxied. Do not proxy or delete them.
