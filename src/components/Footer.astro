@@ -1,0 +1,22 @@
+---
+import { identity } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell foot">
+    <div>
+      <strong>{identity.name}</strong>
+      <p style="margin: 0.25rem 0 0;">
+        {identity.role} in {identity.location}.
+      </p>
+    </div>
+    <div class="socials">
+      <a href={identity.github} rel="me noreferrer" target="_blank">GitHub</a>
+      <a href={identity.twitter} rel="me noreferrer" target="_blank">X</a>
+      <a href={identity.linkedin} rel="me noreferrer" target="_blank">LinkedIn</a>
+      <a href="/rss.xml">RSS</a>
+    </div>
+    <p style="margin: 0; width: 100%;">© {year} {identity.name}.</p>
+  </div>
+</footer>

@@ -1,0 +1,127 @@
+---
+import { bench, positions, startingXi, type Skill } from '../data/profile';
+import Pitch from './Pitch.astro';
+import PositionCard from './PositionCard.astro';
+
+// Keep popups on the pitch: players near a touchline open toward the middle,
+// players in the bottom half open upward.
+function placement(skill: Skill) {
+  const x = Number.parseFloat(skill.x);
+  const y = Number.parseFloat(skill.y);
+  return {
+    align: x < 30 ? 'start' : x > 70 ? 'end' : 'center',
+    side: y > 55 ? 'above' : 'below',
+  };
+}
+
+function card(skill: Skill, pos: string, id: string) {
+  return { skill, info: positions[pos], id };
+}
+---
+
+<p class="lineup-hint">
+  <span class="lineup-hint-dot" aria-hidden="true"></span>
+  Tap a player to see what the position does.
+</p>
+<div class="pitch-board">
+  <Pitch class="pitch-board-grass" />
+  <ol class="xi">
+    {
+      startingXi.map((skill) => (
+        <li
+          class="player"
+          style={`--x:${skill.x};--y:${skill.y}`}
+          data-align={placement(skill).align}
+          data-side={placement(skill).side}
+        >
+          <button type="button" class="player-btn" aria-expanded="false" aria-controls={`pos-${skill.pos}`}>
+            <span class="pos">{skill.pos}</span>
+            <span class="skill">{skill.short}</span>
+            {skill.name !== skill.short && <span class="src">{skill.name}</span>}
+          </button>
+          <PositionCard {...card(skill, skill.pos, `pos-${skill.pos}`)} />
+        </li>
+      ))
+    }
+  </ol>
+</div>
+<ul class="bench">
+  {
+    bench.map((skill, index) => (
+      <li class:list={['player', skill.placeholder && 'placeholder']}>
+        <button type="button" class="player-btn" aria-expanded="false" aria-controls={`pos-sub-${index + 1}`}>
+          {skill.placeholder && <span class="flag">Placeholder</span>}
+          <span class="pos">SUB {index + 1}</span>
+          <span class="skill">{skill.short}</span>
+          {skill.name !== skill.short && <span class="src">{skill.name}</span>}
+        </button>
+        <PositionCard {...card(skill, 'SUB', `pos-sub-${index + 1}`)} />
+      </li>
+    ))
+  }
+</ul>
+<script>
+  // Position popups: one open at a time, Escape or a click elsewhere closes it.
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.player-btn')];
+  const cardFor = (button: HTMLButtonElement) =>
+    document.getElementById(button.getAttribute('aria-controls') ?? '');
+  const close = (button: HTMLButtonElement) => {
+    button.setAttribute('aria-expanded', 'false');
+    button.closest('.player')?.classList.remove('is-open');
+    cardFor(button)?.setAttribute('hidden', '');
+  };
+  const open = (button: HTMLButtonElement) => {
+    for (const other of buttons) if (other !== button) close(other);
+    button.setAttribute('aria-expanded', 'true');
+    button.closest('.player')?.classList.add('is-open');
+    cardFor(button)?.removeAttribute('hidden');
+    document.querySelector('.lineup-hint')?.classList.add('is-used');
+  };
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-expanded') === 'true') close(button);
+      else open(button);
+    });
+    cardFor(button)
+      ?.querySelector('.pos-card-close')
+      ?.addEventListener('click', () => {
+        close(button);
+        button.focus();
+      });
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const active = buttons.find((button) => button.getAttribute('aria-expanded') === 'true');
+    if (!active) return;
+    close(active);
+    active.focus();
+  });
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element;
+    if (target.closest('.player')) return;
+    for (const button of buttons) close(button);
+  });
+
+  const rows = document.querySelectorAll('.xi');
+  const reduced = document.documentElement.dataset.motion === 'off';
+  for (const row of rows) {
+    if (reduced) {
+      row.classList.add('is-set');
+      continue;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        row.classList.add('is-set');
+        observer.disconnect();
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(row);
+  }
+  window.addEventListener('motionchange', () => {
+    if (document.documentElement.dataset.motion === 'off') {
+      for (const row of rows) row.classList.add('is-set');
+    }
+  });
+</script>
