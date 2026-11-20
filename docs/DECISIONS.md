@@ -182,3 +182,7 @@ Added by Claude: Deploying is now something Juan asks for. The Cloudflare API to
 ### Domain on Cloudflare, registration at GoDaddy
 
 Added by Claude: Worker custom domains need the zone on Cloudflare, so DNS moves to Cloudflare while the registration stays at GoDaddy. Email stays on Microsoft 365: its records were copied as they were, DNS-only. Both the apex and `www` serve the site; canonical links point at the apex.
+
+### Projects and education
+
+Added by Claude: Juan asked to drop Education and commentful and to add Hibiscus Club, his browser game. Its description only restates the game’s own README (fashion-doll CD-ROM inspiration, two ages, stars, runway, island, postcards, English and Spanish, no dependencies). The repository is private, so the card has a Play link and no Code link.

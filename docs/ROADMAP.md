@@ -15,7 +15,7 @@ Done on this branch.
 ## Phase 2 — LinkedIn content, polish, SEO
 
 - [x] Replace experience, education, certifications, volunteering, about, and the bench from the LinkedIn export
-- [x] Projects limited to LynStore and commentful
+- [x] Projects limited to LynStore and commentful (later: LynStore and Hibiscus Club)
 - [ ] Optional: generated Open Graph images per essay (covers are used today)
 - [ ] Optional: pagination if the blog grows past a single index
 - [ ] Pass a Lighthouse pass on the production URL after deploy
@@ -51,7 +51,7 @@ Done on this branch.
 Still unknown. Do not invent them.
 
 1. **GoDaddy duties** — the export has titles and dates only. Do not write responsibilities.
-2. **commentful** — unfinished. Do not add features the README does not describe. The README is still the create-next-app starter.
+2. **Hibiscus Club** — no dates or launch details on the card. Add them only if Juan gives them.
 3. **LynStore code** — the live site is https://lynstore.netlify.app/. `JuanSebastianM/lynstore` did not resolve on 2026-10-28.
 4. **Prefectura de Pichincha URL** — LinkedIn does not give one.
 5. **BarranquillaJS recording** — no URL on the export. Featured points at the 2022 retro.

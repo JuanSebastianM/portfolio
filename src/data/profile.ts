@@ -322,15 +322,6 @@ export const experience: ExperienceItem[] = [
   },
 ];
 
-export const education = {
-  school: 'Institución Educativa Simón Araújo',
-  credential: 'High School Diploma',
-  season: 'Feb 2011 – Nov 2016',
-  note: '',
-  essayHref: '/blog/from-college-dropout-to-my-first-year-as-a-software-developer',
-  essayTitle: 'From College Dropout to My First Year as a Software Developer',
-};
-
 export type Certification = {
   name: string;
   issuer: string;

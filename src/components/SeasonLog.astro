@@ -1,5 +1,5 @@
 ---
-import { certifications, education, experience, featured } from '../data/profile';
+import { certifications, experience, featured } from '../data/profile';
 ---
 
 <div class="split">
@@ -53,20 +53,7 @@ import { certifications, education, experience, featured } from '../data/profile
     </ol>
   </div>
   <div>
-    <h3 class="h-display" style="font-size: 1.8rem;">Education</h3>
-    <article class="card card-pad" style="margin-top: 1rem;">
-      <h3>{education.credential}</h3>
-      <p class="org">{education.school}</p>
-      <dl class="stat-grid">
-        <div>
-          <dt>Season</dt>
-          <dd>{education.season}</dd>
-        </div>
-      </dl>
-      {education.note ? <p class="role-copy">{education.note}</p> : null}
-    </article>
-
-    <h3 class="h-display" style="font-size: 1.8rem; margin-top: 1.6rem;">Certifications</h3>
+    <h3 class="h-display" style="font-size: 1.8rem;">Certifications</h3>
     <ul class="cert-list">
       {
         certifications.map((item) => (

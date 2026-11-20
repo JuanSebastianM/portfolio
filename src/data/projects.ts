@@ -1,6 +1,6 @@
 /**
  * The only projects Juan wants on the site.
- * LynStore is the shipped freelance site. commentful is an unfinished prototype.
+ * LynStore is the shipped freelance site. Hibiscus Club is his browser game; its repository is private, so it links to the live game only.
  * Devsu client work stays in the experience log, not here.
  */
 
@@ -84,13 +84,15 @@ export const projects: Project[] = [
     links: [{ label: 'Live', href: 'https://lynstore.netlify.app/' }],
   },
   {
-    slug: 'commentful',
-    name: 'commentful',
-    role: 'Unfinished prototype',
-    language: 'Next.js',
+    slug: 'hibiscus-club',
+    name: 'Hibiscus Club',
+    role: 'Personal project',
+    language: 'JavaScript',
     featured: true,
+    image: '/images/projects/hibiscus-club.webp',
+    imageAlt: 'The Hibiscus Island map in Hibiscus Club, with the dress-up studio, salon, arcade, garden, and photo booth',
     summary:
-      'An unfinished prototype. The public README is still the create-next-app starter, so this card does not describe product features.',
-    links: [{ label: 'Code', href: 'https://github.com/JuanSebastianM/commentful' }],
+      'A single-player browser game inspired by early-2000s fashion-doll CD-ROMs. Dress one character at two ages, earn stars in mini-games, rehearse a runway routine, explore Hibiscus Island, and save looks as postcards. Fully bilingual in English and Spanish, with no dependencies.',
+    links: [{ label: 'Play', href: 'https://hibiscus-club.jmendozaperez.workers.dev' }],
   },
 ];

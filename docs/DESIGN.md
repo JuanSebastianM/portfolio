@@ -93,7 +93,7 @@ In the penalty view the keeper wears `--keeper` (yellow in light mode, `--accent
 | Position card | `PositionCard.astro` | Opens from a lineup or bench player; Escape or outside click closes it |
 | AI card | `index.astro` | Kicker, title, model chips, six uses |
 | Starting XI | `Formation.astro` | Team sheet on small screens, players on `Pitch.astro` from 768px |
-| Season log | `SeasonLog.astro` | Jobs, diploma, certifications, featured |
+| Season log | `SeasonLog.astro` | Jobs, certifications, featured |
 | Project grid | `ProjectGrid.tsx` | Tilt, real screenshots or a letter mark |
 | Post card | `PostCard.astro` | Cover, category, tags, reading time |
 | Contact | `Contact.astro` | Copy email (Clipboard API, then `execCommand` fallback) and mailto |

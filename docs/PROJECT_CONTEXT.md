@@ -19,7 +19,7 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 | Path | Role |
 | --- | --- |
 | `src/data/site.ts` | Canonical URL, name, social links, planned email |
-| `src/data/profile.ts` | About, lineup, experience, education, certifications, featured |
+| `src/data/profile.ts` | About, lineup, experience, certifications, featured |
 | `src/data/projects.ts` | Repos and open-source notes from the 2026-10-28 GitHub snapshot |
 | `src/content/blog` | Markdown essays |
 | `src/lib/posts.ts` | Reading time, excerpts, tag-to-category map |
@@ -35,15 +35,15 @@ The previous site was a single `index.html` plus `styles.css` and `main.js`. It 
 
 ## Content that is real
 
-- About, headline, jobs, diploma, certifications, volunteering, and featured posts: public LinkedIn export, 2026-10-28. See `docs/DECISIONS.md`.
+- About, headline, jobs, certifications, volunteering, and featured posts: public LinkedIn export, 2026-10-28. See `docs/DECISIONS.md`.
 - Starting XI: LinkedIn where it names the skill, otherwise the previous site or a public repo. Git in goal is from the previous site.
-- Projects on the site: LynStore and commentful only. Open source: Documenso and Help a Family pull requests. cal.com needs Juan’s input.
+- Projects on the site: LynStore and Hibiscus Club (`JuanSebastianM/hibiscus-club`, private; the card links to https://hibiscus-club.jmendozaperez.workers.dev, and its copy comes from that repo’s README). Open source: Documenso and Help a Family pull requests. cal.com needs Juan’s input.
 - Essays: nine local posts, 2021-10-05 through 2023-07-21
 - Contact: copy button and mailto for hello@jmendozaperez.dev
 
 ## Content that is not filled in
 
-GoDaddy has no duty bullets. Prefectura has no URL. LynStore has no working GitHub repo in the snapshot. commentful’s README is still the starter text. Credential IDs are omitted on purpose. The college essay is not a diploma.
+GoDaddy has no duty bullets. Prefectura has no URL. LynStore has no working GitHub repo in the snapshot. Credential IDs are omitted on purpose. The college essay is not a diploma.
 
 ## Run and build
 
