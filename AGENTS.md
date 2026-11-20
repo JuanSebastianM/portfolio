@@ -19,7 +19,7 @@ Read these before editing:
 - Blog posts use frontmatter `title`, `subtitle`, `date`, `slug`, `tags`, `coverImage`. Do not put the old publishing-platform name anywhere under `src/`. `npm run check` fails if that string appears.
 - Light is the green/white palette. Dark is blue/garnet. Do not add club crests or text tabs for clubs.
 - `data-motion` gates animation. The site has no sound. Juan asked for the ambience to be removed; do not add audio back.
-- The projects page lists LynStore and Hibiscus Club only. Hibiscus Club’s repository is private, so it links to the live game, never to code. The site has no Education section.
+- The projects page lists LynStore and Hibiscus Club only. Hibiscus Club links to the live game and its public repository. The site has no Education section.
 - Categories are derived in `src/lib/posts.ts`. Do not treat that map as something Juan wrote.
 - Club colors are fan palettes. Do not add official crests or trademarks.
 - Respect `prefers-reduced-motion`. The 3D pitch (`PitchBallCanvas.tsx`) stays off for reduced motion, narrow screens, and Save-Data, and the SVG pitch shows instead.
